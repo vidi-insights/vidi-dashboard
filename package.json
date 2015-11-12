@@ -4,7 +4,7 @@
   "main": "./lib/deploy/app.js",
   "scripts": {
     "build": "webpack",
-    "serve": "serve ./lib/deploy"
+    "serve": "node ./lib/server.js"
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",
@@ -12,6 +12,10 @@
     "webpack": "^1.5.3"
   },
   "dependencies": {
-    "react": "^0.12.2"
+    "hapi": "^11.1.0",
+    "inert": "^3.2.0",
+    "react": "^0.14.2",
+    "react-dom": "^0.14.2",
+    "react-router": "^1.0.0"
   }
 }
