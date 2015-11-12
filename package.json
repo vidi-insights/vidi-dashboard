@@ -4,7 +4,7 @@
   "main": "./lib/deploy/app.js",
   "scripts": {
     "build": "webpack",
-    "serve": "node ./lib/server.js"
+    "start": "node ./lib/server.js"
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",
