@@ -1,0 +1,17 @@
+{
+  "name": "vidi-frontend",
+  "version": "0.0.1",
+  "main": "./lib/deploy/app.js",
+  "scripts": {
+    "build": "webpack",
+    "serve": "serve ./lib/deploy"
+  },
+  "devDependencies": {
+    "jsx-loader": "^0.13.2",
+    "serve": "^1.4.0",
+    "webpack": "^1.5.3"
+  },
+  "dependencies": {
+    "react": "^0.12.2"
+  }
+}
