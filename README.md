@@ -40,7 +40,7 @@ Licensed under [MIT][].
 [MIT]: ./LICENSE
 [Code of Conduct]: https://github.com/nearform/vidi-contrib/docs/code_of_conduct.md
 [vidi org]: https://github.com/nearform/vidi-contrib
-[logo]: ./assets/vidi-logo.png
+[logo]: ./logo.png
 [lead]: https://github.com/mcdonnelldean
 [nearForm]: http://www.nearform.com/
 
