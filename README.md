@@ -1,9 +1,9 @@
 ![logo][]
 
 # vidi-frontend
-The vidi-frontend repo contains the Vidi Dashboard front-end app. Included are all the necessary
-pieces to run as a container. See below for instructions. This repo does not include any backend
-services. Pair with [vidi-backend][] for a simple client server setup.
+The vidi-frontend repo contains the Vidi Dashboard front-end app and the backend server to power
+it. Included are all the necessary pieces to run as a container. See below for instructions. This
+repo does not include any backend services. Pair with [vidi-backend][] to enable reporting data.
 
 - __Lead Maintainer:__ [Dean McDonnell][lead]
 - __Sponsor:__ [nearForm][]
@@ -15,7 +15,7 @@ below,
 ### In process
 1. Run `npm install` to install all dependencies
 2. Run `npm run build` to create a deploy
-3. Run `npm run serve` to serve the app on port `3000`  
+3. Run `npm run start` to serve the app on port `3000`  
 
 
 ### As a container
