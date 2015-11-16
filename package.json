@@ -4,6 +4,7 @@
   "main": "./lib/deploy/app.js",
   "scripts": {
     "build": "webpack",
+    "prestart": "npm run build",
     "start": "node ./lib/server.js"
   },
   "devDependencies": {

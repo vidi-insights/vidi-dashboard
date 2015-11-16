@@ -1,0 +1,89 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.4rem;
+  font-family: 'Raleway';
+  margin: 0;
+  padding: 0;
+}
+
+.shell {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+  background-color: #333333;
+  height: 5vh;
+}
+
+.footer {
+  width: 100%;
+  background-color: #333333;
+  height: 5vh;
+}
+
+.dashboard {
+  height: 90vh;
+  width: 100%;
+}
+
+.login {
+  height: 90vh;
+  width: 100%;
+}
+
+.login-form {
+  position: relative;
+  top: 50%;
+  font-size: 1.8rem;
+  transform: translateY(-50%);
+  width: 40rem;
+  margin: 0 auto;
+  height: 20rem;
+  border: 0;
+}
+
+.login-form .title {
+  width: 100%;
+  height: 4rem;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  line-height: 4rem;
+  background-color: #535355;
+  color: white;
+}
+
+.login-form .title legend {
+  margin: 0 auto;
+}
+
+.login-form fieldset {
+  padding: 0;
+  border: 0;
+  margin: 0;
+}
+
+.login-form input {
+  font-size: 2rem;
+  width: 40rem;
+  margin: 0;
+  margin-bottom: .5rem;
+}
+
+.login-form button {
+  font-size: 2rem;
+  width: 20.6rem;
+  height: 4rem;
+  background-color: #647F26;
+  color: white;
+  float: right;
+  margin-top: .5rem;
+  padding: 0;
+  border: 0;
+}
