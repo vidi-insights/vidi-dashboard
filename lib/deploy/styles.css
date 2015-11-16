@@ -16,19 +16,19 @@ body {
 
 .login {
   bottom: 4rem;
-left: 0rem;
-overflow: auto;
-position: absolute;
-padding: 2rem;
-right: 0;
-top: 4rem;
+  left: 0rem;
+  overflow: auto;
+  position: absolute;
+  padding: 2rem;
+  right: 0;
+  top: 4rem;
 }
 
 .login-form {
   font-size: 1.8rem;
   width: 40rem;
   margin: 0 auto;
-  height: 20rem;
+  margin-top: 20rem;
   border: 0;
 }
 
@@ -43,7 +43,7 @@ top: 4rem;
 }
 
 .login-form .box-header-icon {
-  background-color: #647F26;
+  background-color: #2980B9;
   height: 4rem;
   width: 4rem;
   float: left;
@@ -52,9 +52,10 @@ top: 4rem;
 }
 
 .login-form .box-header-titlebar {
-  background-color: #333333;
+  background-color: #2C3E50;
   height: 4rem;
   width: 35.5rem;
+  font-size: 1.4rem;
   float: left;
   margin: 0;
   padding: 0;
@@ -88,26 +89,23 @@ top: 4rem;
   font-size: 2rem;
   width: 20rem;
   height: 4rem;
-  background-color: #647F26;
+  background-color: #2980B9;
   color: white;
   float: right;
   padding: 0;
   border: 0;
 }
 
-// HEADER ----
-
 .header {
   position: absolute;
   height: 4rem;
   top: 0;
   left: 0;
-  right: 0;;
-  font-size: 1.8rem;
+  right: 0;
 }
 
 .header .box-header-icon {
-  background-color: #647F26;
+  background-color: #2980B9;
   height: 4rem;
   width: 4rem;
   float: left;
@@ -116,7 +114,7 @@ top: 4rem;
 }
 
 .header .box-header-titlebar {
-  background-color: #333333;
+  background-color: #2C3E50;
   height: 4rem;
   margin: 0;
   padding: 0;
@@ -124,26 +122,27 @@ top: 4rem;
 }
 
 .header .box-header-titlebar span {
+  color: white;
   height: 4rem;
   display: inline-block;
   line-height: 4rem;
+  font-size: 1.4rem;
   margin: 0;
   padding: 0;
+  padding-left: 0.5rem;
   margin-left: 0.5rem;
 }
 
-// FOOTER ----
-
 .footer {
   position: absolute;
-  color: white;
-  width: 100%;
-  bottom: 0;
   height: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .footer .box-header-icon {
-  background-color: #647F26;
+  background-color: #2980B9;
   height: 4rem;
   width: 4rem;
   float: left;
@@ -152,7 +151,7 @@ top: 4rem;
 }
 
 .footer .box-header-titlebar {
-  background-color: #333333;
+  background-color: #2C3E50;
   height: 4rem;
   margin: 0;
   padding: 0;
@@ -161,9 +160,12 @@ top: 4rem;
 
 .footer .box-header-titlebar span {
   height: 4rem;
+  color: white;
   display: inline-block;
+  font-size: 1.2rem;
   line-height: 4rem;
   margin: 0;
   padding: 0;
+  padding-left: 0.5rem;
   margin-left: 0.5rem;
 }
