@@ -3,28 +3,10 @@ html {
 }
 
 body {
-  font-size: 1.4rem;
   font-family: 'Raleway';
+  letter-spacing: .1rem;
   margin: 0;
   padding: 0;
-}
-
-.shell {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.header {
-  width: 100%;
-  background-color: #333333;
-  height: 5vh;
-}
-
-.footer {
-  width: 100%;
-  background-color: #333333;
-  height: 5vh;
 }
 
 .dashboard {
@@ -33,34 +15,59 @@ body {
 }
 
 .login {
-  height: 90vh;
-  width: 100%;
+  bottom: 4rem;
+left: 0rem;
+overflow: auto;
+position: absolute;
+padding: 2rem;
+right: 0;
+top: 4rem;
 }
 
 .login-form {
-  position: relative;
-  top: 50%;
   font-size: 1.8rem;
-  transform: translateY(-50%);
   width: 40rem;
   margin: 0 auto;
   height: 20rem;
   border: 0;
 }
 
-.login-form .title {
+.login-form .box-header {
   width: 100%;
   height: 4rem;
   font-size: 1.8rem;
-  margin: 0 0 1rem 0;
+  margin: 0 0 .5rem 0;
   padding: 0;
   line-height: 4rem;
-  background-color: #535355;
   color: white;
 }
 
-.login-form .title legend {
-  margin: 0 auto;
+.login-form .box-header-icon {
+  background-color: #647F26;
+  height: 4rem;
+  width: 4rem;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.login-form .box-header-titlebar {
+  background-color: #333333;
+  height: 4rem;
+  width: 35.5rem;
+  float: left;
+  margin: 0;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+
+.login-form .box-header-titlebar span {
+  height: 4rem;
+  display: inline-block;
+  line-height: 4rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 0.5rem;
 }
 
 .login-form fieldset {
@@ -71,19 +78,92 @@ body {
 
 .login-form input {
   font-size: 2rem;
-  width: 40rem;
+  width: 39.1rem;
   margin: 0;
+  padding: .25rem;
   margin-bottom: .5rem;
 }
 
 .login-form button {
   font-size: 2rem;
-  width: 20.6rem;
+  width: 20rem;
   height: 4rem;
   background-color: #647F26;
   color: white;
   float: right;
-  margin-top: .5rem;
   padding: 0;
   border: 0;
+}
+
+// HEADER ----
+
+.header {
+  position: absolute;
+  height: 4rem;
+  top: 0;
+  left: 0;
+  right: 0;;
+  font-size: 1.8rem;
+}
+
+.header .box-header-icon {
+  background-color: #647F26;
+  height: 4rem;
+  width: 4rem;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.header .box-header-titlebar {
+  background-color: #333333;
+  height: 4rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 4.5rem;
+}
+
+.header .box-header-titlebar span {
+  height: 4rem;
+  display: inline-block;
+  line-height: 4rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 0.5rem;
+}
+
+// FOOTER ----
+
+.footer {
+  position: absolute;
+  color: white;
+  width: 100%;
+  bottom: 0;
+  height: 4rem;
+}
+
+.footer .box-header-icon {
+  background-color: #647F26;
+  height: 4rem;
+  width: 4rem;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.footer .box-header-titlebar {
+  background-color: #333333;
+  height: 4rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 4.5rem;
+}
+
+.footer .box-header-titlebar span {
+  height: 4rem;
+  display: inline-block;
+  line-height: 4rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 0.5rem;
 }
