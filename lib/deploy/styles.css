@@ -9,16 +9,16 @@ body {
   padding: 0;
 }
 
-.dashboard {
+.presenter {
   bottom: 4rem;
-  left: 4.5rem;
+  left: 0;
   overflow: auto;
   position: absolute;
   right: 0;
   top: 4.5rem;
 }
 
-.dashboard .box-header-icon {
+.presenter .box-header-icon {
   background-color: #2980B9;
   height: 4rem;
   width: 4rem;
@@ -27,7 +27,7 @@ body {
   padding: 0;
 }
 
-.dashboard .box-header-titlebar {
+.presenter .box-header-titlebar {
   background-color: #2C3E50;
   height: 4rem;
   margin: 0;
@@ -35,7 +35,7 @@ body {
   margin-left: 4.5rem;
 }
 
-.dashboard .box-header-titlebar span {
+.presenter .box-header-titlebar span {
   height: 4rem;
   color: white;
   display: inline-block;
@@ -45,6 +45,54 @@ body {
   padding: 0;
   padding-left: 0.5rem;
   margin-left: 0.5rem;
+}
+
+.sidebar {
+  bottom: 4rem;
+  left: 0;
+  overflow: auto;
+  width: 30rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.sidebar .box-header-icon {
+  background-color: #2980B9;
+  height: 4rem;
+  width: 4rem;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar .box-header-titlebar {
+  background-color: #2C3E50;
+  height: 4rem;
+  margin: 0;
+  padding: 0;
+  margin-left: 4.5rem;
+}
+
+.sidebar .box-header-titlebar span {
+  height: 4rem;
+  color: white;
+  display: inline-block;
+  font-size: 1.2rem;
+  line-height: 4rem;
+  margin: 0;
+  padding: 0;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.dashboard {
+  bottom: 4rem;
+  left: 30.5rem;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .user {
