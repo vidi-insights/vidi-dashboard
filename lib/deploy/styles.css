@@ -36,6 +36,37 @@ body {
   top: 0;
 }
 
+.sidebar-root {
+  margin: 0;
+  padding: 0;
+  margin-left: 4.5rem;
+  margin-top: .5rem;
+  padding-left: 1rem;
+  list-style: none;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.sidebar-root > li {
+  min-height: 3rem;
+  line-height: 3rem;
+}
+
+.sidebar-level-1 {
+  margin: 0;
+  padding: 0;
+  padding-left: 1rem;
+  list-style: none;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.sidebar-level-1 > li {
+  min-height: 3rem;
+  line-height: 3rem;
+}
+
+
 /* - Dashboard - */
 
 .dashboard {
