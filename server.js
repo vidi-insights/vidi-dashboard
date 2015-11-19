@@ -1,7 +1,7 @@
 var Chairo = require('chairo')
 var Hapi = require('hapi')
 var Inert = require('inert')
-var Vidi = require('./lib')
+var Vidi = require('./')
 
 var internals = {}
 
