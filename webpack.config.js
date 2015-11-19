@@ -5,7 +5,7 @@ module.exports = {
     './lib/client/app.js'
   ],
   output: {
-    path: './public/js/',
+    path: './lib/public/js/',
     filename: 'app.js'
   },
   module: {

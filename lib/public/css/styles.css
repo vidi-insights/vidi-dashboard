@@ -4,6 +4,22 @@ html {
   font-size: 10px;
 }
 
+img {
+  padding: .5rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+i::before {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2rem;
+  line-height: 4rem;
+  color: white;
+}
+
 body {
   font-family: 'Raleway';
   letter-spacing: .1rem;
@@ -194,7 +210,6 @@ body {
   background-color: #2980B9;
   color: white;
   height: 4rem;
-  width: 18rem;
   padding: 0;
   float: right;
 }
@@ -246,19 +261,29 @@ body {
 /* - ProfileToolbox - */
 
 .profile-toolbox {
-  width: 13.5rem;
+  width: 18rem;
   margin: 0 auto;
 }
 
 .profile-toolbox ul {
   padding: 0;
   margin: 0;
-  padding-left: 1rem;
   list-style: none;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 }
 
 .profile-toolbox li {
   line-height: 4rem;
   display: inline;
+}
+
+.profile-toolbox i::before {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.2rem;
+  margin-right: 2rem;
+  line-height: 4rem;
+  color: white;
 }

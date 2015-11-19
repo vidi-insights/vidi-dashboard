@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack",
     "prestart": "npm run build",
-    "start": "node server.js"
+    "start": "node ./lib/server/index.js"
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",
