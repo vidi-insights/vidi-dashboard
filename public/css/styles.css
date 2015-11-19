@@ -190,7 +190,24 @@ body {
   margin-left: 0.5rem;
 }
 
-/* - login-form - */
+.box-header-toolbox {
+  background-color: #2980B9;
+  color: white;
+  height: 4rem;
+  width: 18rem;
+  padding: 0;
+  float: right;
+}
+
+.box-header-toolbox::before {
+  content: '';
+  float: left;
+  width: .5rem;
+  height: 4rem;
+  background-color: white;
+}
+
+/* - LoginForm - */
 
 .login-form {
   font-size: 1.8rem;
@@ -224,4 +241,24 @@ body {
   float: right;
   padding: 0;
   border: 0;
+}
+
+/* - ProfileToolbox - */
+
+.profile-toolbox {
+  width: 13.5rem;
+  margin: 0 auto;
+}
+
+.profile-toolbox ul {
+  padding: 0;
+  margin: 0;
+  padding-left: 1rem;
+  list-style: none;
+  font-size: 1.4rem;
+}
+
+.profile-toolbox li {
+  line-height: 4rem;
+  display: inline;
 }
