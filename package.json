@@ -1,25 +1,26 @@
 {
   "name": "vidi-frontend",
   "version": "0.0.1",
-  "main": "./lib/deploy/app.js",
+  "main": "./lib",
   "scripts": {
     "build": "webpack",
     "prestart": "npm run build",
-    "start": "node ./lib/server.js"
+    "start": "node server.js"
   },
   "devDependencies": {
     "jsx-loader": "^0.13.2",
     "webpack": "^1.5.3"
   },
   "dependencies": {
-    "chairo": "^1.1.0",
-    "hapi": "^11.1.0",
-    "inert": "^3.2.0",
-    "react": "^0.14.2",
-    "react-dom": "^0.14.2",
-    "react-router": "^1.0.0",
-    "seneca-user": "^0.2.10",
-    "superagent": "^1.4.0",
-    "varo": "^0.2.0"
+    "boom": "2.x.x",
+    "chairo": "1.x.x",
+    "hapi": "11.x.x",
+    "inert": "3.x.x",
+    "react": "0.14.x",
+    "react-dom": "0.14.x",
+    "react-router": "1.0.x",
+    "seneca-user": "0.2.x",
+    "superagent": "1.4.x",
+    "varo": "0.x.x"
   }
 }
