@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 800 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
-    <g transform="matrix(1,0,0,1,-874.657,-1654.94)">
+<svg width="100%" height="100%" viewBox="0 0 800 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-940.157,-1714.94)">
         <g id="Layer1">
             <g>
                 <g transform="matrix(1,0,0,1,-308,32)">
@@ -15,11 +15,11 @@
                     </g>
                 </g>
                 <g>
-                    <g transform="matrix(1.76506,-1.30542e-16,-8.91073e-17,1.56863,301.248,1671.02)">
+                    <g transform="matrix(1,-7.39591e-17,-8.91073e-17,1.56863,614.157,1671.02)">
                         <rect x="409" y="28" width="332" height="51" style="fill:rgb(44,62,80);"/>
                     </g>
                     <g transform="matrix(1,0,0,1,828.412,1673.85)">
-                        <text x="205.746px" y="92.351px" style="font-family:Raleway;font-size:33.333px;fill:white;">Vidi: Dashboar<tspan x="425.479px " y="92.351px ">d</tspan></text>
+                        <text x="205.746px" y="92.351px" style="font-family:Raleway;font-size:33.333px;fill:white;">Vidi: Insigh<tspan x="369.479px " y="92.351px ">t</tspan>s</text>
                     </g>
                 </g>
             </g>
