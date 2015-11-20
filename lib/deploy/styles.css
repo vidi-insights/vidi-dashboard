@@ -225,3 +225,22 @@ body {
   padding: 0;
   border: 0;
 }
+
+.row {
+    clear: both
+}
+
+.chart-titlebar {
+    color: #2C3E50;
+    height: 4rem;
+    display: inline-block;
+    font-size: 1.2rem;
+    line-height: 4rem;
+    margin: 0;
+    padding: 0;
+    margin-left: 4.5rem;
+}
+
+.cell {
+   float:left
+}
