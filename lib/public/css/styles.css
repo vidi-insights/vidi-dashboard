@@ -4,6 +4,22 @@ html {
   font-size: 10px;
 }
 
+img {
+  padding: .5rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+i::before {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2rem;
+  line-height: 4rem;
+  color: white;
+}
+
 body {
   font-family: 'Raleway';
   letter-spacing: .1rem;
@@ -190,7 +206,23 @@ body {
   margin-left: 0.5rem;
 }
 
-/* - login-form - */
+.box-header-toolbox {
+  background-color: #2980B9;
+  color: white;
+  height: 4rem;
+  padding: 0;
+  float: right;
+}
+
+.box-header-toolbox::before {
+  content: '';
+  float: left;
+  width: .5rem;
+  height: 4rem;
+  background-color: white;
+}
+
+/* - LoginForm - */
 
 .login-form {
   font-size: 1.8rem;
@@ -226,6 +258,8 @@ body {
   border: 0;
 }
 
+/* - Report - */
+
 .row {
     clear: both
 }
@@ -242,5 +276,35 @@ body {
 }
 
 .cell {
-   float:left
+    float: left
+}
+
+/* - ProfileToolbox - */
+
+.profile-toolbox {
+  width: 18rem;
+  margin: 0 auto;
+}
+
+.profile-toolbox ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 1.2rem;
+}
+
+.profile-toolbox li {
+  line-height: 4rem;
+  display: inline;
+}
+
+.profile-toolbox i::before {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 1.2rem;
+  margin-right: 2rem;
+  line-height: 4rem;
+  color: white;
 }

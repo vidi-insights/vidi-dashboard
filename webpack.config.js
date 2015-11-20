@@ -2,10 +2,10 @@
 
 module.exports = {
   entry: [
-    './lib/app.js'
+    './lib/client/app.js'
   ],
   output: {
-    path: './lib/deploy/',
+    path: './lib/public/js/',
     filename: 'app.js'
   },
   module: {
