@@ -1,3 +1,5 @@
+/* ---- General ---- */
+
 html {
   font-size: 10px;
 }
@@ -9,6 +11,10 @@ body {
   padding: 0;
 }
 
+/* ---- Pages ---- */
+
+/* - Presenter - */
+
 .presenter {
   bottom: 4rem;
   left: 0;
@@ -18,82 +24,97 @@ body {
   top: 4.5rem;
 }
 
-.presenter .box-header-icon {
-  background-color: #2980B9;
-  height: 4rem;
-  width: 4rem;
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-
-.presenter .box-header-titlebar {
-  background-color: #2C3E50;
-  height: 4rem;
-  margin: 0;
-  padding: 0;
-  margin-left: 4.5rem;
-}
-
-.presenter .box-header-titlebar span {
-  height: 4rem;
-  color: white;
-  display: inline-block;
-  font-size: 1.2rem;
-  line-height: 4rem;
-  margin: 0;
-  padding: 0;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-}
+/* - Sidebar - */
 
 .sidebar {
   bottom: 4rem;
   left: 0;
   overflow: auto;
-  width: 30rem;
+  width: 25rem;
   position: absolute;
   right: 0;
   top: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.sidebar .box-header-icon {
-  background-color: #2980B9;
-  height: 4rem;
-  width: 4rem;
-  float: left;
+.sidebar-root {
   margin: 0;
   padding: 0;
+  margin-left: 1.5rem;
+  margin-top: .5rem;
+  list-style: none;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
-.sidebar .box-header-titlebar {
-  background-color: #2C3E50;
-  height: 4rem;
+.sidebar-root > li {
+  min-height: 3rem;
+  line-height: 3rem;
+}
+
+.sidebar-level-1 {
   margin: 0;
   padding: 0;
-  margin-left: 4.5rem;
-}
-
-.sidebar .box-header-titlebar span {
-  height: 4rem;
-  color: white;
-  display: inline-block;
+  padding-left: 1rem;
+  list-style: none;
   font-size: 1.2rem;
-  line-height: 4rem;
-  margin: 0;
-  padding: 0;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
+  font-weight: 400;
 }
+
+.sidebar-level-1 > li {
+  min-height: 3rem;
+  line-height: 3rem;
+}
+
+.sidebar-docked {
+  bottom: 4rem;
+  left: 0;
+  overflow: auto;
+  width: 4.5rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sidebar-docked .box-header-titlebar {
+  display: none;
+}
+.sidebar-docked .sidebar-root {
+  display: none;
+}
+
+/* - Dashboard - */
 
 .dashboard {
   bottom: 4rem;
-  left: 30.5rem;
+  left: 25.5rem;
   overflow: auto;
   position: absolute;
   right: 0;
   top: 0;
 }
+
+.dashboard-expanded {
+  bottom: 4rem;
+  left: 4.5rem;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* - User - */
 
 .user {
   bottom: 4rem;
@@ -104,34 +125,7 @@ body {
   top: 4.5rem;
 }
 
-.user .box-header-icon {
-  background-color: #2980B9;
-  height: 4rem;
-  width: 4rem;
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-
-.user .box-header-titlebar {
-  background-color: #2C3E50;
-  height: 4rem;
-  margin: 0;
-  padding: 0;
-  margin-left: 4.5rem;
-}
-
-.user .box-header-titlebar span {
-  height: 4rem;
-  color: white;
-  display: inline-block;
-  font-size: 1.2rem;
-  line-height: 4rem;
-  margin: 0;
-  padding: 0;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-}
+/* - Login - */
 
 .login {
   bottom: 4rem;
@@ -143,25 +137,31 @@ body {
   top: 4rem;
 }
 
-.login-form {
-  font-size: 1.8rem;
-  width: 40rem;
-  margin: 0 auto;
-  margin-top: 20rem;
-  border: 0;
-}
+/* ---- WIDGETS ---- */
 
-.login-form .box-header {
-  width: 100%;
+/* - Header - */
+
+.header {
+  position: absolute;
   height: 4rem;
-  font-size: 1.8rem;
-  margin: 0 0 .5rem 0;
-  padding: 0;
-  line-height: 4rem;
-  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.login-form .box-header-icon {
+/* - Footer - */
+
+.footer {
+  position: absolute;
+  height: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* - BoxHeader - */
+
+.box-header-icon {
   background-color: #2980B9;
   height: 4rem;
   width: 4rem;
@@ -170,30 +170,41 @@ body {
   padding: 0;
 }
 
-.login-form .box-header-titlebar {
+.box-header-titlebar {
   background-color: #2C3E50;
   height: 4rem;
-  width: 35.5rem;
-  font-size: 1.4rem;
-  float: left;
   margin: 0;
   padding: 0;
-  margin-left: 0.5rem;
+  margin-left: 4.5rem;
 }
 
-.login-form .box-header-titlebar span {
+.box-header-titlebar span {
   height: 4rem;
+  color: white;
   display: inline-block;
+  font-size: 1.2rem;
   line-height: 4rem;
   margin: 0;
   padding: 0;
+  padding-left: 0.5rem;
   margin-left: 0.5rem;
+}
+
+/* - login-form - */
+
+.login-form {
+  font-size: 1.8rem;
+  width: 40rem;
+  margin: 0 auto;
+  margin-top: 20rem;
+  border: 0;
 }
 
 .login-form fieldset {
   padding: 0;
   border: 0;
   margin: 0;
+  margin-top: .5rem;
 }
 
 .login-form input {
@@ -213,78 +224,4 @@ body {
   float: right;
   padding: 0;
   border: 0;
-}
-
-.header {
-  position: absolute;
-  height: 4rem;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-.header .box-header-icon {
-  background-color: #2980B9;
-  height: 4rem;
-  width: 4rem;
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-
-.header .box-header-titlebar {
-  background-color: #2C3E50;
-  height: 4rem;
-  margin: 0;
-  padding: 0;
-  margin-left: 4.5rem;
-}
-
-.header .box-header-titlebar span {
-  color: white;
-  height: 4rem;
-  display: inline-block;
-  line-height: 4rem;
-  font-size: 1.4rem;
-  margin: 0;
-  padding: 0;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-}
-
-.footer {
-  position: absolute;
-  height: 4rem;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.footer .box-header-icon {
-  background-color: #2980B9;
-  height: 4rem;
-  width: 4rem;
-  float: left;
-  margin: 0;
-  padding: 0;
-}
-
-.footer .box-header-titlebar {
-  background-color: #2C3E50;
-  height: 4rem;
-  margin: 0;
-  padding: 0;
-  margin-left: 4.5rem;
-}
-
-.footer .box-header-titlebar span {
-  height: 4rem;
-  color: white;
-  display: inline-block;
-  font-size: 1.2rem;
-  line-height: 4rem;
-  margin: 0;
-  padding: 0;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
 }
