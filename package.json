@@ -17,6 +17,7 @@
     "hapi": "11.x.x",
     "inert": "3.x.x",
     "react": "0.14.x",
+    "react-d3-components": "^0.6.0",
     "react-dom": "0.14.x",
     "react-router": "1.0.x",
     "seneca-user": "0.2.x",
