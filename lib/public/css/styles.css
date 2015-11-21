@@ -298,6 +298,16 @@ body {
   display: inline;
 }
 
+.profile-toolbox a {
+  color: white;
+  text-decoration: none;
+}
+
+.profile-toolbox a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 .profile-toolbox i::before {
   position: relative;
   top: 50%;
