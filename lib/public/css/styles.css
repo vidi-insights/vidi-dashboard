@@ -403,3 +403,61 @@ body {
   line-height: 4rem;
   color: white;
 }
+
+/* ---- Fonts ---- */
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/Raleway-300.eot');
+  src: url('../fonts/Raleway-300.eot?#iefix') format('embedded-opentype'),
+       local('Raleway Light'),
+       local('Raleway-300'),
+       url('../fonts/Raleway-300.woff2') format('woff2'),
+       url('../fonts/Raleway-300.woff') format('woff'),
+       url('../fonts/Raleway-300.ttf') format('truetype'),
+       url('../fonts/Raleway-300.svg#Raleway') format('svg');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Raleway-regular.eot');
+  src: url('../fonts/Raleway-regular.eot?#iefix') format('embedded-opentype'),
+       local('Raleway'),
+       local('Raleway-regular'),
+       url('../fonts/Raleway-regular.woff2') format('woff2'),
+       url('../fonts/Raleway-regular.woff') format('woff'),
+       url('../fonts/Raleway-regular.ttf') format('truetype'),
+       url('../fonts/Raleway-regular.svg#Raleway') format('svg');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fonts/Raleway-500.eot');
+  src: url('../fonts/Raleway-500.eot?#iefix') format('embedded-opentype'),
+       local('Raleway Medium'),
+       local('Raleway-500'),
+       url('../fonts/Raleway-500.woff2') format('woff2'),
+       url('../fonts/Raleway-500.woff') format('woff'),
+       url('../fonts/Raleway-500.ttf') format('truetype'),
+       url('../fonts/Raleway-500.svg#Raleway') format('svg');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/Raleway-600.eot');
+  src: url('../fonts/Raleway-600.eot?#iefix') format('embedded-opentype'),
+       local('Raleway SemiBold'),
+       local('Raleway-600'),
+       url('../fonts/Raleway-600.woff2') format('woff2'),
+       url('../fonts/Raleway-600.woff') format('woff'),
+       url('../fonts/Raleway-600.ttf') format('truetype'),
+       url('../fonts/Raleway-600.svg#Raleway') format('svg');
+}
