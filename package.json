@@ -4,6 +4,7 @@
   "main": "./lib",
   "scripts": {
     "build": "webpack",
+    "dev": "webpack-dev-server --hot --inline --devtool eval-source --progress --colors",
     "prestart": "npm run build",
     "start": "node ./lib/server/index.js"
   },
@@ -22,6 +23,7 @@
     "react-router": "1.0.x",
     "seneca-user": "0.2.x",
     "superagent": "1.4.x",
-    "varo": "0.x.x"
+    "varo": "0.x.x",
+    "webpack-dev-server": "^1.12.1"
   }
 }
