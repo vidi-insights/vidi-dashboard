@@ -1,5 +1,5 @@
 {
-  "name": "vidi-frontend",
+  "name": "vidi-dashboard",
   "version": "0.1.0",
   "description": "A reporting dashboard written in node",
   "author": "Dean McDonnell <mcdonnelldean@outlook.com> (http://mcdonnelldean.me/)",
@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mcdonnelldean/nanite.git"
+    "url": "git://github.com/nearform/vidi-dashboard.git"
   },
   "scripts": {
     "build": "webpack",
