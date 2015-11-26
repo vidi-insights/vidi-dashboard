@@ -12,7 +12,7 @@ To run the server,
 
 1. Run `npm install` to install all dependencies
 2. Run `npm run start` to create a deploy and server on port `3000`
-
+3. Log in with default user `admin@vidi.com` and password `vidi`
 
 ## Documentation
 
@@ -35,5 +35,3 @@ Licensed under [MIT][].
 [logo]: ./assets/vidi-logo.png
 [lead]: https://github.com/mcdonnelldean
 [nearForm]: http://www.nearform.com/
-
-[Dockerfile]: ./Dockerfile
