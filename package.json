@@ -1,6 +1,6 @@
 {
   "name": "vidi-dashboard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A reporting dashboard written in node",
   "author": "Dean McDonnell <mcdonnelldean@outlook.com> (http://mcdonnelldean.me/)",
   "contributors": [
