@@ -20,11 +20,6 @@
     "prestart": "npm run build",
     "start": "node ./lib/server/index.js"
   },
-  "devDependencies": {
-    "webpack-dev-server": "1.14.x",
-    "jsx-loader": "0.13.x",
-    "webpack": "1.12.x"
-  },
   "dependencies": {
     "boom": "3.x.x",
     "chairo": "1.x.x",
@@ -36,6 +31,8 @@
     "react-router": "1.0.x",
     "seneca-user": "0.2.x",
     "superagent": "1.4.x",
+    "jsx-loader": "0.13.x",
+    "webpack": "1.12.x",
     "varo": "0.x.x"
   }
 }
