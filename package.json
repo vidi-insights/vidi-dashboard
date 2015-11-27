@@ -17,6 +17,7 @@
     "build": "webpack",
     "dev": "webpack-dev-server --hot --inline --devtool eval-source --progress --colors",
     "prestart": "npm run build",
+    "postinstall": "npm run build",
     "start": "node ./lib/server/index.js"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "chairo": "1.x.x",
     "hapi": "11.x.x",
     "inert": "3.x.x",
+    "jsx-loader": "0.13.2",
     "react": "0.14.x",
     "react-d3-components": "0.6.x",
     "react-dom": "0.14.x",
