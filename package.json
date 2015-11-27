@@ -5,7 +5,8 @@
   "author": "Dean McDonnell <mcdonnelldean@outlook.com> (http://mcdonnelldean.me/)",
   "contributors": [
     "Michele Capra",
-    "Wyatt Preul"
+    "Wyatt Preul",
+    "Mircea Alexandru"
   ],
   "main": "./lib/server/index.js",
   "license": "MIT",
@@ -15,28 +16,26 @@
   },
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --hot --inline --devtool eval-source --progress --colors",
-    "prestart": "npm run build",
     "postinstall": "npm run build",
+    "prestart": "npm run build",
     "start": "node ./lib/server/index.js"
   },
   "devDependencies": {
-    "jsx-loader": "^0.13.2",
-    "webpack": "^1.5.3"
+    "webpack-dev-server": "1.14.x",
+    "jsx-loader": "0.13.x",
+    "webpack": "1.12.x"
   },
   "dependencies": {
-    "boom": "2.x.x",
+    "boom": "3.x.x",
     "chairo": "1.x.x",
     "hapi": "11.x.x",
     "inert": "3.x.x",
-    "jsx-loader": "0.13.2",
     "react": "0.14.x",
     "react-d3-components": "0.6.x",
     "react-dom": "0.14.x",
     "react-router": "1.0.x",
     "seneca-user": "0.2.x",
     "superagent": "1.4.x",
-    "varo": "0.x.x",
-    "webpack-dev-server": "^1.12.1"
+    "varo": "0.x.x"
   }
 }
