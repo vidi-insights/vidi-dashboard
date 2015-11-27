@@ -24,15 +24,16 @@
     "boom": "3.x.x",
     "chairo": "1.x.x",
     "hapi": "11.x.x",
+    "history": "1.13.x",
     "inert": "3.x.x",
+    "jsx-loader": "0.13.x",
     "react": "0.14.x",
     "react-d3-components": "0.6.x",
     "react-dom": "0.14.x",
     "react-router": "1.0.x",
     "seneca-user": "0.2.x",
     "superagent": "1.4.x",
-    "jsx-loader": "0.13.x",
-    "webpack": "1.12.x",
-    "varo": "0.x.x"
+    "varo": "0.x.x",
+    "webpack": "1.12.x"
   }
 }
