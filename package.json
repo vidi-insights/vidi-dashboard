@@ -2,7 +2,7 @@
   "name": "vidi-dashboard",
   "version": "0.1.6",
   "description": "A reporting dashboard written in node",
-  "author": "Dean McDonnell <mcdonnelldean@outlook.com> (http://mcdonnelldean.me/)",
+  "author": "Dean McDonnell (http://mcdonnelldean.me/)",
   "contributors": [
     "Michele Capra",
     "Wyatt Preul",
@@ -33,7 +33,7 @@
     "react-router": "1.0.x",
     "seneca-user": "0.2.x",
     "superagent": "1.4.x",
-    "varo": "0.x.x",
+    "varo": "0.3.x",
     "webpack": "1.12.x"
   }
 }

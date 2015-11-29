@@ -153,6 +153,16 @@ body {
   top: 4rem;
 }
 
+.logout {
+  bottom: 4rem;
+  left: 4.5rem;
+  overflow: auto;
+  position: absolute;
+  padding: 2rem;
+  right: 0;
+  top: 4rem;
+}
+
 /* ---- WIDGETS ---- */
 
 /* - Header - */
@@ -256,6 +266,18 @@ body {
   float: right;
   padding: 0;
   border: 0;
+}
+
+.login-form button a {
+  background-color: #2980B9;
+  text-decoration: none;
+  color: white;
+}
+
+.login-form button a:hover {
+  background-color: #2980B9;
+  text-decoration: none;
+  color: white;
 }
 
 /* - Report - */
