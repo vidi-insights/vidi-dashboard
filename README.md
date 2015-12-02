@@ -16,7 +16,7 @@ To run the server,
 
 ## Documentation
 
- - To Follow...
+ Right now, this project is merely a technical demo. It currently works solely with [NodeZoo][]
 
 ## Contributing
 The [Vidi: Insights][] encourages open participation. If you feel you can help in any way, be it with
@@ -35,3 +35,4 @@ Licensed under [MIT][].
 [logo]: ./assets/vidi-logo.png
 [lead]: https://github.com/mcdonnelldean
 [nearForm]: http://www.nearform.com/
+[NodeZoo]: http://www.nodezoo.com/
