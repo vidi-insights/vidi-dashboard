@@ -130,6 +130,53 @@ body {
   top: 0;
 }
 
+.row {
+  margin-top:  .5rem;
+}
+
+.row .box-header-icon {
+  background-color: white;
+  color: #2980B9;
+  height: 4rem;
+  width: 4rem;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+.row .box-header-titlebar {
+  background-color: white;
+  color: #2C3E50;
+  height: 4rem;
+  margin: 0;
+  font-weight: 400;
+  padding: 0;
+  margin-left: 4.5rem;
+}
+
+.row i::before {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 2rem;
+  line-height: 4rem;
+  color: #2980B9;
+}
+
+.row .box-header-titlebar span {
+  height: 4rem;
+  color: black;
+  display: inline-block;
+  font-size: 1.4rem;
+  line-height: 4rem;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+}
+
 /* - User - */
 
 .user {
