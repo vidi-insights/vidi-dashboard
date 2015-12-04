@@ -1,5 +1,4 @@
 FROM node:4
-
 ADD . /
-
-CMD ["node","lib/server/index.js"]
+RUN npm install
+CMD ["node", "lib/server/index.js"]
