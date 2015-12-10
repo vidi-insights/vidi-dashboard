@@ -131,7 +131,9 @@ body {
 }
 
 .row {
-  margin-top:  .5rem;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  height: 19rem;
 }
 
 .row .box-header-icon {
