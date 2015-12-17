@@ -130,10 +130,14 @@ body {
   top: 0;
 }
 
+.report {
+  margin-right: 1rem;
+}
+
 .row {
-  margin-top: .5rem;
-  margin-bottom: .5rem;
-  height: 19rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  height: 20rem;
 }
 
 .row .box-header-icon {
@@ -153,7 +157,7 @@ body {
   margin: 0;
   font-weight: 400;
   padding: 0;
-  margin-left: 4.5rem;
+  margin-left: 4rem;
 }
 
 .row i::before {
@@ -170,7 +174,7 @@ body {
   height: 4rem;
   color: black;
   display: inline-block;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 4rem;
   font-weight: 500;
   margin: 0;
@@ -329,17 +333,26 @@ body {
   color: white;
 }
 
-/* - Report - */
+.foo {
+  height: 5rem;
+}
 
-.chart-titlebar {
-    color: #2C3E50;
-    height: 4rem;
-    display: inline-block;
-    font-size: 1.2rem;
-    line-height: 4rem;
-    margin: 0;
-    padding: 0;
-    margin-left: 4.5rem;
+.foo h2 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.foo h2:first-of-type {
+  margin-top: 1rem;
+}
+
+.foo h3 {
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 
 /* Self Clearing Goodness */
@@ -376,7 +389,7 @@ body {
         width: 80%; }
     .column,
     .columns {
-        margin-left: 4%; }
+        margin-left: 4%; height: 20rem;}
     .column:first-child,
     .columns:first-child {
         margin-left: 0; }
@@ -473,6 +486,44 @@ body {
   line-height: 4rem;
   color: white;
 }
+
+.tabular-chart table {
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+}
+
+.tabular-chart {
+  background: #fff;
+  overflow: hidden;
+}
+
+.tabular-chart table td,
+.tabular-chart table th {
+  padding: .5rem 1rem;
+}
+
+.tabular-chart table thead th {
+  background-color:#FFFFFF;
+  color:#000000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.tabular-chart table thead th:first-child {
+  border: none;
+}
+
+.tabular-chart table tbody td {
+  color: black;
+  font-size: 1.4rem;
+  border-bottom: 1px solid #D1D1D1;
+  font-weight: normal;
+}
+
+.tabular-chart table tbody td:first-child { border-left: none; }
+
+.tabular-chart table tbody tr:last-child td { border-bottom: none; }
 
 /* ---- Fonts ---- */
 

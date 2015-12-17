@@ -24,6 +24,7 @@
     "async": "1.5.x",
     "boom": "3.x.x",
     "chairo": "1.x.x",
+    "d3": "^3.5.10",
     "hapi": "11.x.x",
     "history": "1.13.x",
     "inert": "3.x.x",
