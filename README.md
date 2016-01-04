@@ -11,8 +11,17 @@ Dashboard. The app is extensible, it allows you to plug in your own data and rep
 To run the server,
 
 1. Run `npm install` to install all dependencies
-2. Run `npm run start` to create a deploy and server on port `3000`
-3. Log in with default user `admin@vidi.com` and password `vidi`
+2. Setup influxdb (see below)
+3. Run `npm run start` to create a deploy and server on port `3000`
+4. Log in with default user `admin@vidi.com` and password `vidi`
+
+## Setup influxdb
+1. Install influxdb [help](https://influxdb.com/docs/v0.9/introduction/installation.html)
+2. Run `influxd` in a separate window
+3. Run `influx` in a separate window
+4. In the `influx` window, type in `CREATE DATABASE seneca_msgstats`
+5. In the `influx` window, type in `CREATE USER msgstats WITH PASSWORD 'msgstats' WITH ALL PRIVILEGES`
+
 
 ## Documentation
 
