@@ -21,11 +21,16 @@ To run the server,
 3. Run `influx` in a separate window
 4. In the `influx` window, type in `CREATE DATABASE seneca_msgstats`
 5. In the `influx` window, type in `CREATE USER msgstats WITH PASSWORD 'msgstats' WITH ALL PRIVILEGES`
+6. 
+
+## Setup data
+1. Add seneca-msgstats to each microservice you wish to track
+2. Create a simple collector service to populate influx with the collected data
 
 
 ## Documentation
 
- Right now, this project is merely a technical demo. It currently works solely with [NodeZoo][]
+ This project is in it's infancy, documentation will come after stability.
 
 ## Contributing
 The [Vidi: Insights][] encourages open participation. If you feel you can help in any way, be it with
