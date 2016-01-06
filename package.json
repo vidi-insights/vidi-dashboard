@@ -15,7 +15,7 @@
     "url": "git://github.com/nearform/vidi-dashboard.git"
   },
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --colors",
     "start": "node ./lib/server/index.js"
   },
   "dependencies": {
