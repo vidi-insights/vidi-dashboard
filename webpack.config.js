@@ -2,8 +2,6 @@
 
 module.exports = {
   entry: [
-    //'webpack-dev-server/client?http://localhost:8080',
-    //'webpack/hot/dev-server',
     './lib/client/app.js'
   ],
   output: {
@@ -12,8 +10,9 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /\.js$/,
-      loader: 'jsx-loader'
+      test: /\.js?$/,
+      exclude: '/node_modules/',
+      loader: 'babel?presets[]=react,presets[]=es2015'
     }]
   }
 }
