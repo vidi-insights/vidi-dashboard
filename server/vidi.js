@@ -1,5 +1,5 @@
 var Path = require('path')
-var Package = require('../../package.json')
+var Package = require('../package.json')
 
 var AuthRoutes = require('./routes/auth')
 var ClientRoutes = require('./routes/client')
@@ -11,7 +11,7 @@ module.exports = function (server, options, next) {
   server.dependency('nes')
 
   // Set our realitive path (for our routes)
-  var relativePath = Path.join(__dirname, '../bundle/')
+  var relativePath = Path.join(__dirname, '../dist/')
   server.realm.settings.files.relativeTo = relativePath
 
   // Session stuff
