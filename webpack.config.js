@@ -21,6 +21,10 @@ module.exports = {
       test: /\.(js|jsx)$/,
       loader: 'babel?presets[]=react,presets[]=es2015',
       exclude: [nodeModulesPath],
+    },
+    {
+      test: /\.css$/, // Only .css files
+      loader: 'style!css' // Run both loaders
     }]
   }
 }
