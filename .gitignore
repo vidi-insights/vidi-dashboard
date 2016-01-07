@@ -2,4 +2,4 @@ node_modules
 *.log
 .DS_Store
 
-lib/public/js/app.js
+dist
