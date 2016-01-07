@@ -1,5 +1,8 @@
 'use strict'
 
+import './index.html'
+import './css/styles.css'
+
 import React from 'react'
 import ReactDom from 'react-dom'
 import {Router, Route, IndexRoute } from 'react-router'

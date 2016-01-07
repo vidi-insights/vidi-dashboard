@@ -23,8 +23,15 @@ module.exports = {
       exclude: [nodeModulesPath],
     },
     {
+      test: /index\.html/,
+      loader: 'file?name=index.html'
+    },
+    {
       test: /\.css$/, // Only .css files
       loader: 'style!css' // Run both loaders
+    }, {
+      test: /\.woff$|\.woff2$|\.svg$|\.ttf$|\.eot$/,
+      loader: 'url?limit=10000&prefix=fonts/'
     }]
   }
 }
