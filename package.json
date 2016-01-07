@@ -8,7 +8,7 @@
     "Wyatt Preul",
     "Mircea Alexandru"
   ],
-  "main": "./lib/server/index.js",
+  "main": "./server/index.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   },
   "scripts": {
     "build": "webpack --progress --colors",
+    "watch": "webpack -w",
     "start": "node ./lib/server/index.js"
   },
   "dependencies": {
