@@ -1,15 +1,15 @@
 'use strict'
 
 import './index.html'
-import './css/styles.css'
-import './css/font-awesome.css'
+import './assets/css/styles.css'
+import './assets/css/font-awesome.css'
 
 import React from 'react'
 import ReactDom from 'react-dom'
 import {Provider} from 'react-redux'
 import {createHistory} from 'history'
 import {logout} from './actions/auth'
-import createLogger from 'redux-logger'
+import createLoggerMiddleware from 'redux-logger'
 import authReducer from './reducers/auth'
 import thunkMiddleware from 'redux-thunk'
 import {Router, Route, IndexRoute } from 'react-router'
@@ -30,11 +30,9 @@ const rootReducer = combineReducers(Object.assign({}, {
   auth: authReducer
 }))
 
-const loggerMiddleware = createLogger()
-
 const storeWithMiddleware = applyMiddleware(
   thunkMiddleware,
-  loggerMiddleware
+  createLoggerMiddleware()
 )(createStore)
 
 const store = storeWithMiddleware(rootReducer)
@@ -57,10 +55,10 @@ ReactDom.render(
 
 function requireAuth (nextState, replaceState) {
   const state = store.getState()
-  const isLoggedIn = Boolean(state.auth.token)
+  const hasToken = Boolean(state.auth.token)
   const nextPath = nextState.location.pathname
 
-  if (!isLoggedIn) {
+  if (!hasToken) {
     replaceState({nextPathname: nextPath}, '/login')
   }
 }

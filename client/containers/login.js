@@ -3,7 +3,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {login} from '../actions/auth'
-import BoxHeader from '../components/widgets/boxHeader'
+import BoxHeader from '../components/boxHeader'
 
 export const LoginPage = React.createClass({
   propTypes: {

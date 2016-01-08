@@ -1,8 +1,8 @@
 'use strict'
 
 var React = require('react')
-var Header = require('../components/widgets/header')
-var Footer = require('../components/widgets/footer')
+var Header = require('../components/header')
+var Footer = require('../components/footer')
 
 module.exports = React.createClass({
   render: function () {
