@@ -3,7 +3,7 @@
 var React = require('react')
 var BoxHeader = require('./boxHeader')
 var ProfileToolbox = require('./profileToolbox')
-var Varo = require('../../plugins').Varo
+var Varo = require('../plugins').Varo
 
 module.exports = React.createClass({
   initialState: {
@@ -41,7 +41,7 @@ module.exports = React.createClass({
     return (
       <div className="header">
         <BoxHeader
-          icon={require('../../img/vidi-logo-small.svg')}
+          icon={require('../assets/img/vidi-logo-small.svg')}
           iconLink={'/'}
           title={'Vidi: Dashboard'}
           toolbox={toolbox} />

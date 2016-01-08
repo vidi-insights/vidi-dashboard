@@ -1,11 +1,11 @@
 'use strict'
 
 var React = require('react')
-var LineChart = require('../charts/linechart')
-var AreaChart = require('../charts/areachart')
-var TabularChart = require('../charts/tabularChart')
+var LineChart = require('./linechart')
+var AreaChart = require('./areachart')
+var TabularChart = require('./tabularChart')
 var BoxHeader = require('./boxHeader')
-var Varo = require('../../plugins').Varo
+var Varo = require('../plugins').Varo
 var Moment = require('moment')
 var Toolbox = require('./toolbox')
 var D3 = require('d3')

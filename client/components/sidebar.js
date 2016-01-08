@@ -2,7 +2,7 @@
 
 var React = require('react')
 var BoxHeader = require('./boxHeader')
-var Varo = require('../../plugins').Varo
+var Varo = require('../plugins').Varo
 
 module.exports = React.createClass({
   handleSidebarToggle: function () {

@@ -1,8 +1,8 @@
 'use strict'
 
 var React = require('react')
-var Sidebar = require('../components/widgets/sidebar')
-var Dashboard = require('../components/widgets/dashboard')
+var Sidebar = require('../components/sidebar')
+var Dashboard = require('../components/dashboard')
 var Varo = require('../plugins').Varo
 
 module.exports = React.createClass({
