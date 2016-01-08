@@ -1,19 +1,23 @@
 'use strict'
 
-var React = require('react')
-var BoxHeader = require('../widgets/boxHeader')
-var History = require('react-router').History
-import { connect } from 'react-redux'
-import {fetchToken} from '../../actions'
+import React from 'react'
+import {connect} from 'react-redux'
+import {login} from '../actions/auth'
+import BoxHeader from '../components/widgets/boxHeader'
 
-const LoginPage = React.createClass({
+export const LoginPage = React.createClass({
+  propTypes: {
+    dispatch: React.PropTypes.func.isRequired,
+    hasError: React.PropTypes.bool.isRequired,
+  },
+
   handleSubmit (event) {
     event.preventDefault()
 
     const {email, pass} = this.refs
     const {dispatch} = this.props
 
-    dispatch(fetchToken(email.value, pass.value))
+    dispatch(login(email.value, pass.value))
   },
 
   render () {
@@ -41,9 +45,7 @@ function mapStatesToProps (state) {
   const {auth} = state
 
   return {
-    isFetching: auth.isFetching,
-    hasError: auth.hasError,
-    token: auth.token
+    hasError: auth.hasError
   }
 }
 

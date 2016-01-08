@@ -1,9 +1,9 @@
 'use strict'
 
 var React = require('react')
-var Sidebar = require('../widgets/sidebar')
-var Dashboard = require('../widgets/dashboard')
-var Varo = require('../../plugins').Varo
+var Sidebar = require('../components/widgets/sidebar')
+var Dashboard = require('../components/widgets/dashboard')
+var Varo = require('../plugins').Varo
 
 module.exports = React.createClass({
   toggleSidebar: {role: 'sidebar', cmd: 'toggle'},

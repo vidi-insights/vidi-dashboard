@@ -8,6 +8,7 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import {Provider} from 'react-redux'
 import {createHistory} from 'history'
+import {logout} from './actions/auth'
 import createLogger from 'redux-logger'
 import authReducer from './reducers/auth'
 import thunkMiddleware from 'redux-thunk'
@@ -15,10 +16,9 @@ import {Router, Route, IndexRoute } from 'react-router'
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {syncReduxAndRouter, routeReducer} from 'redux-simple-router'
 
-import Shell from './components/shell'
-import Login from './components/pages/login'
-import Home from './components/pages//home'
-
+import Shell from './containers/shell'
+import Login from './containers/login'
+import Home from './containers/home'
 
 // Polyfill needed for material-ui until React V1
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -48,7 +48,7 @@ ReactDom.render(
       <Route path="/" component={Shell}>
         <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
-        <Route path="logout" onEnter={logout} />
+        <Route path="logout" onEnter={handleLogout} />
       </Route>
     </Router>
   </Provider>,
@@ -65,8 +65,9 @@ function requireAuth (nextState, replaceState) {
   }
 }
 
-function logout (nextState, replaceState) {
-  storage.clear()
+function handleLogout (nextState, replaceState) {
+  const state = store.getState()
+  const token = state.auth.token
 
-  replaceState({}, '/login')
+  store.dispatch(logout(token))
 }
