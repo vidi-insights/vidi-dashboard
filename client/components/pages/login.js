@@ -3,56 +3,22 @@
 var React = require('react')
 var BoxHeader = require('../widgets/boxHeader')
 var History = require('react-router').History
-var Varo = require('../../plugins').Varo
+import { connect } from 'react-redux'
+import {fetchToken} from '../../actions'
 
-module.exports = React.createClass({
-  mixins: [History],
-
-  initialState: {
-    failed: false
-  },
-
-  getInitialState: function () {
-    return this.initialState
-  },
-
-  handleSubmit: function (event) {
+const LoginPage = React.createClass({
+  handleSubmit (event) {
     event.preventDefault()
 
-    var that = this
-    var refs = this.refs
-    var email = refs.email.value
-    var pass = refs.pass.value
+    const {email, pass} = this.refs
+    const {dispatch} = this.props
 
-    Varo.act({role: 'auth', cmd: 'login', username: email, password: pass},
-      function (err, reply) {
-        if (err) return that.setState({failed: true})
-        if (!reply.token) return that.setState({failed: true})
-
-        Varo.act({role: 'user', cmd: 'load', token: reply.token},
-          function (err, reply) {
-            if (err) return that.setState({failed: true})
-            if (!reply.user || !reply.token) return that.setState({failed: true})
-
-            Varo.act({
-              role: 'session',
-              cmd: 'update',
-              user: reply.user,
-              token: reply.token
-            })
-
-            var location = that.props
-            var state = location.state
-
-            if (state && state.nextPathname) that.history.replaceState(null, state.nextPathname)
-            else that.history.replaceState(null, '/')
-          })
-      })
+    dispatch(fetchToken(email.value, pass.value))
   },
 
-  render: function () {
+  render () {
     var message = 'Login'
-    if (this.state.failed) message = 'Wrong username or password, try again'
+    if (this.props.hasError) message = 'Wrong username or password, try again'
 
     return (
       <div className="login">
@@ -70,3 +36,15 @@ module.exports = React.createClass({
     )
   }
 })
+
+function mapStatesToProps (state) {
+  const {auth} = state
+
+  return {
+    isFetching: auth.isFetching,
+    hasError: auth.hasError,
+    token: auth.token
+  }
+}
+
+export default connect(mapStatesToProps)(LoginPage)
