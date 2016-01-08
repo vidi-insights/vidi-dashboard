@@ -1,7 +1,7 @@
 /* ---- General ---- */
 
 html {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 img {
@@ -355,7 +355,6 @@ body {
   font-weight: 500;
 }
 
-/* Self Clearing Goodness */
 .container:after,
 .row:after,
 .u-cf {

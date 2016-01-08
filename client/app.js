@@ -2,6 +2,7 @@
 
 import './index.html'
 import './css/styles.css'
+import './css/font-awesome.css'
 
 import React from 'react'
 import ReactDom from 'react-dom'
@@ -66,6 +67,6 @@ function requireAuth (nextState, replaceState) {
 
 function logout (nextState, replaceState) {
   storage.clear()
-  
+
   replaceState({}, '/login')
 }

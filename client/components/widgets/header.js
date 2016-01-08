@@ -41,7 +41,7 @@ module.exports = React.createClass({
     return (
       <div className="header">
         <BoxHeader
-          icon={'./img/vidi-logo-small.svg'}
+          icon={require('../../img/vidi-logo-small.svg')}
           iconLink={'/'}
           title={'Vidi: Dashboard'}
           toolbox={toolbox} />
