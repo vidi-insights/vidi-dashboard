@@ -32,7 +32,7 @@ module.exports = {
     },
     {
       test: /\.woff$|\.woff2$|\.svg$|\.ttf$|\.eot$/,
-      loader: 'url?limit=10000&prefix=fonts/'
+      loader: 'url?limit=10000&name=fonts/[hash].[ext]'
     }]
   }
 }

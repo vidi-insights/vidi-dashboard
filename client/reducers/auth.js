@@ -3,13 +3,13 @@
 import * as storage from '../util/storage'
 import {TOKEN_REQUEST, TOKEN_RESPONSE} from '../actions'
 
-const initialState = {
+const authState = {
   isFetching: false,
   hasError: false,
   token: storage.get('token')
 }
 
-export default function (state = initialState, action) {
+export default function (state = authState, action) {
   switch (action.type) {
     case TOKEN_REQUEST:
       return Object.assign({}, state, {
