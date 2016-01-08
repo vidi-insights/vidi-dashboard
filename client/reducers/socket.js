@@ -35,7 +35,7 @@ function sub (state = subState, action) {
   }
 }
 
-export default function Socket (state = {}, action) {
+export default function socket (state = {}, action) {
   switch (action.type) {
     case SOCKET_SUBSCRIBE:
     case SOCKET_UPDATE:
