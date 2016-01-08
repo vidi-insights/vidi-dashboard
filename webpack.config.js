@@ -13,7 +13,7 @@ module.exports = {
   resolve: ["", ".js", ".jsx"],
   output: {
     path: buildPath,
-    filename: 'app.js'
+    filename: 'js/app.js'
   },
   module: {
     noParse: [ 'react', 'd3' ],
@@ -27,9 +27,10 @@ module.exports = {
       loader: 'file?name=index.html'
     },
     {
-      test: /\.css$/, // Only .css files
-      loader: 'style!css' // Run both loaders
-    }, {
+      test: /\.css$/,
+      loader: 'style!css'
+    },
+    {
       test: /\.woff$|\.woff2$|\.svg$|\.ttf$|\.eot$/,
       loader: 'url?limit=10000&prefix=fonts/'
     }]

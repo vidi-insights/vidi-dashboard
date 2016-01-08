@@ -5,87 +5,67 @@ import './css/styles.css'
 
 import React from 'react'
 import ReactDom from 'react-dom'
+import {Provider} from 'react-redux'
+import {createHistory} from 'history'
+import createLogger from 'redux-logger'
+import authReducer from './reducers/auth'
+import thunkMiddleware from 'redux-thunk'
 import {Router, Route, IndexRoute } from 'react-router'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {syncReduxAndRouter, routeReducer} from 'redux-simple-router'
+
 import Shell from './components/shell'
 import Login from './components/pages/login'
-import Logout from './components/pages/logout'
-import User from './components/pages/user'
-import Presenter from './components/pages/presenter'
-import {Varo} from './plugins'
-import Auth from './plugins/auth'
-import Session from './plugins/session'
-import Profile from './plugins/profile'
-import Metrics from './plugins/metrics'
-import CreateBrowserHistory from 'history/lib/createBrowserHistory'
+import Home from './components/pages//home'
 
+
+// Polyfill needed for material-ui until React V1
 import injectTapEventPlugin from 'react-tap-event-plugin';
-
 injectTapEventPlugin();
 
-let history = CreateBrowserHistory()
 
-function start () {
-  Varo.plugin(Session)
-      .plugin(Auth)
-      .plugin(Profile)
-      .plugin(Metrics)
+const rootReducer = combineReducers(Object.assign({}, {
+  routing: routeReducer,
+  auth: authReducer
+}))
 
-  Varo.act({role: 'session', cmd: 'start'},
-    function (err, reply) {
-      if (err) renderError(err)
+const loggerMiddleware = createLogger()
 
-      Varo.act({role: 'user', cmd: 'load', token: reply.token},
-        function (err, reply) {
-          if (err) return renderError(err)
+const storeWithMiddleware = applyMiddleware(
+  thunkMiddleware,
+  loggerMiddleware
+)(createStore)
 
-          if (reply.user || reply.token) {
-            Varo.act({
-              role: 'session',
-              cmd: 'update',
-              user: reply.user,
-              token: reply.token
-            })
-          }
+const store = storeWithMiddleware(rootReducer)
+const history = createHistory()
 
-          renderApp()
-        })
-    })
-}
+syncReduxAndRouter(history, store)
 
-function checkSession (nextState, replaceState, done) {
-  Varo.act({role: 'session', cmd: 'validity'},
-    function (err, reply) {
-      if (err || !reply.valid) {
-        replaceState({nextPathname: nextState.location.pathname}, '/login')
-      }
-
-      return done()
-  })
-}
-
-function getApp () {
-  return (
+ReactDom.render(
+  <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Shell} >
-        <IndexRoute component={Presenter} onEnter={checkSession} />
+      <Route path="/" component={Shell}>
+        <IndexRoute component={Home} onEnter={requireAuth} />
         <Route path="login" component={Login} />
-        <Route path="logout" component={Logout} onEnter={checkSession} />
-        <Route path="user" component={User} onEnter={checkSession} />
+        <Route path="logout" onEnter={logout} />
       </Route>
     </Router>
-  )
+  </Provider>,
+  document.getElementById('app')
+)
+
+function requireAuth (nextState, replaceState) {
+  const state = store.getState()
+  const isLoggedIn = Boolean(state.auth.token)
+  const nextPath = nextState.location.pathname
+
+  if (!isLoggedIn) {
+    replaceState({nextPathname: nextPath}, '/login')
+  }
 }
 
-function getRoot () {
-  return document.getElementById('app')
+function logout (nextState, replaceState) {
+  storage.clear()
+  
+  replaceState({}, '/login')
 }
-
- function renderError (err) {
-  ReactDom.render(<Err error={err}/>, getRoot())
-}
-
-function renderApp () {
-  ReactDom.render(getApp(), getRoot())
-}
-
-start()

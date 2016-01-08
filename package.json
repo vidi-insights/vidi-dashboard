@@ -15,7 +15,7 @@
     "url": "git://github.com/nearform/vidi-dashboard.git"
   },
   "scripts": {
-    "build": "webpack -p --progress --colors",
+    "build": "webpack --progress --colors",
     "watch": "webpack -w",
     "start": "node ./server/index.js"
   },
@@ -42,8 +42,13 @@
     "react": "0.14.x",
     "react-d3-components": "0.6.x",
     "react-dom": "0.14.x",
+    "react-redux": "^4.0.6",
     "react-router": "1.0.x",
     "react-tap-event-plugin": "^0.2.1",
+    "redux": "^3.0.5",
+    "redux-logger": "^2.3.1",
+    "redux-simple-router": "^1.0.2",
+    "redux-thunk": "^1.0.3",
     "seneca-user": "0.2.x",
     "style-loader": "^0.13.0",
     "superagent": "1.4.x",
