@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {login} from '../actions/auth'
 import BoxHeader from '../components/boxHeader'
 
-export const LoginPage = React.createClass({
+export const Login = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func.isRequired,
     hasError: React.PropTypes.bool.isRequired,
@@ -49,4 +49,4 @@ function mapStatesToProps (state) {
   }
 }
 
-export default connect(mapStatesToProps)(LoginPage)
+export default connect(mapStatesToProps)(Login)

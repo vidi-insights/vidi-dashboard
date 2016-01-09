@@ -1,33 +1,37 @@
 'use strict'
 
-import {SOCKET_SUBSCRIBE, SOCKET_UPDATE, SOCKET_UNSUBSCRIBE} from '../actions'
+import {
+  SOCKET_SUBSCRIBE,
+  SOCKET_UPDATE,
+  SOCKET_UNSUBSCRIBE
+} from '../actions/socket'
 
 const subState = {
-  isSubscribing: true
+  isSubscribing: true,
   isSubscribed: false,
-  data: null
+  data: {}
 }
 
 function sub (state = subState, action) {
   switch (action.type) {
     case SOCKET_SUBSCRIBE:
       return Object.assign({}, state, {
-        isSubscribing: true
-        isSubscribed: false,
+        isSubscribing: true,
+        isSubscribed: false
       })
 
     case SOCKET_UPDATE:
       return Object.assign({}, state, {
-        isSubscribing: false
-        isSubscribed: action.isSubscribed,
-        data: action.isSubscribed ? action.data : null
+        isSubscribing: false,
+        isSubscribed: true,
+        data: action.data
       })
 
     case SOCKET_UNSUBSCRIBE:
       return Object.assign({}, state, {
-        isSubscribing: false
+        isSubscribing: false,
         isSubscribed: false,
-        data: null
+        data: {}
       })
 
     default:
@@ -41,7 +45,7 @@ export default function socket (state = {}, action) {
     case SOCKET_UPDATE:
     case SOCKET_UNSUBSCRIBE:
       return Object.assign({}, state, {
-        [action.sub]: handleSub(state[action.sub], action)
+        [action.uri]: sub(state[action.uri], action)
       })
 
     default:

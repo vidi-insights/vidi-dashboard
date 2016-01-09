@@ -5,7 +5,6 @@ var LineChart = require('./linechart')
 var AreaChart = require('./areachart')
 var TabularChart = require('./tabularChart')
 var BoxHeader = require('./boxHeader')
-var Varo = require('../plugins').Varo
 var Moment = require('moment')
 var Toolbox = require('./toolbox')
 var D3 = require('d3')
@@ -41,22 +40,6 @@ function areaTootip (x, y) {
 }
 
 module.exports = React.createClass({
-  getInitialState: function() {
-    return {
-      data: {}
-    }
-  },
-
-  componentDidMount: function () {
-    var that = this
-
-    Varo.act({role: 'metrics', cmd: 'sub', source: 'msgstats', metric: 'rolling_flow_rate'})
-    Varo.observe({role: 'metrics', source: 'msgstats', metric: 'rolling_flow_rate'},
-      function (msg) {
-        that.setState({data: msg.data})
-      })
-  },
-
   makePinOverviewSection: function (data) {
     var flowRateCombined = data['flow_rate_combined']
     var flowRatePerPin = data['flow_rate_per_pin'] || []
@@ -275,7 +258,7 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var data = this.state.data
+    var data = this.props.data || {}
     var report = (
       <div className="report">
       </div>

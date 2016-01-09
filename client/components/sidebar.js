@@ -1,18 +1,13 @@
 'use strict'
 
-var React = require('react')
-var BoxHeader = require('./boxHeader')
-var Varo = require('../plugins').Varo
+import React from 'react'
+import BoxHeader from '../components/boxHeader'
 
-module.exports = React.createClass({
-  handleSidebarToggle: function () {
-    Varo.act({role:'sidebar', cmd: 'toggle'})
-  },
-
-  render: function () {
-    var styleClass = 'sidebar'
-    var isExpanded = this.props.isExpanded
-    var handleSidebarToggle = this.handleSidebarToggle
+export const Sidebar = React.createClass({
+  render () {
+    const isExpanded = this.props.isExpanded
+    const onToggle = this.props.onToggle
+    let styleClass = 'sidebar'
 
     if (!isExpanded) {
       styleClass = styleClass + '-docked'
@@ -20,12 +15,12 @@ module.exports = React.createClass({
 
     return (
       <aside className={styleClass}>
-        <BoxHeader icon={'fa fa-bars'} title={'Menu'} onIconClicked={handleSidebarToggle} />
+        <BoxHeader icon={'fa fa-bars'} title={'Menu'} onIconClicked={onToggle} />
         <ul className='sidebar-root'>
           <li>
             Your system
             <ul className='sidebar-level-1'>
-              <li>Message flow rate</li>
+              <li>System overview</li>
             </ul>
           </li>
         </ul>
@@ -33,3 +28,5 @@ module.exports = React.createClass({
     )
   }
 })
+
+export default Sidebar
