@@ -1,40 +1,14 @@
 'use strict'
 
-var React = require('react')
-var BoxHeader = require('./boxHeader')
-var ProfileToolbox = require('./profileToolbox')
-var Varo = require('../plugins').Varo
+import React from 'react'
+import BoxHeader from './boxHeader'
+import ProfileToolbox from './profileToolbox'
 
-module.exports = React.createClass({
-  initialState: {
-    isLoggedIn: true
-  },
+export const Header = React.createClass({
+  render () {
+    let toolbox = <ProfileToolbox />
 
-  getInitialState: function () {
-    return this.initialState
-  },
-
-  componentDidMount: function () {
-    var that = this
-
-    Varo.act({role: 'user', cmd: 'isLoggedIn'},
-      function (err, reply) {
-        that.setState({
-          isLoggedIn: reply.isLoggedIn
-        })
-      })
-
-    Varo.observe({role: 'user', event: 'updated'},
-      function (user) {
-        that.setState({
-          isLoggedIn: user.isLoggedIn
-        })
-      })
-  },
-
-  render: function () {
-    var toolbox = <ProfileToolbox />
-    if (!this.state.isLoggedIn) {
+    if (!this.props.showProfile) {
       toolbox = null
     }
 
@@ -49,3 +23,5 @@ module.exports = React.createClass({
     )
   }
 })
+
+export default Header

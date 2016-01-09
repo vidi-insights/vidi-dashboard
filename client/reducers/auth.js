@@ -1,47 +1,47 @@
 'use strict'
 
-import storage from '../util/storage'
-
 import {
-  LOGIN_REQUEST, LOGIN_RESPONSE,
-  LOGOUT_REQUEST, LOGOUT_RESPONSE
+  LOGIN_REQUEST,
+  LOGIN_RESPONSE,
+  LOGOUT_REQUEST,
+  LOGOUT_RESPONSE
 } from '../actions/auth'
 
 const authState = {
-  isLogginIn: false,
-  isLogginOut: false,
+  isLoggingIn: false,
+  isLoggingOut: false,
   hasError: false,
-  token: storage.get('token')
+  token: null
 }
 
 export default function auth (state = authState, action) {
   switch (action.type) {
     case LOGIN_REQUEST:
       return Object.assign({}, state, {
-        isLogginIn: true,
-        isLogginOut: false,
+        isLoggingIn: true,
+        isLoggingOut: false,
         hasError: false
       })
 
     case LOGIN_RESPONSE:
       return Object.assign({}, state, {
-        isLogginIn: false,
-        isLogginOut: false,
+        isLoggingIn: false,
+        isLoggingOut: false,
         hasError: action.hasError,
         token: action.token
       })
 
     case LOGOUT_REQUEST:
       return Object.assign({}, state, {
-        isLogginIn: false,
-        isLogginOut: true,
+        isLoggingIn: false,
+        isLoggingOut: true,
         hasError: false
       })
 
     case LOGOUT_RESPONSE:
       return Object.assign({}, state, {
-        isLogginIn: false,
-        isLogginOut: false,
+        isLoggingIn: false,
+        isLoggingOut: false,
         hasError: action.hasError,
         token: action.token
       })

@@ -1,19 +1,35 @@
 'use strict'
 
-var React = require('react')
-var Header = require('../components/header')
-var Footer = require('../components/footer')
+import React from 'react'
+import {connect} from 'react-redux'
+import Header from '../components/header'
+import Footer from '../components/footer'
 
-module.exports = React.createClass({
-  render: function () {
-    var page = this.props.children
+export const Shell = React.createClass({
+  propTypes: {
+    dispatch: React.PropTypes.func.isRequired,
+    isAuthenticated: React.PropTypes.bool.isRequired,
+  },
+
+  render () {
+    const {children, isAuthenticated} = this.props
 
     return (
       <div className="shell">
-        <Header />
-          {page}
+        <Header showProfile={isAuthenticated} />
+          {children}
         <Footer />
       </div>
     )
   }
 })
+
+function mapStatesToProps (state) {
+  const {auth} = state
+
+  return {
+    isAuthenticated: Boolean(auth.token)
+  }
+}
+
+export default connect(mapStatesToProps)(Shell)

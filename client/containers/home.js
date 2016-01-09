@@ -1,40 +1,56 @@
 'use strict'
 
-var React = require('react')
-var Sidebar = require('../components/sidebar')
-var Dashboard = require('../components/dashboard')
-var Varo = require('../plugins').Varo
+import React from 'react'
+import {connect} from 'react-redux'
+import Sidebar from '../components/sidebar'
+import Dashboard from '../components/dashboard'
+import {toggleSidebar} from '../actions/sidebar'
+import {socketSubscribe, socketUnsubscribe} from '../actions/socket'
 
-module.exports = React.createClass({
-  toggleSidebar: {role: 'sidebar', cmd: 'toggle'},
-
-  getInitialState: function () {
-    return {
-      sidebarExpanded: true,
-    }
+export const Home = React.createClass({
+  propTypes: {
+    dispatch: React.PropTypes.func.isRequired,
+    isExpanded: React.PropTypes.bool.isRequired,
+    data: React.PropTypes.object.isRequired,
   },
 
-  componentWillMount: function () {
-    var that = this
-
-    Varo.handle(this.toggleSidebar,
-      function (msg, done) {
-      that.setState({
-        sidebarExpanded: !that.state.sidebarExpanded
-      })
-
-      return done()
-    })
+  componentDidMount () {
+    this.props.dispatch(socketSubscribe('msgstats', 'rolling_flow_rate'))
   },
 
-  render: function () {
-    var sidebarExpanded = this.state.sidebarExpanded
+  componentWillUnmount () {
+    this.props.dispatch(socketUnsubscribe('msgstats', 'rolling_flow_rate'))
+  },
+
+  handleToggle (event) {
+    event.preventDefault()
+
+    this.props.dispatch(toggleSidebar())
+  },
+
+  render () {
+    const {isExpanded, data} = this.props
+    const handleToggle = this.handleToggle
+
+    console.log(data)
 
     return (
       <div className="presenter">
-        <Sidebar isExpanded={sidebarExpanded} />
-        <Dashboard isExpanded={!sidebarExpanded} />
+        <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
+        <Dashboard isExpanded={!isExpanded} data={data} />
       </div>
     )
   }
 })
+
+function mapStatesToProps (state) {
+  const {sidebar} = state
+  const metric = state.socket['/metrics/msgstats/rolling_flow_rate'] || {data: {}}
+
+  return {
+    isExpanded: sidebar.isExpanded,
+    data: metric.data
+  }
+}
+
+export default connect(mapStatesToProps)(Home)
