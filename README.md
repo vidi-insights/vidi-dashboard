@@ -12,8 +12,12 @@ To run the server,
 
 1. Run `npm install` to install all dependencies
 2. Setup influxdb (see below)
-3. Run `npm run start` to create a deploy and server on port `3000`
-4. Log in with default user `admin@vidi.com` and password `vidi`
+3. Run `npm run build` to build the project
+4. Run `npm run start` to create a deploy and server on port `3000`
+5. Log in with default user `admin@vidi.com` and password `vidi`
+
+Also you can watch the files for changes and automatically rebuild the sources by running `npm run watch` 
+in a different terminal.
 
 ## Setup influxdb
 1. Install influxdb [help](https://influxdb.com/docs/v0.9/introduction/installation.html)

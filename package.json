@@ -7,7 +7,8 @@
     "Michele Capra",
     "Wyatt Preul",
     "Mircea Alexandru",
-    "Adrian Rossouw"
+    "Adrian Rossouw",
+    "Cristian Kiss"
   ],
   "main": "./server/index.js",
   "license": "MIT",
