@@ -2,9 +2,7 @@
 
 var Nes = require('nes/client')
 
-export const SOCKET_SUBSCRIBE = 'SOCKET_SUBSCRIBE'
-export const SOCKET_UPDATE = 'SOCKET_UPDATE'
-export const SOCKET_UNSUBSCRIBE = 'SOCKET_UNSUBSCRIBE'
+import * as socketActions from '../constants/socket'
 
 const client = new Nes.Client(document.URL.replace('http', 'ws'))
 
@@ -18,14 +16,14 @@ export function socketSubscribe (source, metric) {
         return console.log(err)
       }
 
-      dispatch({type: SOCKET_SUBSCRIBE, uri: uri})
+      dispatch({type: socketActions.SOCKET_SUBSCRIBE, uri: uri})
 
       client.subscribe(uri,
         (msg) => {
-          dispatch({type: SOCKET_UPDATE, data: msg.data, uri: uri})
+          dispatch({type: socketActions.SOCKET_UPDATE, data: msg.data, uri: uri})
         },
         (err) => {
-          dispatch({type: SOCKET_SUBSCRIBE, uri: uri})
+          dispatch({type: socketActions.SOCKET_SUBSCRIBE, uri: uri})
         }
       )
     })
@@ -38,6 +36,6 @@ export function socketUnsubscribe (source, metric) {
 
     client.unsubscribe(uri)
 
-    dispatch({type: SOCKET_UNSUBSCRIBE, uri: uri})
+    dispatch({type: socketActions.SOCKET_UNSUBSCRIBE, uri: uri})
   }
 }

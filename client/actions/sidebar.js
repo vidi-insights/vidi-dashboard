@@ -1,9 +1,9 @@
 'use strict'
 
-export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR'
+import * as sidebarActions from '../constants/sidebar'
 
 export function toggleSidebar () {
   return (dispatch) => {
-    dispatch({type: TOGGLE_SIDEBAR})
+    dispatch({type: sidebarActions.TOGGLE_SIDEBAR})
   }
 }
