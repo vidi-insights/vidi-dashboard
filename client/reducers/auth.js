@@ -1,11 +1,6 @@
 'use strict'
 
-import {
-  LOGIN_REQUEST,
-  LOGIN_RESPONSE,
-  LOGOUT_REQUEST,
-  LOGOUT_RESPONSE
-} from '../actions/auth'
+import * as authActions from '../constants/auth'
 
 const authState = {
   isLoggingIn: false,
@@ -16,14 +11,14 @@ const authState = {
 
 export default function auth (state = authState, action) {
   switch (action.type) {
-    case LOGIN_REQUEST:
+    case authActions.LOGIN_REQUEST:
       return Object.assign({}, state, {
         isLoggingIn: true,
         isLoggingOut: false,
         hasError: false
       })
 
-    case LOGIN_RESPONSE:
+    case authActions.LOGIN_RESPONSE:
       return Object.assign({}, state, {
         isLoggingIn: false,
         isLoggingOut: false,
@@ -31,14 +26,14 @@ export default function auth (state = authState, action) {
         token: action.token
       })
 
-    case LOGOUT_REQUEST:
+    case authActions.LOGOUT_REQUEST:
       return Object.assign({}, state, {
         isLoggingIn: false,
         isLoggingOut: true,
         hasError: false
       })
 
-    case LOGOUT_RESPONSE:
+    case authActions.LOGOUT_RESPONSE:
       return Object.assign({}, state, {
         isLoggingIn: false,
         isLoggingOut: false,
