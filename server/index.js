@@ -2,8 +2,11 @@ var Chairo = require('chairo')
 var Hapi = require('hapi')
 var Inert = require('inert')
 var Vidi = require('./vidi')
-var Boom = require('boom')
 var Nes = require('nes')
+var Bell = require('bell')
+var Hapi_Cookie = require('hapi-auth-cookie')
+var user = require('seneca-user')
+var auth = require('seneca-auth')
 
 // If you want to add more metrics,
 // this is the place to do it.
@@ -26,7 +29,19 @@ server.connection({port: process.env.PORT || 3000 })
 
 // Declare our Hapi plugin list.
 var plugins = [
-  {register: Chairo, options: {timeout: 500}},
+  Bell,
+  Hapi_Cookie,
+  {
+    register: Chairo,
+    options: {
+      timeout: 500,
+      secure: true,
+      default_plugins: {
+        web: false
+      },
+      webPlugin: require('seneca-web')
+    }
+  },
   Nes,
   Inert,
   Vidi
@@ -35,6 +50,19 @@ var plugins = [
 // Register our plugins, kick off the server
 // if there is no error.
 server.register(plugins, function (err) {
+
+  var seneca = server.seneca
+
+  seneca.use(auth, {
+    restrict: '/api',
+    server: 'hapi',
+    strategies: [
+      {
+        provider: 'local'
+      }
+    ]
+  })
+
   endIfErr(err)
 
   // Kick off the server and register our

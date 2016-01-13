@@ -1,14 +1,10 @@
 var Path = require('path')
 var Package = require('../package.json')
 
-var AuthRoutes = require('./routes/auth')
 var ClientRoutes = require('./routes/client')
 var UserRoutes = require('./routes/user')
 
 module.exports = function (server, options, next) {
-  server.dependency('chairo')
-  server.dependency('inert')
-  server.dependency('nes')
 
   // Set our realitive path (for our routes)
   var relativePath = Path.join(__dirname, '../dist/')
@@ -24,7 +20,6 @@ module.exports = function (server, options, next) {
 
   // Wire up our http routes, these are
   // mostly for managing the dashboard.
-  server.route(AuthRoutes)
   server.route(ClientRoutes)
   server.route(UserRoutes)
 
