@@ -36,10 +36,7 @@ var plugins = [
     options: {
       timeout: 500,
       secure: true,
-      default_plugins: {
-        web: false
-      },
-      webPlugin: require('seneca-web')
+      web: require('seneca-web')
     }
   },
   Nes,
