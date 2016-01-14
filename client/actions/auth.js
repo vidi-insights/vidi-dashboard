@@ -14,11 +14,11 @@ export function login (user, pass) {
       .type('form')
       .send({username: user, password: pass})
       .end((err, resp) => {
-        if (err || !resp.body.token) {
+        if (err) {
           dispatch({type: authActions.LOGIN_RESPONSE, hasError: true, token: null})
         }
         else {
-          const token = resp.body.token
+          const token = resp.body.login.id
 
           dispatch({type: authActions.LOGIN_RESPONSE, hasError: false, token: token})
           dispatch(pushPath('/'))

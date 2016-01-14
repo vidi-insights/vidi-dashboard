@@ -1,15 +1,11 @@
 var Path = require('path')
+var Boom = require('boom')
 var Package = require('../package.json')
 
-var AuthRoutes = require('./routes/auth')
 var ClientRoutes = require('./routes/client')
 var UserRoutes = require('./routes/user')
 
 module.exports = function (server, options, next) {
-  server.dependency('chairo')
-  server.dependency('inert')
-  server.dependency('nes')
-
   // Set our realitive path (for our routes)
   var relativePath = Path.join(__dirname, '../dist/')
   server.realm.settings.files.relativeTo = relativePath
@@ -24,7 +20,6 @@ module.exports = function (server, options, next) {
 
   // Wire up our http routes, these are
   // mostly for managing the dashboard.
-  server.route(AuthRoutes)
   server.route(ClientRoutes)
   server.route(UserRoutes)
 
@@ -45,9 +40,9 @@ module.exports = function (server, options, next) {
 
   // Set up a default user
   seneca.act({
-    role:'user',
-    cmd:'register',
-    name: process.env.USER_NAME || "Admin",
+    role: 'user',
+    cmd: 'register',
+    name: process.env.USER_NAME || 'Admin',
     email: process.env.USER_EMAIL || 'admin@vidi.com',
     password: process.env.USER_PASS || 'vidi'
   })
@@ -68,7 +63,7 @@ module.exports = function (server, options, next) {
               return
             }
 
-            if(data) {
+            if (data) {
               server.publish(uri, data)
             }
           })

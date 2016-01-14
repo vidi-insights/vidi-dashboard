@@ -9,9 +9,9 @@ module.exports = [
     handler: function (request, reply) {
       var token = request.payload.token
 
-      request.seneca.act({role:'user', cmd:'auth', token: token},
+      request.seneca.act({role: 'user', cmd: 'auth', token: token},
         function (err, result) {
-          if (err) return reply(Boom.internal(err));
+          if (err) return reply(Boom.internal(err))
 
           return reply({
             token: token,
@@ -22,7 +22,7 @@ module.exports = [
               since: result.user.when
             }
           })
-      })
+        })
     }
   }
 ]
