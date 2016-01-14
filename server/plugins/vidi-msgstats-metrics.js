@@ -2,7 +2,6 @@
 
 var Influx = require('influx')
 var _ = require('lodash')
-var Async = require('async')
 
 // Our defaults.
 var defaults = {
@@ -51,7 +50,6 @@ module.exports = function (options) {
     var labels = ['Service', 'Rate']
     var values = []
 
-    var totalCount = 0
     var totalRate = 0
 
     rates.forEach(function (rate) {
@@ -95,7 +93,6 @@ module.exports = function (options) {
   }
 
   function sanitizeFlowPerService (data) {
-
     var points = data || []
     var services = {}
 
@@ -123,7 +120,7 @@ module.exports = function (options) {
     var series = {}
 
     points.forEach(function (point) {
-      var label = (point.tag + ": " + point.pid)
+      var label = (point.tag + ': ' + point.pid)
       var current = series[label] || {}
 
       current.label = label
@@ -147,7 +144,7 @@ module.exports = function (options) {
     var series = {}
 
     points.forEach(function (point) {
-      var label = (point.tag + ": " + point.pid)
+      var label = (point.tag + ': ' + point.pid)
 
       var current = series[label] || {
         label: label,
@@ -190,7 +187,6 @@ module.exports = function (options) {
   }
 
   function makeFlowPerPin (data) {
-
     var points = data || []
     var services = {}
 
@@ -214,7 +210,6 @@ module.exports = function (options) {
   }
 
   function makeRatioPerPin (data) {
-
     var points = data || []
     var services = {}
 
@@ -235,47 +230,6 @@ module.exports = function (options) {
     })
 
     return services
-  }
-
-  function makeCountPerPin (data) {
-
-    var points = data || []
-    var services = {}
-
-    points.forEach(function (point) {
-      var service = services[point.pin] || {}
-
-      service.label = (point.pin)
-      service.values = service.values || []
-
-      var value = {
-        x: new Date(point.time).getTime(),
-        y: point.sum || 0
-      }
-
-      value.y = Math.round(value.y)
-
-      service.values.push(value)
-      service.values = _.sortBy(service.values, 'x')
-      services[point.pin] = service
-    })
-
-    return services
-  }
-
-  function sanitizeServiceInfo (data) {
-    var points = data || []
-    var labels = ['Service', 'Count']
-    var values = []
-
-    points.forEach(function (point) {
-      values.push([point.tag, point.sum])
-    })
-
-    return {
-      labels: labels,
-      values: values
-    }
   }
 
   // Returns a dataset containing a rolling flow rate for every msg captured
@@ -307,7 +261,7 @@ module.exports = function (options) {
           return noteFailure(err, done)
         }
 
-        payload['flow_rate_combined'] =  {label: 'flow_rate_combined', values: makeCombinedFlowRate(data)}
+        payload['flow_rate_combined'] = {label: 'flow_rate_combined', values: makeCombinedFlowRate(data)}
         payload['flow_rate_combined_breakdown'] = makeCombinedBreakdown(data)
         payload['flow_rate_breakdown_pin'] = makeFlowRateBreakdownPin(data)
 
@@ -336,7 +290,7 @@ module.exports = function (options) {
           payload['ratio_per_pin'].push(flow)
         })
 
-        return done(null, {data:payload})
+        return done(null, {data: payload})
       })
     })
 

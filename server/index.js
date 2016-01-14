@@ -5,8 +5,7 @@ var Vidi = require('./vidi')
 var Nes = require('nes')
 var Bell = require('bell')
 var Hapi_Cookie = require('hapi-auth-cookie')
-var user = require('seneca-user')
-var auth = require('seneca-auth')
+var Auth = require('seneca-auth')
 
 // If you want to add more metrics,
 // this is the place to do it.
@@ -25,7 +24,7 @@ function endIfErr (err) {
 
 // Create our server.
 var server = new Hapi.Server()
-server.connection({port: process.env.PORT || 3000 })
+server.connection({port: process.env.PORT || 3000})
 
 // Declare our Hapi plugin list.
 var plugins = [
@@ -47,10 +46,9 @@ var plugins = [
 // Register our plugins, kick off the server
 // if there is no error.
 server.register(plugins, function (err) {
-
   var seneca = server.seneca
 
-  seneca.use(auth, {
+  seneca.use(Auth, {
     restrict: '/api',
     server: 'hapi',
     strategies: [
