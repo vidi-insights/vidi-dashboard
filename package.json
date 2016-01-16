@@ -10,7 +10,7 @@
     "Adrian Rossouw",
     "Cristian Kiss"
   ],
-  "main": "./server/index.js",
+  "main": "./server/start.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "lint": "lab server/test -dL",
     "build": "webpack --progress --colors",
     "watch": "webpack -w",
-    "start": "node ./server/index.js"
+    "start": "node ./server/start.js"
   },
   "dependencies": {
     "async": "1.5.x",
