@@ -1,4 +1,5 @@
 FROM node:4
 ADD . /
 RUN npm install
-CMD ["node", "lib/server/index.js"]
+RUN npm build
+CMD ["node", "server/start.js"]

@@ -35,8 +35,9 @@ module.exports = function (server, options, next) {
 
   // Set up our seneca plugins
   var seneca = server.seneca
-  seneca.use('user')
   seneca.use(require('./plugins/seneca-pubsub-decorator'))
+
+  seneca.client({type:'tcp', port: '3055', pin:'role:user, cmd:*'})
 
   // Set up a default user
   seneca.act({
@@ -59,7 +60,7 @@ module.exports = function (server, options, next) {
         seneca.act({role: msg.role, source: msg.source, metric: msg.metric},
           function (err, data) {
             if (err) {
-              console.log(err.stack || err)
+              //console.log(err.stack || err)
               return
             }
 
