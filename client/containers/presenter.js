@@ -7,19 +7,16 @@ import Dashboard from '../components/dashboard'
 import {toggleSidebar} from '../actions/sidebar'
 import {socketSubscribe, socketUnsubscribe} from '../actions/socket'
 
-export const Home = React.createClass({
+export const Presenter = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func.isRequired,
-    isExpanded: React.PropTypes.bool.isRequired,
-    data: React.PropTypes.object.isRequired,
+    isExpanded: React.PropTypes.bool.isRequired
   },
 
   componentDidMount () {
-    this.props.dispatch(socketSubscribe('msgstats', 'rolling_flow_rate'))
   },
 
   componentWillUnmount () {
-    this.props.dispatch(socketUnsubscribe('msgstats', 'rolling_flow_rate'))
   },
 
   handleToggle (event) {
@@ -32,8 +29,6 @@ export const Home = React.createClass({
     const {isExpanded, data} = this.props
     const handleToggle = this.handleToggle
 
-    console.log(data)
-
     return (
       <div className="presenter">
         <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
@@ -45,12 +40,10 @@ export const Home = React.createClass({
 
 function mapStatesToProps (state) {
   const {sidebar} = state
-  const metric = state.socket['/metrics/msgstats/rolling_flow_rate'] || {data: {}}
 
   return {
-    isExpanded: sidebar.isExpanded,
-    data: metric.data
+    isExpanded: sidebar.isExpanded
   }
 }
 
-export default connect(mapStatesToProps)(Home)
+export default connect(mapStatesToProps)(Presenter)
