@@ -1,7 +1,7 @@
 'use strict'
 
 import './index.html'
-import './assets/css/styles.css'
+import './assets/css/main.styl'
 import './assets/css/font-awesome.css'
 
 import ReactDom from 'react-dom'
