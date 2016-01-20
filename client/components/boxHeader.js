@@ -40,7 +40,7 @@ module.exports = React.createClass({
 
     return (
       <div className="box-header">
-        <div className="box-header-icon" onClick={handleIconClick}>
+        <div className="logo logo-vidi" onClick={handleIconClick}>
           {iconTag}
         </div>
         {toolbox}

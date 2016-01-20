@@ -15,7 +15,7 @@ export const Header = React.createClass({
     return (
       <div className="header">
         <BoxHeader
-          icon={require('../assets/img/vidi-logo-small.svg')}
+          icon={require('../assets/img/logo-vidi.svg')}
           iconLink={'/'}
           title={'Vidi: Dashboard'}
           toolbox={toolbox} />
