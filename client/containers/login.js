@@ -25,7 +25,7 @@ export const Login = React.createClass({
     if (this.props.hasError) message = 'Wrong username or password, try again'
 
     return (
-      <div className="login">
+      <main className="page page-login" role="main">
         <form className="login-form" onSubmit={this.handleSubmit}>
           <BoxHeader icon={'icon icon-signin'} title={message} />
             <input ref="email" type="email" placeholder="Email" className="input-large" required />
@@ -34,7 +34,7 @@ export const Login = React.createClass({
               <span>Submit</span>
             </button>
         </form>
-      </div>
+      </main>
     )
   }
 })
