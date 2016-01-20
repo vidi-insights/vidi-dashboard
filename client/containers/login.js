@@ -26,14 +26,18 @@ export const Login = React.createClass({
 
     return (
       <main className="page page-login" role="main">
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          <BoxHeader icon={'icon icon-signin'} title={message} />
-            <input ref="email" type="email" placeholder="Email" className="input-large" required />
-            <input ref="pass" type="password" placeholder="Password" className="input-large" required />
-            <button type="submit" className="btn btn-large submit">
-              <span>Submit</span>
-            </button>
-        </form>
+        <div className="container-fluid">
+          <div className="row middle-xs center-xs">
+            <form className="login-form col-xs-12 col-md-6 col-lg-8 txt-left" onSubmit={this.handleSubmit}>
+              <BoxHeader icon={'icon icon-signin'} title={message} />
+                <input ref="email" type="email" placeholder="Email" className="input-large" required />
+                <input ref="pass" type="password" placeholder="Password" className="input-large" required />
+                <button type="submit" className="btn btn-large submit">
+                  <span>Submit</span>
+                </button>
+            </form>
+          </div>
+        </div>
       </main>
     )
   }
