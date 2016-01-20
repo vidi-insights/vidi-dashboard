@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------------
+*
+* BASIC STYLES
+*
+--------------------------------------------------------------------*/
+
+// Box sizing
+*, *:after, *:before
+  box-sizing: border-box
+
+// Selection highlight
+::-moz-selection
+  background-color: $blue-lighter
+
+::selection
+  background-color: $blue-lighter
+
+// Paragraphs
+p
+  margin-top: 0
+  margin-bottom: $ui-spacing
+
+// Links
+a
+  color: $blue
+  text-decoration: none
+  cursor: pointer
+  &:hover
+    color: $blue-light
+  &:focus
+    outline: none
+
+// Clearfix
+.cf:before,
+.cf:after
+  content: " "
+  display: table
+
+.cf
+  &:after
+    clear: both
+
+// Media
+img, iframe, video
+  max-width: 100%
