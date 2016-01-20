@@ -27,7 +27,7 @@ export const Login = React.createClass({
     return (
       <div className="login">
         <form className="login-form" onSubmit={this.handleSubmit}>
-          <BoxHeader icon={'fa fa-sign-in'} title={message} />
+          <BoxHeader icon={'icon icon-signin'} title={message} />
           <fieldset>
             <input ref="email" type="email" placeholder="Email" required />
             <input ref="pass" type="password" placeholder="Password" required />

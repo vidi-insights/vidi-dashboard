@@ -14,8 +14,8 @@ module.exports = React.createClass({
     var iconTag;
 
     if (icon) {
-      if (icon.includes('fa')) {
-        iconTag = (<i className={icon}> </i>)
+      if (icon.includes('icon')) {
+        iconTag = (<span className={icon}> </span>)
       }
       else {
         iconTag = (<img src={icon} />)

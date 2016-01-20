@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
     return (
       <div className={styleClass}>
-        <BoxHeader icon={'fa fa-area-chart'} title={'Message flow rate'} />
+        <BoxHeader icon={'icon icon-graph'} title={'Message flow rate'} />
         <Report data={this.props.data} />
       </div>
     )

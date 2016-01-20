@@ -15,7 +15,7 @@ export const Sidebar = React.createClass({
 
     return (
       <aside className={styleClass}>
-        <BoxHeader icon={'fa fa-bars'} title={'Menu'} onIconClicked={onToggle} />
+        <BoxHeader icon={'icon icon-menu'} title={'Menu'} onIconClicked={onToggle} />
         <ul className='sidebar-root'>
           <li>
             Your system

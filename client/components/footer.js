@@ -8,7 +8,7 @@ module.exports = React.createClass({
     var title = 'MIT. Copyright (c) 2015. Vidi: Insights'
     return (
       <div className="footer">
-        <BoxHeader icon={'fa fa-bug'} title={title} />
+        <BoxHeader icon={'icon icon-bug'} title={title} />
       </div>
     )
   }

@@ -2,7 +2,6 @@
 
 import './index.html'
 import './assets/css/main.styl'
-import './assets/css/font-awesome.css'
 
 import ReactDom from 'react-dom'
 

@@ -85,7 +85,7 @@ module.exports = React.createClass({
       data.forEach(function (measurement) {
         var totalVolume = (
           <div key={measurement.label} className={'twelve columns'}>
-            <BoxHeader icon={'fa fa-line-chart'} title={(measurement.label.replace('_', ', '))} />
+            <BoxHeader icon={'icon icon-graph'} title={(measurement.label.replace('_', ', '))} />
             <LineChart
               data={measurement}
               tooltipHtml={tooltipHtml}
@@ -118,7 +118,7 @@ module.exports = React.createClass({
       data.forEach(function (measurement) {
         var totalVolume = (
           <div key={measurement.label} className={'twelve columns'}>
-            <BoxHeader icon={'fa fa-line-chart'} title={(measurement.label.replace(/_/g, ', '))} />
+            <BoxHeader icon={'icon icon-graph'} title={(measurement.label.replace(/_/g, ', '))} />
             <LineChart
               data={measurement}
               tooltipHtml={tooltipHtmlRatio}
@@ -193,7 +193,7 @@ module.exports = React.createClass({
         var flowrateChart = (
           <div key={service.label} className="row">
             <div className='twelve columns'>
-              <BoxHeader icon={'fa fa-line-chart'} title={'Service: ' + service.label} />
+              <BoxHeader icon={'icon icon-graph'} title={'Service: ' + service.label} />
               <LineChart
                 data={service}
                 tooltipHtml={tooltipHtml}
@@ -209,7 +209,7 @@ module.exports = React.createClass({
           if(_.startsWith(tagAndPid.label, service.label)) {
             var pidChart = (
               <div className="six columns">
-                <BoxHeader icon={'fa fa-line-chart'} title={tagAndPid.label} />
+                <BoxHeader icon={'icon icon-graph'} title={tagAndPid.label} />
                 <LineChart
                   data={tagAndPid}
                   tooltipHtml={tooltipHtml}
@@ -223,7 +223,7 @@ module.exports = React.createClass({
               if (_.startsWith(set.label, tagAndPid.label)) {
                 var memChart = (
                   <div className="six columns">
-                    <BoxHeader icon={'fa fa-line-chart'} title={'Memory usage'} />
+                    <BoxHeader icon={'icon icon-graph'} title={'Memory usage'} />
                     <AreaChart
                       data={set.data}
                       tooltipHtml={areaTootip}
