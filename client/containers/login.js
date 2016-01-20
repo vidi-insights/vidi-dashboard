@@ -28,13 +28,11 @@ export const Login = React.createClass({
       <div className="login">
         <form className="login-form" onSubmit={this.handleSubmit}>
           <BoxHeader icon={'icon icon-signin'} title={message} />
-          <fieldset>
-            <input ref="email" type="email" placeholder="Email" required />
-            <input ref="pass" type="password" placeholder="Password" required />
+            <input ref="email" type="email" placeholder="Email" className="input-large" required />
+            <input ref="pass" type="password" placeholder="Password" className="input-large" required />
             <button type="submit" className="btn btn-large submit">
               <span>Submit</span>
             </button>
-          </fieldset>
         </form>
       </div>
     )
