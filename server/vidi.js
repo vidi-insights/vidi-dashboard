@@ -1,3 +1,5 @@
+'use strict'
+
 var Path = require('path')
 var Boom = require('boom')
 var Package = require('../package.json')
@@ -24,7 +26,7 @@ module.exports = function (server, options, next) {
   server.route(UserRoutes)
 
   // Only allow connections from localhost
-  server.ext('onRequest', function (request, reply) {
+  server.select('web').ext('onRequest', function (request, reply) {
     var host = request.raw.req.connection.address().address
     if (host !== '127.0.0.1') {
       return reply(Boom.forbidden())
@@ -37,7 +39,7 @@ module.exports = function (server, options, next) {
   var seneca = server.seneca
   seneca.use(require('./plugins/seneca-pubsub-decorator'))
 
-  seneca.client({type:'tcp', port: '3055', pin:'role:user, cmd:*'})
+  seneca.client({type: 'tcp', port: '3055', pin: 'role:user, cmd:*'})
 
   // Set up a default user
   seneca.act({
