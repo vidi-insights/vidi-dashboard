@@ -14,8 +14,13 @@ export function login (user, pass) {
       .type('form')
       .send({username: user, password: pass})
       .end((err, resp) => {
-        if (err) {
-          dispatch({type: authActions.LOGIN_RESPONSE, hasError: true, token: null})
+        if (err || !resp.body.ok) {
+          dispatch({
+            type: authActions.LOGIN_RESPONSE,
+            niceError: 'Wrong username or password, try again',
+            hasError: true,
+            token: null
+          })
         }
         else {
           const token = resp.body.login.id

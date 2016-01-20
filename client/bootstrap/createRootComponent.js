@@ -9,7 +9,10 @@ import {Router, Route, IndexRoute} from 'react-router'
 import {logout} from '../actions/auth'
 import Shell from '../containers/shell'
 import Login from '../containers/login'
-import Presenter from '../containers/presenter'
+import Overview from '../containers/overview'
+import ByMessage from '../containers/bymessage'
+import ByService from '../containers/byservice'
+import Profile from '../containers/profile'
 
 export default function createRootComponent (store) {
   const history = createHistory()
@@ -37,7 +40,10 @@ export default function createRootComponent (store) {
     <Provider store={store}>
       <Router history={history}>
         <Route path="/" component={Shell}>
-          <IndexRoute component={Presenter} onEnter={requireAuth} />
+          <IndexRoute component={Overview} onEnter={requireAuth} />
+          <Route path="bymessage" component={ByService} />
+          <Route path="byservice" component={ByMessage} />
+          <Route path="profile" component={Profile} />
           <Route path="login" component={Login} />
           <Route path="logout" onEnter={handleLogout} />
         </Route>

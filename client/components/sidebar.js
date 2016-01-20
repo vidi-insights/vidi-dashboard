@@ -1,9 +1,9 @@
 'use strict'
 
 import React from 'react'
-import BoxHeader from '../components/boxHeader'
+import {Link} from 'react-router'
 
-export const Sidebar = React.createClass({
+export default React.createClass({
   render () {
     const isExpanded = this.props.isExpanded
     const onToggle = this.props.onToggle
@@ -15,12 +15,13 @@ export const Sidebar = React.createClass({
 
     return (
       <aside className={styleClass}>
-        <BoxHeader icon={'icon icon-menu'} title={'Menu'} onIconClicked={onToggle} />
         <ul className='sidebar-root'>
           <li>
-            Your system
+            Menu
             <ul className='sidebar-level-1'>
-              <li>System overview</li>
+              <Link to={'/'}>Overview</Link>
+              <Link to={'/byservice'}>By Service</Link>
+              <Link to={'/bymessage'}>By Message</Link>
             </ul>
           </li>
         </ul>
@@ -28,5 +29,3 @@ export const Sidebar = React.createClass({
     )
   }
 })
-
-export default Sidebar

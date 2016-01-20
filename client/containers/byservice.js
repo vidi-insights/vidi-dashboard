@@ -2,12 +2,10 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import Sidebar from '../components/sidebar'
-import Dashboard from '../components/dashboard'
 import {toggleSidebar} from '../actions/sidebar'
-import {socketSubscribe, socketUnsubscribe} from '../actions/socket'
+import Sidebar from '../components/sidebar'
 
-export const Presenter = React.createClass({
+export const ByService = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func.isRequired,
     isExpanded: React.PropTypes.bool.isRequired
@@ -29,10 +27,17 @@ export const Presenter = React.createClass({
     const {isExpanded, data} = this.props
     const handleToggle = this.handleToggle
 
+    var styleClass = 'overview-panel'
+    if (isExpanded) {
+      styleClass = styleClass + '-expanded'
+    }
+
     return (
-      <div className="presenter">
+      <div className="overview">
         <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
-        <Dashboard isExpanded={!isExpanded} data={data} />
+        <div className={styleClass}>
+          Overview
+        </div>
       </div>
     )
   }
@@ -46,4 +51,4 @@ function mapStatesToProps (state) {
   }
 }
 
-export default connect(mapStatesToProps)(Presenter)
+export default connect(mapStatesToProps)(ByService)

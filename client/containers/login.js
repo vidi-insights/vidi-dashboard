@@ -3,12 +3,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {login} from '../actions/auth'
-import BoxHeader from '../components/boxHeader'
 
 export const Login = React.createClass({
   propTypes: {
     dispatch: React.PropTypes.func.isRequired,
-    hasError: React.PropTypes.bool.isRequired,
+    hasError: React.PropTypes.bool.isRequired
   },
 
   handleSubmit (event) {
@@ -21,20 +20,25 @@ export const Login = React.createClass({
   },
 
   render () {
-    var message = 'Login'
-    if (this.props.hasError) message = 'Wrong username or password, try again'
+    const {hasError, niceError} = this.props
+    let heading = hasError ? niceError : 'Login'
 
     return (
       <main className="page page-login" role="main">
         <div className="container-fluid">
           <div className="row middle-xs center-xs vertical-center">
             <form className="login-form col-xs-12 col-md-6 col-lg-4 txt-left form-full-width form-panel" onSubmit={this.handleSubmit}>
-              <BoxHeader icon={'icon icon-signin'} title={message} />
-                <input ref="email" type="email" placeholder="Email" className="input-large" required />
-                <input ref="pass" type="password" placeholder="Password" className="input-large" required />
-                <button type="submit" className="btn btn-large submit">
-                  <span>Submit</span>
-                </button>
+
+              <div className="box-header">
+                <img className='icon icon-signin' />
+                <div className="box-header-titlebar">
+                  <span>{heading}</span>
+                </div>
+              </div>
+
+              <input ref="email" type="email" placeholder="Email" className="input-large" required />
+              <input ref="pass" type="password" placeholder="Password" className="input-large" required />
+              <button type="submit" className="btn btn-large submit"><span>Submit</span></button>
             </form>
           </div>
         </div>
@@ -47,7 +51,8 @@ function mapStatesToProps (state) {
   const {auth} = state
 
   return {
-    hasError: auth.hasError
+    hasError: auth.hasError,
+    niceError: auth.niceError
   }
 }
 
