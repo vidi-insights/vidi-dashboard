@@ -31,7 +31,7 @@ export const Login = React.createClass({
           <fieldset>
             <input ref="email" type="email" placeholder="Email" required />
             <input ref="pass" type="password" placeholder="Password" required />
-            <button type="submit" className="submit">
+            <button type="submit" className="btn btn-large submit">
               <span>Submit</span>
             </button>
           </fieldset>
