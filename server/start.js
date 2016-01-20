@@ -1,3 +1,6 @@
+'use strict'
+
+var Borland = require('borland')
 var Chairo = require('chairo')
 var Hapi = require('hapi')
 var Inert = require('inert')
@@ -24,7 +27,8 @@ function endIfErr (err) {
 
 // Create our server.
 var server = new Hapi.Server()
-server.connection({port: process.env.PORT || 3000})
+server.connection({ port: process.env.PORT || 3000, labels: ['web'] })
+server.connection({ port: 5000, labels: ['api'] })
 
 // Declare our Hapi plugin list.
 var plugins = [
@@ -39,6 +43,10 @@ var plugins = [
     }
   },
   Nes,
+  {
+    register: Borland,
+    select: 'api'
+  },
   Inert,
   Vidi
 ]
@@ -69,6 +77,10 @@ server.register(plugins, function (err) {
     // everything else is wired up first.
     registerMetrics(server.seneca)
 
-    console.log('server started: ' + server.info.port)
+    var ports = []
+    server.connections.forEach(function (connection) {
+      ports.push(connection.info.port)
+    })
+    console.log('server started on ports: ' + ports.join(', '))
   })
 })
