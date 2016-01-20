@@ -23,9 +23,12 @@ in a different terminal.
 1. Install influxdb [help](https://influxdb.com/docs/v0.9/introduction/installation.html)
 2. Run `influxd` in a separate window
 3. Run `influx` in a separate window
-4. In the `influx` window, type in `CREATE DATABASE seneca_msgstats`
-5. In the `influx` window, type in `CREATE USER msgstats WITH PASSWORD 'msgstats' WITH ALL PRIVILEGES`
-6. 
+4. In the `influx` window run the following commands
+```sh
+> CREATE DATABASE seneca_msgstats
+> CREATE USER msgstats WITH PASSWORD 'msgstats' WITH ALL PRIVILEGES
+> exit
+```
 
 ## Setup data
 1. Add seneca-msgstats to each microservice you wish to track
