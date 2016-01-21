@@ -33,7 +33,7 @@ export const Overview = React.createClass({
     }
 
     return (
-      <main className="page page-overview" role="main">
+      <main className="page page-overview overview" role="main">
         <div className="container-fluid">
           <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
           <div className={styleClass}>

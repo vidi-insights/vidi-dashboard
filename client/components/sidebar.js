@@ -15,6 +15,9 @@ export default React.createClass({
 
     return (
       <aside className={styleClass} role="complementary">
+        <a href="" className="icon-menu-container">
+          <span className="icon icon-menu icon-dimmed"></span>
+        </a>
         <nav role="navigation">
           <ul className="list-unstyled">
             <li><Link to={'/'} className="nav-item">Overview</Link></li>
