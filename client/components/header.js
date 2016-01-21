@@ -4,6 +4,14 @@ import React from 'react'
 import {Link} from 'react-router'
 
 export default React.createClass({
+  // We are only going to render the markup in profile if
+  // isAuthenticated is true, if not we will assign null
+  // to the value, React treats nulls as nothing to render.
+
+  // This is different that swapping classes, We usually do this if
+  // we are going to hide the markup via a style, if it's not needed
+  // on screen its better to just not render it.
+
   render () {
     let profile = (
       <div className="col-xs-4 col-sm-6 txt-right">
@@ -24,7 +32,7 @@ export default React.createClass({
       </div>
     )
 
-    if (!this.props.showProfile) {
+    if (!this.props.isAuthenticated) {
       profile = null
     }
 

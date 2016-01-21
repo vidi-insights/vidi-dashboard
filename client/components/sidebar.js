@@ -9,13 +9,19 @@ export default React.createClass({
     const onToggle = this.props.onToggle
     let styleClass = 'sidebar'
 
+    // Same as we are doing in each page, we basically generate the correct class to
+    // add so that the sidebar appears collapsed. We could also change the markup instead
+    // and render two different markups depending on the value of isExpanded.
     if (!isExpanded) {
       styleClass = styleClass + '-docked'
     }
 
+    // On or instead of the <a> if you assign onToggle to the onClick event
+    // like below, it will cause redux to invert the toggle, this will effectively
+    // change the value of isExpanded and pass the new value down to all components.
     return (
       <aside className={styleClass} role="complementary">
-        <a href="" className="icon-menu-container">
+        <a href="" className="icon-menu-container" onClick={onToggle}>
           <span className="icon icon-menu icon-dimmed"></span>
         </a>
         <nav role="navigation">
