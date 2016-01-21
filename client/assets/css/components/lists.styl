@@ -15,4 +15,12 @@
 .list-inline
   li
     display: inline-block
-    margin-right: $ui-spacing-half
+    
+    &:not(:last-child)
+      margin-right: $ui-spacing
+      
+@media screen and (max-width: 48em)
+
+  .list-inline
+    li:not(:last-child)
+      margin-right: $ui-spacing-half
