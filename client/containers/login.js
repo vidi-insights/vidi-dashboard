@@ -36,7 +36,7 @@ export const Login = React.createClass({
 
               <input ref="email" type="email" placeholder="Email" className="input-large" required />
               <input ref="pass" type="password" placeholder="Password" className="input-large" required />
-              <button type="submit" className="btn btn-large submit"><span>Submit</span></button>
+              <button type="submit" className="btn btn-large submit">Submit</button>
             </form>
           </div>
         </div>

@@ -37,9 +37,19 @@
 .icon-signout
   background-image: url("../img/icon-signout.svg")
 
+.icon-dimmed
+  opacity: .5
+  transition: opacity .5s ease-in
+  
+  &:hover
+    opacity: 1
+
 // Container with an icon\
 
 .has-icon
+
+  *
+    display: inline-block
 
   .icon
     position: relative
