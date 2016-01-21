@@ -14,17 +14,14 @@ export default React.createClass({
     }
 
     return (
-      <aside className={styleClass}>
-        <ul className='sidebar-root'>
-          <li>
-            Menu
-            <ul className='sidebar-level-1'>
-              <Link to={'/'}>Overview</Link>
-              <Link to={'/byservice'}>By Service</Link>
-              <Link to={'/bymessage'}>By Message</Link>
-            </ul>
-          </li>
-        </ul>
+      <aside className={styleClass} role="complementary">
+        <nav role="navigation">
+          <ul className="list-unstyled">
+            <li className="nav-item"><Link to={'/'}>Overview</Link></li>
+            <li className="nav-item"><Link to={'/byservice'}>By Service</Link></li>
+            <li className="nav-item"><Link to={'/bymessage'}>By Message</Link></li>
+          </ul>
+        </nav>
       </aside>
     )
   }
