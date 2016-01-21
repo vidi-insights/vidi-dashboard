@@ -28,13 +28,11 @@ export const Login = React.createClass({
         <div className="container-fluid">
           <div className="row middle-xs center-xs vertical-center">
             <form className="login-form col-xs-12 col-md-6 col-lg-4 txt-left form-full-width form-panel" onSubmit={this.handleSubmit}>
-
-              <div className="box-header">
-                <img className='icon icon-signin' />
-                <div className="box-header-titlebar">
-                  <span>{heading}</span>
-                </div>
-              </div>
+            
+              <h2 className="mt0 has-icon">
+                <span className='icon icon-signin'></span>
+                <span>{heading}</span>
+              </h2>
 
               <input ref="email" type="email" placeholder="Email" className="input-large" required />
               <input ref="pass" type="password" placeholder="Password" className="input-large" required />
