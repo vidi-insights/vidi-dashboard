@@ -21,17 +21,24 @@ export const Login = React.createClass({
 
   render () {
     const {hasError, niceError} = this.props
-    let heading = hasError ? niceError : 'Login'
+
+    let headingText = 'Login'
+    let headingStyle = 'mt0 has-icon'
+
+    if (hasError) {
+      headingText = niceError
+      headingStyle += ' alert alert-warn'
+    }
 
     return (
       <main className="page page-login" role="main">
         <div className="container-fluid">
           <div className="row middle-xs center-xs vertical-center">
             <form className="login-form col-xs-12 col-md-6 col-lg-4 txt-left form-full-width form-panel" onSubmit={this.handleSubmit}>
-            
-              <h2 className="mt0 has-icon">
+
+              <h2 className={headingStyle}>
                 <span className='icon icon-signin'></span>
-                <span>{heading}</span>
+                <span>{headingText}</span>
               </h2>
 
               <input ref="email" type="email" placeholder="Email" className="input-large" required />

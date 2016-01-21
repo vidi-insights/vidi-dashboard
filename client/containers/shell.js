@@ -12,11 +12,16 @@ export const Shell = React.createClass({
   },
 
   render () {
+    // we get these values automagically, we don't care about
+    // authentication at the shell level but the Header cares
+    // about it because it will use it
+    // to decide to show the logout / profile bits or not
     const {children, isAuthenticated} = this.props
 
+    // Here we just pass the value on to the 'isAuthenticated' prop
     return (
       <div className="shell">
-        <Header showProfile={isAuthenticated} />
+        <Header isAuthenticated={isAuthenticated} />
           {children}
         <Footer />
       </div>

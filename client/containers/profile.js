@@ -11,12 +11,6 @@ export const Profile = React.createClass({
     isExpanded: React.PropTypes.bool.isRequired
   },
 
-  componentDidMount () {
-  },
-
-  componentWillUnmount () {
-  },
-
   handleToggle (event) {
     event.preventDefault()
 
