@@ -19,17 +19,16 @@ export default React.createClass({
     }
 
     return (
-      <div className="header">
-        <div className="logo logo-vidi">
-          <Link to={'/'}><img className='logo logo-vidi' /></Link>
-        </div>
-
-        <div className="box-header-titlebar">
-          Vidi: Dashboard
+      <header className="header" role="banner">
+        <div className="container-fluid">
+          <div className="has-icon">
+            <Link to={'/'} className='logo logo-vidi'></Link>
+            <h2 className="m0">Vidi: Dashboard</h2>
+          </div>
         </div>
 
         {profile}
-      </div>
+      </header>
     )
   }
 })
