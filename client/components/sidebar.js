@@ -17,9 +17,9 @@ export default React.createClass({
       <aside className={styleClass} role="complementary">
         <nav role="navigation">
           <ul className="list-unstyled">
-            <li className="nav-item"><Link to={'/'}>Overview</Link></li>
-            <li className="nav-item"><Link to={'/byservice'}>By Service</Link></li>
-            <li className="nav-item"><Link to={'/bymessage'}>By Message</Link></li>
+            <li><Link to={'/'} className="nav-item">Overview</Link></li>
+            <li><Link to={'/byservice'} className="nav-item">By Service</Link></li>
+            <li><Link to={'/bymessage'} className="nav-item">By Message</Link></li>
           </ul>
         </nav>
       </aside>
