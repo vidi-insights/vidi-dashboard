@@ -33,12 +33,14 @@ export const Overview = React.createClass({
     }
 
     return (
-      <div className="overview">
-        <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
-        <div className={styleClass}>
-          Overview
+      <main className="page page-overview overview" role="main">
+        <div className="container-fluid">
+          <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
+          <div className={styleClass}>
+            <h2>Overview</h2>
+          </div>
         </div>
-      </div>
+      </main>
     )
   }
 })

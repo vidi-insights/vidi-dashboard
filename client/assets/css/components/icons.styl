@@ -12,13 +12,16 @@
   background-size: contain
 
 .icon-menu
-  width: 15px
-  height: 13px
   background-image: url("../img/icon-menu.svg")
 
 .icon-profile
   width: 10px
   background-image: url("../img/icon-profile.svg")
+  
+.has-icon-profile
+  
+  &:hover .icon-profile
+    background-image: url("../img/icon-profile-hover.svg")
 
 .icon-bug
   width: 17px
@@ -36,3 +39,32 @@
 
 .icon-signout
   background-image: url("../img/icon-signout.svg")
+  
+.has-icon-signout
+  
+  &:hover .icon-signout
+    background-image: url("../img/icon-signout-hover.svg")
+
+.icon-dimmed
+  opacity: .5
+  transition: opacity .5s ease-in
+  
+  &:hover
+    opacity: 1
+
+// Container with an icon\
+
+.has-icon
+
+  *
+    display: inline-block
+    
+  .icon
+    top: 4px
+    
+  .logo
+    top: 5px
+
+  .icon, .logo
+    position: relative
+    margin-right: 10px

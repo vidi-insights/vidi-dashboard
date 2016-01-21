@@ -6,10 +6,20 @@ import {Link} from 'react-router'
 export default React.createClass({
   render () {
     let profile = (
-      <div className="profile-toolbox">
-        <ul>
-          <li><Link to={'/profile'}>profile</Link></li>
-          <li><i className={'fa fa-sign-out'}></i><Link to={'/logout'}>sign out</Link></li>
+      <div className="col-xs-4 col-sm-6 txt-right">
+        <ul className="list-unstyled list-inline">
+          <li>
+            <Link to={'/profile'} className="has-icon has-icon-profile">
+              <span className="icon icon-profile"></span>
+              <span>Profile</span>
+              </Link>
+          </li>
+          <li>
+            <Link to={'/logout'} className="has-icon has-icon-signout">
+              <span className="icon icon-signout"></span>
+              <span>Sign out</span>
+            </Link>
+          </li>
         </ul>
       </div>
     )
@@ -19,17 +29,18 @@ export default React.createClass({
     }
 
     return (
-      <div className="header">
-        <div className="logo logo-vidi">
-          <Link to={'/'}><img className='logo logo-vidi' /></Link>
-        </div>
+      <header className="header" role="banner">
+        <div className="container-fluid">
+          <div className="row middle-xs">
+            <div className="has-icon col-xs-8 col-sm-6">
+              <Link to={'/'} className='logo logo-vidi'></Link>
+              <h2 className="m0">Vidi: Dashboard</h2>
+            </div>
 
-        <div className="box-header-titlebar">
-          Vidi: Dashboard
+            {profile}
+          </div>
         </div>
-
-        {profile}
-      </div>
+      </header>
     )
   }
 })

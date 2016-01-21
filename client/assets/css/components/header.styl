@@ -1,0 +1,21 @@
+/*--------------------------------------------------------------------
+*
+* HEADER
+*
+--------------------------------------------------------------------*/
+
+header
+  padding: $ui-spacing-half 0
+  background-color: $blue-dark
+  
+  h2, a
+    color: white
+    
+@media screen and (max-width: 48em)
+
+  header
+    .has-icon h2, li span:not(.icon)
+      display: none
+      
+    li:last-child .icon
+      margin-right: 0
