@@ -7,6 +7,9 @@ Dashboard. The app is extensible, it allows you to plug in your own data and rep
 - __Lead Maintainer:__ [Dean McDonnell][lead]
 - __Sponsor:__ [nearForm][]
 
+## Demo system
+This is the Vidi: Dashboard project. It is a dashboard system built using Node.js. It is a micro-service designed to be used in tandem with other micro-services, as with the [NodeZoo][] project. There is an in-depth demo configuration available for the system, to learn more go [here][].
+
 ## Running
 To run the server,
 
@@ -16,7 +19,7 @@ To run the server,
 4. Run `npm run start` to create a deploy and server on port `3000`
 5. Log in with default user `admin@vidi.com` and password `vidi`
 
-Also you can watch the files for changes and automatically rebuild the sources by running `npm run watch` 
+Also you can watch the files for changes and automatically rebuild the sources by running `npm run watch`
 in a different terminal.
 
 ## Setup influxdb
@@ -45,11 +48,12 @@ documentation, examples, extra testing, or new features please get in touch.
 
 - [Code of Conduct]
 
+
 ## License
 Copyright (c) 2015, Dean McDonnell and other contributors.
 Licensed under [MIT][].
 
-
+[here]: https://github.com/nearform/vidi-concorda-nodezoo-system
 [MIT]: ./LICENSE
 [Code of Conduct]: https://github.com/nearform/vidi-contrib/docs/code_of_conduct.md
 [Vidi: Insights]: https://github.com/nearform/vidi-contrib
