@@ -15,38 +15,40 @@ export function login (user, pass) {
       .send({username: user, password: pass})
       .end((err, resp) => {
         if (err || !resp.body.ok) {
-          dispatch({
+          return dispatch({
             type: authActions.LOGIN_RESPONSE,
             niceError: 'Wrong username or password, try again',
             hasError: true,
-            token: null
+            isLoggedIn: false
           })
         }
-        else {
-          const token = resp.body.login.id
 
-          dispatch({type: authActions.LOGIN_RESPONSE, hasError: false, token: token})
-          dispatch(pushPath('/'))
+        window.localStorage.setItem('isLoggedIn', true)
 
-          window.localStorage.setItem('token', token)
-        }
+        dispatch({
+          type: authActions.LOGIN_RESPONSE,
+          isLoggedIn: true,
+          hasError: false
+        })
+
+        dispatch(pushPath('/'))
       })
     }
   }
 
-export function logout (token) {
+export function logout () {
   return (dispatch) => {
     dispatch({type: authActions.LOGOUT_REQUEST})
 
     Request
       .post('/auth/logout')
       .type('form')
-      .send({token: token})
+      .send({})
       .end(() => {
-        dispatch({type: authActions.LOGOUT_RESPONSE, hasError: false, token: null})
-        dispatch(pushPath('/'))
-
         window.localStorage.clear()
+
+        dispatch({type: authActions.LOGOUT_RESPONSE, hasError: false})
+        dispatch(pushPath('/'))
       })
   }
 }

@@ -5,27 +5,27 @@ import {Link} from 'react-router'
 
 export default React.createClass({
   render () {
-    let profile = null
-
-    if (this.props.isAuthenticated) {
-      profile = (
-        <div className="col-xs-4 col-sm-6 txt-right">
-          <ul className="list-unstyled list-inline">
-            <li>
-              <Link to={'/profile'} className="has-icon has-icon-profile">
-                <span className="icon icon-profile"></span>
-                <span>Profile</span>
-                </Link>
-            </li>
-            <li>
-              <Link to={'/logout'} className="has-icon has-icon-signout">
-                <span className="icon icon-signout"></span>
-                <span>Sign out</span>
+    let profile = (
+      <div className="col-xs-4 col-sm-6 txt-right">
+        <ul className="list-unstyled list-inline">
+          <li>
+            <Link to={'/profile'} className="has-icon has-icon-profile">
+              <span className="icon icon-profile"></span>
+              <span>Profile</span>
               </Link>
-            </li>
-          </ul>
-        </div>
-      )
+          </li>
+          <li>
+            <Link to={'/logout'} className="has-icon has-icon-signout">
+              <span className="icon icon-signout"></span>
+              <span>Sign out</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    )
+
+    if (!this.props.showProfile) {
+      profile = null
     }
 
     return (

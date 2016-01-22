@@ -3,11 +3,15 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {login} from '../actions/auth'
+import {pushPath} from 'redux-simple-router'
 
 export const Login = React.createClass({
-  propTypes: {
-    dispatch: React.PropTypes.func.isRequired,
-    hasError: React.PropTypes.bool.isRequired
+  componentDidMount() {
+    const {isLoggedIn, dispatch} = this.props
+
+    if (isLoggedIn) {
+      dispatch(pushPath('/'))
+    }
   },
 
   handleSubmit (event) {
@@ -21,14 +25,7 @@ export const Login = React.createClass({
 
   render () {
     const {hasError, niceError} = this.props
-
-    let headingText = 'Login'
-    let headingStyle = 'mt0 has-icon'
-
-    if (hasError) {
-      headingText = niceError
-      headingStyle += ' alert alert-warn'
-    }
+    let heading = hasError ? niceError : 'Login'
 
     return (
       <main className="page page-login" role="main">
@@ -36,9 +33,9 @@ export const Login = React.createClass({
           <div className="row middle-xs center-xs vertical-center">
             <form className="login-form col-xs-12 col-md-6 col-lg-4 txt-left form-full-width form-panel" onSubmit={this.handleSubmit}>
 
-              <h2 className={headingStyle}>
+              <h2 className="mt0 has-icon">
                 <span className='icon icon-signin'></span>
-                <span>{headingText}</span>
+                <span>{heading}</span>
               </h2>
 
               <input ref="email" type="email" placeholder="Email" className="input-large" required />
@@ -52,13 +49,12 @@ export const Login = React.createClass({
   }
 })
 
-function mapStatesToProps (state) {
-  const {auth} = state
+export default connect((state) => {
+  const {hasError, niceError, isLoggedIn} = state.auth
 
   return {
-    hasError: auth.hasError,
-    niceError: auth.niceError
+    hasError: hasError,
+    niceError: niceError,
+    isLoggedIn: isLoggedIn
   }
-}
-
-export default connect(mapStatesToProps)(Login)
+})(Login)

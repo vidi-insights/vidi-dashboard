@@ -6,17 +6,12 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 
 export const Shell = React.createClass({
-  propTypes: {
-    dispatch: React.PropTypes.func.isRequired,
-    isAuthenticated: React.PropTypes.bool.isRequired,
-  },
-
   render () {
-    const {children, isAuthenticated} = this.props
+    const {children, isLoggedIn} = this.props
 
     return (
       <div className="shell">
-        <Header isAuthenticated={isAuthenticated} />
+        <Header showProfile={isLoggedIn} />
           {children}
         <Footer />
       </div>
@@ -24,12 +19,8 @@ export const Shell = React.createClass({
   }
 })
 
-function mapStatesToProps (state) {
-  const {auth} = state
-
+export default connect((state) => {
   return {
-    isAuthenticated: Boolean(auth.token)
+    isLoggedIn: state.auth.isLoggedIn
   }
-}
-
-export default connect(mapStatesToProps)(Shell)
+})(Shell)
