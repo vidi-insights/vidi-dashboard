@@ -9,6 +9,7 @@ import {toggleSidebar} from '../actions/sidebar'
 
 export const Clients = React.createClass({
   propTypes: {
+    data: React.PropTypes.object.isRequired,
     dispatch: React.PropTypes.func.isRequired,
     isExpanded: React.PropTypes.bool.isRequired
   },
@@ -41,7 +42,13 @@ export const Clients = React.createClass({
 
 var mapStatesToProps = function (state) {
   return {
-    isExpanded: state.sidebar.isExpanded
+    isExpanded: state.sidebar.isExpanded,
+    data: {
+      cpu: [{
+        name: "client1",
+        values: [ { x: 70, y: 82 }, { x: 76, y: 82 } ]
+      }]
+    }
   }
 }
 

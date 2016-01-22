@@ -9,7 +9,10 @@ module.exports = React.createClass({
       data: {label: 'default', values: {x:0, y:0}},
       xAxis: {label: 'x-axis'},
       yAxis: {label: 'y-axis'},
-      stroke: {strokeWidth: '2', strokeLinecap: 'round'}
+      stroke: {strokeWidth: '2', strokeLinecap: 'round'},
+      tooltipHtml: function () {
+        return 'help'
+      }
     }
   },
 
