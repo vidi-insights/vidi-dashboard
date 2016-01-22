@@ -31,23 +31,36 @@ export const ByMessage = React.createClass({
     // This is the style class for the bymessage panel or page to the right of the
     // sidebar. Feel free to use whatever classes you want. It's a basic, if expanded
     // use 'bymessage-panel-expanded' class otherwise use 'bymessage-panel'
-    var styleClass = 'bymessage-panel'
+    var styleClass = 'page-wrapper'
     if (isExpanded) {
       styleClass = styleClass + '-expanded'
     }
 
     return (
       // I don't do anything special with this as it's just a container
-      <div className="bymessage-wrapper">
-        // we pass the method to handle the toggle down to the sidebar, it has the button
-        // so it needs the method to call. We also pass is expanded, this lets the sidebar
-        // change to 'expanded' exactly like the class above.
+      <div className={styleClass}>
         <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
-        // This is where we assign the calculated style class from above. You might not event
-        // need this if the whole thing is flexable. My orginal design wasn't so I needed to
-        // add an expanded class to fill the space the sidebar leaves when it is not expanded.
-        <div className={styleClass}>
-          By Message
+        <div className="page container-fluid">
+          <div className="row middle-xs">
+            <h2 className="col-xs-12 col-sm-6">By Message</h2>
+            <div className="col-xs-12 col-sm-6 txt-right">
+              <select>
+                <option>120 seconds</option>
+                <option>5 minutes</option>
+                <option>30 minutes</option>
+                <option>1 hour</option>
+              </select>
+            </div>
+        </div>
+          <div className="alert alert-info alert-has-icon">
+            <span className="icon icon-refresh-blue"></span>
+            <p className="m0">Loading data...</p>
+          </div>
+          
+          <div className="panel">
+            <h3 className="panel-heading m0">Panel heading</h3>
+            <div className="panel-body"></div>
+          </div>
         </div>
       </div>
     )
