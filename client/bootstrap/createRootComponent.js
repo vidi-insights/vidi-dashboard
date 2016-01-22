@@ -12,6 +12,7 @@ import Login from '../containers/login'
 import Overview from '../containers/overview'
 import ByMessage from '../containers/bymessage'
 import ByService from '../containers/byservice'
+import Clients from '../containers/clients'
 import Profile from '../containers/profile'
 
 export default function createRootComponent (store) {
@@ -43,6 +44,7 @@ export default function createRootComponent (store) {
           <IndexRoute component={Overview} onEnter={requireAuth} />
           <Route path="bymessage" component={ByMessage} />
           <Route path="byservice" component={ByService} />
+          <Route path="clients" component={Clients} />
           <Route path="profile" component={Profile} />
           <Route path="login" component={Login} />
           <Route path="logout" onEnter={handleLogout} />
