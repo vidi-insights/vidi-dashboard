@@ -10,19 +10,22 @@
   min-height: 100vh
   flex-direction: column
 
-.page-wrapper
+.page-wrapper,
+.page-wrapper-expanded
   flex: 1
   margin-left: 110px
+  width: 100%
 
 // Sidebar reappearance and page shifting  
-.page, .page-expanded
+.page, .page-wrapper, .page-wrapper-expanded
   h2
     margin-top: $ui-spacing-half
     
-.page-expanded
-  margin-left: 200px
-
-.page
+.page-wrapper-expanded,
+.page-wrapper-expanded + footer
+  margin-left: 310px
+  
+.page-wrapper-expanded + footer
   width: 100%
   
 // Center children vertically
