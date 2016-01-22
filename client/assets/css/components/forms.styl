@@ -4,11 +4,10 @@
 *
 --------------------------------------------------------------------*/
 
-// Inputs
-input
+// Shared
+input, select
   border: $ui-border
   border-radius: $ui-radius
-  margin-right: $ui-spacing-third
   padding: $ui-spacing-third
   transition: all .3s ease-in
   
@@ -16,6 +15,10 @@ input
     border: 1px solid $blue-light
     box-shadow: 0 0 5px $blue-light
     outline: none
+
+// Inputs
+input
+  margin-right: $ui-spacing-third
 
 .input-large
   padding: $ui-spacing-half $ui-spacing-third
@@ -32,13 +35,23 @@ input
   input, .btn
     width: 100%
     margin-bottom: $ui-spacing-third
+    
+// Selects
+select
+  height: 48px
+  min-width: 150px
+  cursor: pointer
+  background-color: white
 
 @media screen and (max-width: 30em)
 
   input[type=search]
     box-sizing: border-box
-    width: 100%
     margin-bottom: $ui-spacing-third
+    
+  select,
+  input[type=search]
+    width: 100%
 
 @media screen and (min-width: 31em) and (max-width: 48em)
 
