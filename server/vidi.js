@@ -1,44 +1,25 @@
-var Path = require('path')
-var Boom = require('boom')
-var Package = require('../package.json')
+'use strict'
 
-var ClientRoutes = require('./routes/client')
-var UserRoutes = require('./routes/user')
-var SenecaUser = require('seneca-user')
+var Auth = require('seneca-auth')
 
+// Hapi Plugin for wiring up Vidi
 module.exports = function (server, options, next) {
-  // Set our realitive path (for our routes)
-  var relativePath = Path.join(__dirname, '../dist/')
-  server.realm.settings.files.relativeTo = relativePath
-
-  // Session stuff
-  server.state('session', {
-    ttl: 24 * 60 * 60 * 1000,
-    isSecure: true,
-    path: '/',
-    encoding: 'base64json'
-  })
-
-  // Wire up our http routes, these are
-  // mostly for managing the dashboard.
-  server.route(ClientRoutes)
-  server.route(UserRoutes)
-
-  // Only allow connections from localhost
-  server.ext('onRequest', function (request, reply) {
-    var host = request.raw.req.connection.address().address
-    if (host !== '127.0.0.1') {
-      return reply(Boom.forbidden())
-    }
-
-    return reply.continue()
-  })
+  server.dependency('chairo')
 
   // Set up our seneca plugins
   var seneca = server.seneca
-  seneca.use(SenecaUser)
 
-  // Set up a default user
+  // pin any user commands out to concorda
+  seneca.client({type:'tcp', port: '3055', pin:'role:user, cmd:*'})
+
+  // set up our own local auth
+  seneca.use(Auth, {
+    restrict: '/api',
+    server: 'hapi',
+    strategies: [{provider: 'local'}]
+  })
+
+  // Set up a default user in concorda
   seneca.act({
     role: 'user',
     cmd: 'register',
@@ -50,8 +31,8 @@ module.exports = function (server, options, next) {
   next()
 }
 
-// Hapi uses this metadata. It's convention to provide
-// it even though we are actually the same package.
+
+// Hapi plugin metadata
 module.exports.attributes = {
-  pkg: Package
+  name: 'vidi'
 }
