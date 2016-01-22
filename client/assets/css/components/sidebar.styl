@@ -4,21 +4,29 @@
 *
 --------------------------------------------------------------------*/
 
+.sidebar,
+aside
+  transition: transform .3s ease
+  
+.sidebar-docked
+  transform: translateX(-200px)
+
 aside
   position: absolute
   left: 0
   top: 69px
-  height: 100vh
+  height: calc(100% - 65px)
   width: 200px
   background-color: $blue-darker
+  transform: translateX(0)
   
   .icon-menu-container
     display: block
     position: absolute
-    right: -80px
+    right: -90px
     top: 0
     height: 60px
-    width: 80px
+    width: 90px
     background-color: $gray-lighter
     text-align: center
     

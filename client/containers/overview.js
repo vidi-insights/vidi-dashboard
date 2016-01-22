@@ -31,23 +31,17 @@ export const ByService = React.createClass({
     // This is the style class for the byservice panel or page to the right of the
     // sidebar. Feel free to use whatever classes you want. It's a basic, if expanded
     // use 'byservice-panel-expanded' class otherwise use 'byservice-panel'
-    var styleClass = 'byservice-panel'
+    var styleClass = 'page'
     if (isExpanded) {
       styleClass = styleClass + '-expanded'
     }
 
     return (
       // I don't do anything special with this as it's just a container
-      <div className="byservice-wrapper">
-        // we pass the method to handle the toggle down to the sidebar, it has the button
-        // so it needs the method to call. We also pass is expanded, this lets the sidebar
-        // change to 'expanded' exactly like the class above.
+      <div className="page-wrapper">
         <Sidebar isExpanded={isExpanded} onToggle={handleToggle} />
-        // This is where we assign the calculated style class from above. You might not event
-        // need this if the whole thing is flexable. My orginal design wasn't so I needed to
-        // add an expanded class to fill the space the sidebar leaves when it is not expanded.
         <div className={styleClass}>
-          By Service
+          <h2>By Service</h2>
         </div>
       </div>
     )

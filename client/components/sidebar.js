@@ -22,7 +22,7 @@ export default React.createClass({
     return (
       <aside className={styleClass} role="complementary">
         <a href="" className="icon-menu-container" onClick={onToggle}>
-          <span className="icon icon-menu icon-dimmed"></span>
+          <span className="icon icon-menu"></span>
         </a>
         <nav role="navigation">
           <ul className="list-unstyled">
