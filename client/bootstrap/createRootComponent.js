@@ -20,19 +20,16 @@ export default function createRootComponent (store) {
 
   function requireAuth (nextState, replaceState) {
     const state = store.getState()
-    const hasToken = Boolean(state.auth.token)
+    const isLoggedIn = state.auth.isLoggedIn
     const nextPath = nextState.location.pathname
 
-    if (!hasToken) {
+    if (!isLoggedIn) {
       replaceState({nextPathname: nextPath}, '/login')
     }
   }
 
   function handleLogout (nextState, replaceState) {
-    const state = store.getState()
-    const token = state.auth.token
-
-    store.dispatch(logout(token))
+    store.dispatch(logout())
   }
 
   syncReduxAndRouter(history, store)
@@ -42,10 +39,10 @@ export default function createRootComponent (store) {
       <Router history={history}>
         <Route path="/" component={Shell}>
           <IndexRoute component={Overview} onEnter={requireAuth} />
-          <Route path="bymessage" component={ByMessage} />
-          <Route path="byservice" component={ByService} />
-          <Route path="clients" component={Clients} />
-          <Route path="profile" component={Profile} />
+          <Route path="byservice" component={ByService} onEnter={requireAuth} />
+          <Route path="bymessage" component={ByMessage} onEnter={requireAuth} />
+          <Route path="clients" component={Clients} onEnter={requireAuth} />
+          <Route path="profile" component={Profile} onEnter={requireAuth} />
           <Route path="login" component={Login} />
           <Route path="logout" onEnter={handleLogout} />
         </Route>

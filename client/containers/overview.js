@@ -5,12 +5,7 @@ import {connect} from 'react-redux'
 import {toggleSidebar} from '../actions/sidebar'
 import Sidebar from '../components/sidebar'
 
-export const ByService = React.createClass({
-  propTypes: {
-    dispatch: React.PropTypes.func.isRequired,
-    isExpanded: React.PropTypes.bool.isRequired
-  },
-
+export const Overview = React.createClass({
   handleToggle (event) {
     event.preventDefault()
     this.props.dispatch(toggleSidebar())
@@ -50,12 +45,8 @@ export const ByService = React.createClass({
   }
 })
 
-function mapStatesToProps (state) {
-  const {sidebar} = state
-
+export default connect((state) => {
   return {
-    isExpanded: sidebar.isExpanded
+    isExpanded: state.sidebar.isExpanded
   }
-}
-
-export default connect(mapStatesToProps)(ByService)
+})(Overview)

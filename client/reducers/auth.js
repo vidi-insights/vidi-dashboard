@@ -3,47 +3,39 @@
 import * as authActions from '../constants/auth'
 
 const authState = {
-  isLoggingIn: false,
-  isLoggingOut: false,
+  isLoggedIn: false,
   hasError: false,
-  niceError: null,
-  token: null
+  niceError: null
 }
 
 export default function auth (state = authState, action) {
   switch (action.type) {
     case authActions.LOGIN_REQUEST:
       return Object.assign({}, state, {
-        isLoggingIn: true,
-        isLoggingOut: false,
+        isLoggedIn: false,
         hasError: false,
         niceError: null
       })
 
     case authActions.LOGIN_RESPONSE:
       return Object.assign({}, state, {
-        isLoggingIn: false,
-        isLoggingOut: false,
+        isLoggedIn: action.isLoggedIn,
         hasError: action.hasError,
-        niceError: action.niceError,
-        token: action.token
+        niceError: action.niceError
       })
 
     case authActions.LOGOUT_REQUEST:
       return Object.assign({}, state, {
-        isLoggingIn: false,
-        isLoggingOut: true,
+        isLoggedIn: action.isLoggedIn,
         hasError: false,
         niceError: null
       })
 
     case authActions.LOGOUT_RESPONSE:
       return Object.assign({}, state, {
-        isLoggingIn: false,
-        isLoggingOut: false,
+        isLoggedIn: action.isLoggedIn,
         hasError: action.hasError,
-        niceError: action.niceError,
-        token: action.token
+        niceError: action.niceError
       })
 
     default:

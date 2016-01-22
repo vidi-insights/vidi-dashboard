@@ -3,7 +3,7 @@
 import React from 'react'
 
 export default React.createClass({
-  render: function () {
+  render () {
     return (
       <footer className="footer txt-small txt-dimmed mb mt txt-center has-icon" role="contentinfo">
         <div className="container-fluid">
