@@ -41,8 +41,8 @@ export default function createRootComponent (store) {
       <Router history={history}>
         <Route path="/" component={Shell}>
           <IndexRoute component={Overview} onEnter={requireAuth} />
-          <Route path="bymessage" component={ByService} />
-          <Route path="byservice" component={ByMessage} />
+          <Route path="bymessage" component={ByMessage} />
+          <Route path="byservice" component={ByService} />
           <Route path="profile" component={Profile} />
           <Route path="login" component={Login} />
           <Route path="logout" onEnter={handleLogout} />
