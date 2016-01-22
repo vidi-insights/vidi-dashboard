@@ -52,6 +52,10 @@ export const ByService = React.createClass({
               </select>
             </div>
         </div>
+          <div className="alert alert-info alert-has-icon">
+            <span className="icon icon-refresh-blue"></span>
+            <p className="m0">Loading data...</p>
+          </div>
         </div>
       </div>
     )
