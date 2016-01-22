@@ -22,7 +22,7 @@ export default function createRootComponent (store) {
     const state = store.getState()
     const isLoggedIn = state.auth.isLoggedIn
     const nextPath = nextState.location.pathname
-
+return
     if (!isLoggedIn) {
       replaceState({nextPathname: nextPath}, '/login')
     }

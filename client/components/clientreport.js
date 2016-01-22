@@ -1,7 +1,8 @@
 'use strict'
 
 var React = require('react')
-var LineChart = require('./linechart')
+var ReactD3 = require('react-d3-components')
+var LineChart = ReactD3.LineChart
 var Moment = require('moment')
 var D3 = require('d3')
 var _ = require('lodash')
@@ -25,14 +26,13 @@ module.exports = React.createClass({
 
     var row = (<div key="cpu">
       <LineChart
-        legend={true}
         data={data.cpu}
-        width='100%'
+        width={400}
         height={400}
-        title="CPU Utilization"
-        yAxisLabel="%"
-        xAxisLabel="Timestamp"
-        gridHorizontal={true}
+        margin={{top: 10, bottom: 50, left: 50, right: 10}}
+        xAxis={{innerTickSize: 6, label: "Timestamp"}}
+        yAxis={{label: "% Utilization"}}
+        shapeColor={"red"}
       />
     </div>);
 
