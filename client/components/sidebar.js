@@ -22,6 +22,7 @@ export default React.createClass({
             <li><Link to={'/'} className="nav-item">Overview</Link></li>
             <li><Link to={'/byservice'} className="nav-item">By Service</Link></li>
             <li><Link to={'/bymessage'} className="nav-item">By Message</Link></li>
+            <li><Link to={'/clients'} className="nav-item">Node.js Clients</Link></li>
           </ul>
         </nav>
       </aside>

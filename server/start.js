@@ -1,6 +1,7 @@
 'use strict'
 
 var Bell = require('bell')
+var Borland = require('borland')
 var Chairo = require('chairo')
 var Cookie = require('hapi-auth-cookie')
 var Dashboard = require('./dashboard')
@@ -31,17 +32,19 @@ function endIfErr (err) {
 
 // Create our server.
 var server = new Hapi.Server()
-server.connection({port: opts.server.port})
+server.connection({ port: opts.server.port, labels: ['web'] })
+server.connection({ port: 5000, labels: ['api'] })
 
 // Declare our Hapi plugin list.
 var plugins = [
-  {register:Bell},
-  {register:Cookie},
-  {register: Chairo, options: opts.chairo},
-  {register:Nes},
-  {register:Inert},
-  {register:Dashboard},
-  {register:Vidi}
+  {register: Bell, select: 'web'},
+  {register: Cookie, select: 'web'},
+  {register: Chairo, options: opts.chairo, select: 'web'},
+  {register: Nes},
+  {register: Inert},
+  {register: Dashboard, select: 'web'},
+  {register: Vidi, select: 'web'},
+  {register: Borland, select: 'api'}
 ]
 
 // Register our plugins.
@@ -52,7 +55,10 @@ server.register(plugins, function (err) {
   server.start(function (err) {
     endIfErr(err)
 
-    // Hello world!
-    console.log('server started: ' + server.info.port)
+    var ports = []
+    server.connections.forEach(function (connection) {
+      ports.push(connection.info.port)
+    })
+    console.log('server started on ports: ' + ports.join(', '))
   })
 })
