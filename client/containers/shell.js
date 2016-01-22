@@ -16,7 +16,7 @@ export const Shell = React.createClass({
 
     return (
       <div className="shell">
-        <Header showProfile={isAuthenticated} />
+        <Header isAuthenticated={isAuthenticated} />
           {children}
         <Footer />
       </div>

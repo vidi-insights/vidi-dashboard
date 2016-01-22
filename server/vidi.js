@@ -4,6 +4,7 @@ var Package = require('../package.json')
 
 var ClientRoutes = require('./routes/client')
 var UserRoutes = require('./routes/user')
+var SenecaUser = require('seneca-user')
 
 module.exports = function (server, options, next) {
   // Set our realitive path (for our routes)
@@ -35,9 +36,7 @@ module.exports = function (server, options, next) {
 
   // Set up our seneca plugins
   var seneca = server.seneca
-  seneca.use(require('./plugins/seneca-pubsub-decorator'))
-
-  seneca.client({type:'tcp', port: '3055', pin:'role:user, cmd:*'})
+  seneca.use(SenecaUser)
 
   // Set up a default user
   seneca.act({
@@ -47,29 +46,6 @@ module.exports = function (server, options, next) {
     email: process.env.USER_EMAIL || 'admin@vidi.com',
     password: process.env.USER_PASS || 'vidi'
   })
-
-  // Handle subscription wireup. This is very naive right
-  // now, only handles a single subscription.
-  seneca.subscribe({role: 'metrics', cmd: 'sub'},
-    function (msg) {
-      var uri = '/metrics/' + msg.source + '/' + msg.metric
-      server.subscription(uri)
-
-      // Sometimes an interval is all you need for real-time data
-      setInterval(function () {
-        seneca.act({role: msg.role, source: msg.source, metric: msg.metric},
-          function (err, data) {
-            if (err) {
-              //console.log(err.stack || err)
-              return
-            }
-
-            if (data) {
-              server.publish(uri, data)
-            }
-          })
-      }, 1000)
-    })
 
   next()
 }

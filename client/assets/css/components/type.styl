@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------------
+*
+* TYPOGRAPHY
+*
+--------------------------------------------------------------------*/
+
+html
+  font-size: 100%
+
+body
+  color: $gray
+  font-family: "Roboto", Helvetica, Arial, sans-serif
+  font-size: $font-base
+  line-height: $line-height-base
+  text-rendering: optimizeSpeed
+  font-weight: $font-weight-regular
+
+// Headings
+
+h1
+  font-size: $font-h1
+
+h2
+  font-size: $font-h2
+
+h3
+  font-size: $font-h3
+
+h1, h2, h3
+  font-weight: $font-weight-regular
+
+// Helpers
+
+.txt-small
+  font-size: $font-small
+
+.txt-center
+  text-align: center
+
+.txt-left
+  text-align: left
+
+.txt-right
+  text-align: right
+
+.txt-dimmed
+  color: $gray-light
+  
+@media screen and (max-width: 48em)
+
+  h2
+    font-size: $font-h3

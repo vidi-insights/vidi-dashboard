@@ -1,0 +1,48 @@
+/*--------------------------------------------------------------------
+*
+* SIDEBAR
+*
+--------------------------------------------------------------------*/
+
+.sidebar,
+aside
+  transition: transform .3s ease
+  
+.sidebar-docked
+  transform: translateX(-200px)
+
+aside
+  position: absolute
+  left: 0
+  top: 69px
+  height: calc(100% - 65px)
+  width: 200px
+  background-color: $blue-darker
+  transform: translateX(0)
+  
+  .icon-menu-container
+    display: block
+    position: absolute
+    right: -90px
+    top: 0
+    height: 60px
+    width: 90px
+    background-color: $gray-lighter
+    text-align: center
+    
+  .icon-menu
+    position: relative
+    top: 20px
+    cursor: pointer
+  
+nav li:not(:last-child)
+  border-bottom: 1px solid lighten($blue-darker, 20%)
+  
+.nav-item
+  display: block
+  padding: $ui-spacing-half $ui-spacing
+  color: white
+  transition: all .3s ease-in
+  
+  &:hover
+    background-color: $blue-dark

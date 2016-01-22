@@ -1,0 +1,76 @@
+/*--------------------------------------------------------------------
+*
+* ICONS
+*
+--------------------------------------------------------------------*/
+
+.icon
+  display: inline-block
+  height: 21px
+  width: 21px
+  background-repeat: no-repeat
+  background-size: contain
+
+.icon-menu
+  background-image: url("../img/icon-menu.svg")
+
+.icon-profile
+  width: 10px
+  background-image: url("../img/icon-profile.svg")
+  
+.has-icon-profile
+  
+  &:hover .icon-profile
+    background-image: url("../img/icon-profile-hover.svg")
+
+.icon-bug
+  width: 17px
+  height: 16px
+  background-image: url("../img/icon-bug.svg")
+
+.icon-graph
+  width: 19px
+  height: 20px
+  background-image: url("../img/icon-graph.svg")
+
+.icon-signin
+  width: 16px
+  background-image: url("../img/icon-signin.svg")
+
+.icon-signout
+  background-image: url("../img/icon-signout.svg")
+  
+.icon-refresh-blue
+  position: relative
+  top: 4px
+  margin-right: $ui-spacing-half
+  background-image: url("../img/icon-refresh-blue.svg")
+  
+.has-icon-signout
+  
+  &:hover .icon-signout
+    background-image: url("../img/icon-signout-hover.svg")
+
+.icon-dimmed
+  opacity: .5
+  transition: opacity .5s ease-in
+  
+  &:hover
+    opacity: 1
+
+// Container with an icon\
+
+.has-icon
+
+  *
+    display: inline-block
+    
+  .icon
+    top: 4px
+    
+  .logo
+    top: 5px
+
+  .icon, .logo
+    position: relative
+    margin-right: 10px

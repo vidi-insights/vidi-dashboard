@@ -23,17 +23,6 @@ module.exports = [
   },
   {
     method: 'GET',
-    path: '/fonts/{path*}',
-    handler: {
-      directory: {
-        path: './fonts/',
-        redirectToSlash: true,
-        index: false
-      }
-    }
-  },
-  {
-    method: 'GET',
     path: '/img/{path*}',
     handler: {
       directory: {

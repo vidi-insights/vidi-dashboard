@@ -1,27 +1,46 @@
 'use strict'
 
 import React from 'react'
-import BoxHeader from './boxHeader'
-import ProfileToolbox from './profileToolbox'
+import {Link} from 'react-router'
 
-export const Header = React.createClass({
+export default React.createClass({
   render () {
-    let toolbox = <ProfileToolbox />
+    let profile = null
 
-    if (!this.props.showProfile) {
-      toolbox = null
+    if (this.props.isAuthenticated) {
+      profile = (
+        <div className="col-xs-4 col-sm-6 txt-right">
+          <ul className="list-unstyled list-inline">
+            <li>
+              <Link to={'/profile'} className="has-icon has-icon-profile">
+                <span className="icon icon-profile"></span>
+                <span>Profile</span>
+                </Link>
+            </li>
+            <li>
+              <Link to={'/logout'} className="has-icon has-icon-signout">
+                <span className="icon icon-signout"></span>
+                <span>Sign out</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )
     }
 
     return (
-      <div className="header">
-        <BoxHeader
-          icon={require('../assets/img/vidi-logo-small.svg')}
-          iconLink={'/'}
-          title={'Vidi: Dashboard'}
-          toolbox={toolbox} />
-      </div>
+      <header className="header" role="banner">
+        <div className="container-fluid">
+          <div className="row middle-xs">
+            <div className="has-icon col-xs-8 col-sm-6">
+              <Link to={'/'} className='logo logo-vidi'></Link>
+              <h2 className="m0">Vidi: Dashboard</h2>
+            </div>
+
+            {profile}
+          </div>
+        </div>
+      </header>
     )
   }
 })
-
-export default Header

@@ -1,0 +1,31 @@
+/*--------------------------------------------------------------------
+*
+* BUTTONS
+*
+--------------------------------------------------------------------*/
+
+.btn
+  border-radius: $ui-radius
+  padding: $ui-spacing-third $ui-spacing-half
+  border: none
+  color: white
+  background-color: $blue
+  cursor: pointer
+  user-select: none
+  transition: all .5s ease-in
+  
+  &:focus
+    outline: none
+    
+  &:hover
+    background-color: $blue-light
+
+// Button sizes
+
+.btn-large
+  padding: $ui-spacing-half $ui-spacing
+
+@media screen and (max-width: 480px)
+
+  .btn
+    width: 100%

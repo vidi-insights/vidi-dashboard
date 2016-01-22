@@ -6,6 +6,7 @@ const authState = {
   isLoggingIn: false,
   isLoggingOut: false,
   hasError: false,
+  niceError: null,
   token: null
 }
 
@@ -15,7 +16,8 @@ export default function auth (state = authState, action) {
       return Object.assign({}, state, {
         isLoggingIn: true,
         isLoggingOut: false,
-        hasError: false
+        hasError: false,
+        niceError: null
       })
 
     case authActions.LOGIN_RESPONSE:
@@ -23,6 +25,7 @@ export default function auth (state = authState, action) {
         isLoggingIn: false,
         isLoggingOut: false,
         hasError: action.hasError,
+        niceError: action.niceError,
         token: action.token
       })
 
@@ -30,7 +33,8 @@ export default function auth (state = authState, action) {
       return Object.assign({}, state, {
         isLoggingIn: false,
         isLoggingOut: true,
-        hasError: false
+        hasError: false,
+        niceError: null
       })
 
     case authActions.LOGOUT_RESPONSE:
@@ -38,6 +42,7 @@ export default function auth (state = authState, action) {
         isLoggingIn: false,
         isLoggingOut: false,
         hasError: action.hasError,
+        niceError: action.niceError,
         token: action.token
       })
 

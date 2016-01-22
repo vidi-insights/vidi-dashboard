@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="20px" height="21px" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>Untitled 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="icon-signout" sketch:type="MSLayerGroup" fill="#FFFFFF">
+            <path d="M15,12 L15,9.5 L10,9.5 L10,7 L15,7 L15,4.5 L20,8.25 L15,12 Z M12.5,10.75 L13.75,10.75 L13.75,15.75 C13.7369791,16.1015643 13.6132824,16.3945301 13.3789062,16.6289062 C13.1445301,16.8632824 12.8515643,16.9869791 12.5,17 L7.5,17 L7.5,20.75 L0.68359375,17.3515625 C0.475259375,17.2343744 0.30924541,17.078126 0.185546875,16.8828125 C0.0618483398,16.687499 0,16.4661471 0,16.21875 L0,2 C0.0130208984,1.64843574 0.136717578,1.35546992 0.37109375,1.12109375 C0.605469922,0.886717578 0.898435742,0.763020898 1.25,0.75 L12.5,0.75 C12.8515643,0.763020898 13.1445301,0.886717578 13.3789062,1.12109375 C13.6132824,1.35546992 13.7369791,1.64843574 13.75,2 L13.75,5.75 L12.5,5.75 L12.5,2 L2.5,2 L7.5,4.5 L7.5,15.75 L12.5,15.75 L12.5,10.75 Z" id="" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

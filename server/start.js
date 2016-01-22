@@ -7,10 +7,12 @@ var Bell = require('bell')
 var Hapi_Cookie = require('hapi-auth-cookie')
 var Auth = require('seneca-auth')
 
-// If you want to add more metrics,
-// this is the place to do it.
-function registerMetrics (seneca) {
-  seneca.use(require('./plugins/vidi-msgstats-metrics'))
+var opts = {
+  chairo: {
+    timeout: 500,
+    secure: true,
+    web: require('seneca-web')
+  }
 }
 
 // Log and end the process
@@ -30,14 +32,7 @@ server.connection({port: process.env.PORT || 3000})
 var plugins = [
   Bell,
   Hapi_Cookie,
-  {
-    register: Chairo,
-    options: {
-      timeout: 500,
-      secure: true,
-      web: require('seneca-web')
-    }
-  },
+  {register: Chairo, options: opts.chairo},
   Nes,
   Inert,
   Vidi
@@ -64,11 +59,6 @@ server.register(plugins, function (err) {
   // metrics plugins if there is no error.
   server.start(function (err) {
     endIfErr(err)
-
-    // Register metrics last, to ensure
-    // everything else is wired up first.
-    registerMetrics(server.seneca)
-
     console.log('server started: ' + server.info.port)
   })
 })

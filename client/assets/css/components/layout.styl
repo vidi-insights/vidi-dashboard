@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------------
+*
+* LAYOUT
+*
+--------------------------------------------------------------------*/
+
+// Sticky footer
+.shell
+  display: flex
+  min-height: 100vh
+  flex-direction: column
+
+.page-wrapper,
+.page-wrapper-expanded
+  flex: 1
+  margin-left: 90px
+  
+.page,
+.page-wrapper,
+.page-wrapper-expanded
+  flex: 1
+
+// Sidebar reappearance and page shifting  
+.page, .page-wrapper, .page-wrapper-expanded
+  h2
+    margin-top: $ui-spacing-half
+    
+.page-wrapper-expanded,
+.page-wrapper-expanded + footer
+  margin-left: 280px
+  
+// Center children vertically
+.vertical-center
+  display: flex
+  align-items: center
+  justify-content: center
+
+// Floats
+.fl-left
+  float: left
+
+.fl-right
+  float: right
