@@ -10,8 +10,9 @@ import {logout} from '../actions/auth'
 import Shell from '../containers/shell'
 import Login from '../containers/login'
 import Overview from '../containers/overview'
-import ByMessage from '../containers/bymessage'
-import ByService from '../containers/byservice'
+import Messages from '../containers/messages'
+import Services from '../containers/services'
+import Processes from '../containers/processes'
 import Clients from '../containers/clients'
 import Profile from '../containers/profile'
 
@@ -22,7 +23,7 @@ export default function createRootComponent (store) {
     const state = store.getState()
     const isLoggedIn = state.auth.isLoggedIn
     const nextPath = nextState.location.pathname
-    
+
     if (!isLoggedIn) {
       replaceState({nextPathname: nextPath}, '/login')
     }
@@ -39,8 +40,9 @@ export default function createRootComponent (store) {
       <Router history={history}>
         <Route path="/" component={Shell}>
           <IndexRoute component={Overview} onEnter={requireAuth} />
-          <Route path="byservice" component={ByService} onEnter={requireAuth} />
-          <Route path="bymessage" component={ByMessage} onEnter={requireAuth} />
+          <Route path="services" component={Services} onEnter={requireAuth} />
+          <Route path="messages" component={Messages} onEnter={requireAuth} />
+          <Route path="processes" component={Processes} onEnter={requireAuth} />
           <Route path="clients" component={Clients} onEnter={requireAuth} />
           <Route path="profile" component={Profile} onEnter={requireAuth} />
           <Route path="login" component={Login} />
