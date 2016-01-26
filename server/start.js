@@ -9,6 +9,7 @@ var Hapi = require('hapi')
 var Inert = require('inert')
 var Nes = require('nes')
 var Vidi = require('./vidi')
+var ConcordaClient = require('./concorda-client')
 
 // Options for our hapi plugins.
 var opts = {
@@ -44,7 +45,8 @@ var plugins = [
   {register: Inert},
   {register: Dashboard, select: 'web'},
   {register: Vidi, select: 'web'},
-  {register: Borland, select: 'api'}
+  {register: Borland, select: 'api'},
+  {register: ConcordaClient}
 ]
 
 // Register our plugins.

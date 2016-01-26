@@ -9,9 +9,6 @@ module.exports = function (server, options, next) {
   // Set up our seneca plugins
   var seneca = server.seneca
 
-  // pin any user commands out to concorda
-  seneca.client({type:'tcp', port: '3055', pin:'role:user, cmd:*'})
-
   // set up our own local auth
   seneca.use(Auth, {
     restrict: '/api',
@@ -20,12 +17,18 @@ module.exports = function (server, options, next) {
   })
 
   // Set up a default user in concorda
-  seneca.act({
-    role: 'user',
-    cmd: 'register',
-    name: process.env.USER_NAME || 'Admin',
-    email: process.env.USER_EMAIL || 'admin@vidi.com',
-    password: process.env.USER_PASS || 'vidi'
+  // timeout is a @hack. I need to know when mesh is available
+  // so I can register this user
+  setTimeout(function(){
+    seneca.act({
+      role: 'user',
+      cmd: 'register',
+      name: process.env.USER_NAME || 'Admin',
+      email: process.env.USER_EMAIL || 'admin@vidi.com',
+      password: process.env.USER_PASS || 'vidi'
+    }, function(err, result){
+      console.log(err, result)
+    }), 180 * 1000
   })
 
   seneca.use(require('seneca-pubsub'))
