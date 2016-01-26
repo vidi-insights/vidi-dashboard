@@ -2,15 +2,15 @@
 
 var React = require('react')
 var ReactD3 = require('react-d3-components')
-var LineChart = ReactD3.LineChart
+var AreaChart = ReactD3.AreaChart
 
 module.exports = React.createClass({
   getDefaultProps: function () {
     return {
-      margin: {top: 30, bottom: 30, left: 30, right: 30},
+      margin: {top: 10, bottom: 30, left: 30, right: 10},
       data: {label: 'default', values: {x:0, y:0}},
       xAxis: {label: 'x-axis'},
-      yAxis: {label: 'y-axis'}
+      yAxis: {label: 'y-axis'},
     }
   },
 
@@ -44,7 +44,7 @@ module.exports = React.createClass({
     }
   },
 
-  render () {
+  render: function () {
     const {state, props} = this
     const {margin} = props
 
@@ -58,15 +58,14 @@ module.exports = React.createClass({
     if (width < 0) width = 400
 
     return (
-      <LineChart
+      <AreaChart
         data={props.data}
         width={width}
         height={height}
+        tooltipHtml={props.tooltipHtml}
         margin={props.margin}
         xAxis={props.xAxis}
         yAxis={props.yAxis}
-        stroke={props.stroke}
-        tooltipHtml={props.tooltipHtml}
       />
     )
   }
