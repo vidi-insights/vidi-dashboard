@@ -18,7 +18,7 @@ module.exports = {
     noParse: ['react', 'd3'],
     preLoaders: [{
       test: /\.(js|jsx)$/,
-      loader: 'babel?presets[]=react,presets[]=es2015',
+      loader: 'babel?presets[]=react,presets[]=es2015,presets[]=stage-0,plugins[]=transform-decorators-legacy,plugins[]=transform-object-rest-spread',
       exclude: [nodeModulesPath]
     }],
     loaders: [
