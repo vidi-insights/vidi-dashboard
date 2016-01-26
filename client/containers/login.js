@@ -21,6 +21,9 @@ export const Login = React.createClass({
     const {dispatch} = this.props
 
     dispatch(login(email.value, pass.value))
+
+    email.value = ''
+    pass.value = ''
   },
 
   render () {
