@@ -15,7 +15,7 @@ module.exports = function (server, opts, next) {
   })
 
   seneca
-    .use('mesh',{auto:true, pin:'role:' + options.name})
+    .use('mesh',{auto:true, pin:'role:' + options.name + ', info: *'})
 
   next()
 }
