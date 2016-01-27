@@ -10,7 +10,7 @@ module.exports = function (server, opts, next) {
   let seneca = server.seneca
   options = _.extend({}, opts, options)
 
-  seneca.add('role: ' + options.name + ', cmd: closeSession', function(msg, done){
+  seneca.add('role: ' + options.name + ', info: logout', function(msg, done){
     done()
   })
 
