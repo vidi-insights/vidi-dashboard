@@ -1,16 +1,21 @@
 'use strict'
 
-// Hapi Plugin for wiring up Concorda
-module.exports = function (server, options, next) {
-  // Set up our seneca plugins
-  var seneca = server.seneca
+const _ = require('lodash')
 
-  seneca.add('role: concorda-client, cmd: closeSession', function(msg, done){
+let options = {name: 'concorda'}
+
+// Hapi Plugin for wiring up Concorda
+module.exports = function (server, opts, next) {
+  // Set up our seneca plugins
+  let seneca = server.seneca
+  options = _.extend({}, opts, options)
+
+  seneca.add('role: ' + options.name + ', info: logout', function(msg, done){
     done()
   })
 
   seneca
-    .use('mesh',{auto:true, pin:'role:concorda-client'})
+    .use('mesh',{auto:true, pin:'role:' + options.name + ', info: *'})
 
   next()
 }
@@ -18,5 +23,5 @@ module.exports = function (server, options, next) {
 
 // Hapi plugin metadata
 module.exports.attributes = {
-  name: 'concorda-client'
+  name: options.name
 }
