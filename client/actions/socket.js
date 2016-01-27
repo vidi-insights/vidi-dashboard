@@ -5,6 +5,8 @@ var Nes = require('nes/client')
 import * as socketActions from '../constants/socket'
 import * as authActions from '../constants/auth'
 
+import { pushPath } from 'redux-simple-router'
+
 const client = new Nes.Client(document.URL.replace('http', 'ws'))
 
 const userLogoutUri = '/user/logout'
@@ -31,7 +33,10 @@ export function socketSubscribe (source, metric) {
       client.subscribe(userLogoutUri,
         (msg) => {
           if (msg.user_id) {
-            dispatch({type: authActions.LOGOUT_REQUEST, data: msg, uri: userLogoutUri})
+            if (msg.user_id === window.localStorage.getItem('user_id')){
+              dispatch({type: authActions.LOGOUT_RESPONSE})
+              dispatch(pushPath('/login'))
+            }
           }
         },
         (err) => {

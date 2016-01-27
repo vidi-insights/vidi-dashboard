@@ -24,6 +24,7 @@ export function login (user, pass) {
         }
 
         window.localStorage.setItem('isLoggedIn', true)
+        window.localStorage.setItem('user_id', resp.body.user.id)
 
         dispatch({
           type: authActions.LOGIN_RESPONSE,
