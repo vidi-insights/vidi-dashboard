@@ -3,9 +3,11 @@
 var Nes = require('nes/client')
 
 import * as socketActions from '../constants/socket'
+import * as authActions from '../constants/auth'
 
 const client = new Nes.Client(document.URL.replace('http', 'ws'))
 
+const userLogoutUri = '/user/logout'
 
 export function socketSubscribe (source, metric) {
   return (dispatch) => {
@@ -26,6 +28,16 @@ export function socketSubscribe (source, metric) {
           dispatch({type: socketActions.SOCKET_SUBSCRIBE, uri: uri})
         }
       )
+      client.subscribe(userLogoutUri,
+        (msg) => {
+          if (msg.user_id) {
+            dispatch({type: authActions.LOGOUT_REQUEST, data: msg, uri: userLogoutUri})
+          }
+        },
+        (err) => {
+          dispatch({type: socketActions.SOCKET_SUBSCRIBE, uri: userLogoutUri})
+        }
+      )
     })
   }
 }
@@ -37,5 +49,6 @@ export function socketUnsubscribe (source, metric) {
     client.unsubscribe(uri)
 
     dispatch({type: socketActions.SOCKET_UNSUBSCRIBE, uri: uri})
+    dispatch({type: socketActions.SOCKET_UNSUBSCRIBE, uri: userLogoutUri})
   }
 }
