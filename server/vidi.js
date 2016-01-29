@@ -28,8 +28,8 @@ module.exports = function (server, options, next) {
       password: process.env.USER_PASS || 'vidi'
     }, function(err, result){
       console.log(err, result)
-    }), 180 * 1000
-  })
+    })
+  }, 30 * 1000)
 
   seneca.use(require('seneca-pubsub'))
 
