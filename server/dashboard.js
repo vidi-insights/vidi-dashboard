@@ -46,6 +46,18 @@ module.exports = function (server, options, next) {
 
   server.route({
     method: 'GET',
+    path: '/assets/{path*}',
+    handler: {
+      directory: {
+        path: './assets/',
+        redirectToSlash: true,
+        index: false
+      }
+    }
+  })
+
+  server.route({
+    method: 'GET',
     path: '/{path*}',
     handler: {
       file: {
