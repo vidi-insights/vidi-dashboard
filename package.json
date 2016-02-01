@@ -8,7 +8,8 @@
     "Wyatt Preul",
     "Mircea Alexandru",
     "Adrian Rossouw",
-    "Cristian Kiss"
+    "Cristian Kiss",
+    "Karolina Szczur (http://thefox.is)"
   ],
   "main": "./server/start.js",
   "license": "MIT",
