@@ -6,13 +6,7 @@ import {login} from '../actions/auth'
 import {pushPath} from 'redux-simple-router'
 
 export const Login = React.createClass({
-  componentDidMount() {
-    const {isLoggedIn, dispatch} = this.props
-
-    if (isLoggedIn) {
-      dispatch(pushPath('/'))
-    }
-  },
+  componentDidMount() {},
 
   handleSubmit (event) {
     event.preventDefault()
@@ -53,11 +47,10 @@ export const Login = React.createClass({
 })
 
 export default connect((state) => {
-  const {hasError, niceError, isLoggedIn} = state.auth
+  const {hasError, niceError} = state.auth
 
   return {
     hasError: hasError,
-    niceError: niceError,
-    isLoggedIn: isLoggedIn
+    niceError: niceError
   }
 })(Login)
