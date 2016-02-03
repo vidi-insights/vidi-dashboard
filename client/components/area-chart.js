@@ -8,9 +8,9 @@ module.exports = React.createClass({
   getDefaultProps: function () {
     return {
       margin: {top: 10, bottom: 30, left: 30, right: 10},
-      data: {label: 'default', values: {x:0, y:0}},
+      data: {label: 'default', values: {x: 0, y: 0}},
       xAxis: {label: 'x-axis'},
-      yAxis: {label: 'y-axis'},
+      yAxis: {label: 'y-axis'}
     }
   },
 

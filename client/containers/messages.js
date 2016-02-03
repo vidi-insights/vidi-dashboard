@@ -4,7 +4,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Panel from '../components/panel'
 import LineChart from '../components/line-chart'
-import Moment from 'moment'
 
 export const Messages = React.createClass({
   render () {
@@ -28,31 +27,31 @@ export const Messages = React.createClass({
           <LineChart
             data={data}
             height={250}
-            xAxis={{innerTickSize: 6, label: "Timestamp"}}
-            yAxis={{label: "Flow Rate"}}
+            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
+            yAxis={{label: 'Flow Rate'}}
           />
         </Panel>
         <Panel title={'role:info, get:req'}>
           <LineChart
             data={data}
             height={250}
-            xAxis={{innerTickSize: 6, label: "Timestamp"}}
-            yAxis={{label: "Flow Rate"}}
+            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
+            yAxis={{label: 'Flow Rate'}}
           />
         </Panel>
         <Panel title={'role:info, get:res'}>
           <LineChart
             data={data}
             height={250}
-            xAxis={{innerTickSize: 6, label: "Timestamp"}}
-            yAxis={{label: "Flow Rate"}}
+            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
+            yAxis={{label: 'Flow Rate'}}
           />
           <Panel title={'role:info, get:res'}>
             <LineChart
               data={data}
               height={250}
-              xAxis={{innerTickSize: 6, label: "Timestamp"}}
-              yAxis={{label: "Flow Rate"}}
+              xAxis={{innerTickSize: 6, label: 'Timestamp'}}
+              yAxis={{label: 'Flow Rate'}}
             />
           </Panel>
         </Panel>
@@ -64,23 +63,17 @@ export const Messages = React.createClass({
 export default connect((state) => {
   return {
     data: {
-      name: "dummy",
+      name: 'dummy',
       values: [
-        { x: 70, y: 1 },
-        { x: 71, y: 2 },
-        { x: 72, y: 4 },
-        { x: 73, y: 5 },
-        { x: 74, y: 1 },
-        { x: 75, y: 3 },
-        { x: 76, y: 2 },
-        { x: 75, y: 3 }
+        {x: 70, y: 1},
+        {x: 71, y: 2},
+        {x: 72, y: 4},
+        {x: 73, y: 5},
+        {x: 74, y: 1},
+        {x: 75, y: 3},
+        {x: 76, y: 2},
+        {x: 75, y: 3}
       ]
     }
   }
 })(Messages)
-
-
-function formatTimeAxis (x) {
-  if (!x) return ''
-  return Moment(x).format('hh:mm:ss')
-}

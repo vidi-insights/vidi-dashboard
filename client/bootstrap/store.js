@@ -13,4 +13,4 @@ const initalState = {
 
 const store = createStore(rootReducer, initalState)
 
-export default store;
+export default store
