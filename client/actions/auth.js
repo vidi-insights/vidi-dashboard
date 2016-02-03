@@ -4,7 +4,6 @@ import Request from 'superagent/lib/client'
 import { pushPath } from 'redux-simple-router'
 
 import * as authActions from '../constants/auth'
-import store from '../bootstrap/store'
 import { subscribeSocket, unsubscribeSocket } from '../lib/socket'
 
 const userLogoutUri = '/user/logout'
@@ -30,7 +29,7 @@ export function validateCookie (redirectUrl) {
           isLoggedIn: true
         })
 
-        if(redirectUrl){
+        if (redirectUrl) {
           return dispatch(pushPath(redirectUrl))
         }
 
@@ -75,8 +74,8 @@ export function login (user, pass) {
 
         dispatch(pushPath('/'))
       })
-    }
   }
+}
 
 export function logout () {
   return (dispatch) => {

@@ -46,7 +46,7 @@ export const Overview = React.createClass({
           data={groupedData}
           height={200}
           tooltipHtml={tooltipHtml}
-          xAxis={{innerTickSize: 10, tickFormat: formatTimeAxis, label: 'time' }}
+          xAxis={{innerTickSize: 10, tickFormat: formatTimeAxis, label: 'time'}}
           yAxis={{label: 'msgs/sec'}}
         />
       </Panel>
@@ -54,7 +54,7 @@ export const Overview = React.createClass({
 
     var breakdownChart = (
       <Panel>
-        <TabularChart data={breakdown} />
+        <TabularChart data={breakdown}/>
       </Panel>
     )
 
@@ -72,7 +72,7 @@ export const Overview = React.createClass({
     data = data['flow_rate_per_pin']
 
     if (data) {
-      var perMsgType = []
+      perMsgType = []
       data.forEach(function (measurement) {
         var totalVolume = (
           <Panel title={(measurement.label.replace('_', ', '))}>
@@ -80,7 +80,7 @@ export const Overview = React.createClass({
               data={measurement}
               height={200}
               tooltipHtml={tooltipHtml}
-              xAxis={{innerTickSize: 5, tickFormat: formatTimeAxis, label: 'time' }}
+              xAxis={{innerTickSize: 5, tickFormat: formatTimeAxis, label: 'time'}}
               yAxis={{label: 'msgs/sec'}}
             />
           </Panel>
@@ -99,18 +99,18 @@ export const Overview = React.createClass({
     data = data['ratio_per_pin']
 
     if (data) {
-      var perMsgType = []
+      perMsgType = []
       data.forEach(function (measurement) {
         var totalVolume = (
-            <Panel title={(measurement.label.replace(/_/g, ', '))}>
-              <LineChart
-                data={measurement}
-                height={200}
-                tooltipHtml={tooltipHtmlRatio}
-                xAxis={{innerTickSize: 5, tickFormat: formatTimeAxis, label: 'time' }}
-                yAxis={{label: 'ratio'}}
-              />
-            </Panel>
+          <Panel title={(measurement.label.replace(/_/g, ', '))}>
+            <LineChart
+              data={measurement}
+              height={200}
+              tooltipHtml={tooltipHtmlRatio}
+              xAxis={{innerTickSize: 5, tickFormat: formatTimeAxis, label: 'time'}}
+              yAxis={{label: 'ratio'}}
+            />
+          </Panel>
         )
         perMsgType.push(totalVolume)
       })
@@ -143,7 +143,7 @@ export const Overview = React.createClass({
 
       var breakdownChart = (
         <div className='four columns'>
-          <TabularChart data={breakdown} />
+          <TabularChart data={breakdown}/>
         </div>
       )
 
@@ -166,9 +166,8 @@ export const Overview = React.createClass({
     var perTagAndPidMemStats = data['mem_usage_per_tag_and_pid']
 
     if (data) {
-      var perServiceCharts = []
+      perServiceCharts = []
       perService.forEach(function (service) {
-
         var flowrateChart = (
           <Panel title={'Service: ' + service.label}>
             <LineChart
@@ -183,17 +182,17 @@ export const Overview = React.createClass({
 
         var pidRows = []
         _.each(perTagAndPid, function (tagAndPid) {
-          if(_.startsWith(tagAndPid.label, service.label)) {
+          if (_.startsWith(tagAndPid.label, service.label)) {
             var pidChart = (
-                <Panel title={tagAndPid.label}>
-                  <LineChart
-                    data={tagAndPid}
-                    height={200}
-                    tooltipHtml={tooltipHtml}
-                    xAxis={{label: 'time', tickFormat: formatTimeAxis}}
-                    yAxis={{label: 'msgs/sec'}}
-                  />
-                </Panel>
+              <Panel title={tagAndPid.label}>
+                <LineChart
+                  data={tagAndPid}
+                  height={200}
+                  tooltipHtml={tooltipHtml}
+                  xAxis={{label: 'time', tickFormat: formatTimeAxis}}
+                  yAxis={{label: 'msgs/sec'}}
+                />
+              </Panel>
             )
 
             _.each(perTagAndPidMemStats, function (set) {
@@ -233,25 +232,25 @@ export const Overview = React.createClass({
 
     if (!_.isEmpty(data)) {
       var pinsOverviewSection =
-      this.makePinOverviewSection(data)
+        this.makePinOverviewSection(data)
       var perPinSection = this.makePerPinSection(data)
       var tagOverviewSection = this.makeTagOverviewSection(data)
       var perServiceSection = this.makePerTagSection(data)
       var ratioSection = this.makeRatioSection(data)
 
       report = (
-       <div>
-        <Panel title={'Messages'}>
-          {pinsOverviewSection}
-          {perPinSection}
-          {ratioSection}
-        </Panel>
+        <div>
+          <Panel title={'Messages'}>
+            {pinsOverviewSection}
+            {perPinSection}
+            {ratioSection}
+          </Panel>
 
-        <Panel title={'Services'}>
-          {tagOverviewSection}
-          {perServiceSection}
-        </Panel>
-       </div>
+          <Panel title={'Services'}>
+            {tagOverviewSection}
+            {perServiceSection}
+          </Panel>
+        </div>
       )
     }
 
@@ -290,23 +289,23 @@ function formatTimeAxis (x) {
 function tooltipHtml (label, point) {
   if (!label || !point) return ''
   return label.replace(/_/g, ', ').replace(/-/, ' ') +
-         "   -  Time: " +
-         Moment(point.x).format('hh:mm:ss') +
-         "   msgs/sec: " +
-         point.y
+    '   -  Time: ' +
+    Moment(point.x).format('hh:mm:ss') +
+    '   msgs/sec: ' +
+    point.y
 }
 
 function tooltipHtmlRatio (label, point) {
   if (!point) return ''
 
-  return "   -  Time: " + Moment(point.x).format('hh:mm:ss') +
-         "   Ratio: " + point.y
+  return '   -  Time: ' + Moment(point.x).format('hh:mm:ss') +
+    '   Ratio: ' + point.y
 }
 
 function areaTootip (x, y) {
   if (!x || !y) return ''
 
-  return "   -  Time: " +
-         Moment(x).format('hh:mm:ss') +
-         "   Mb: " + y
+  return '   -  Time: ' +
+    Moment(x).format('hh:mm:ss') +
+    '   Mb: ' + y
 }

@@ -3,7 +3,7 @@
 var React = require('react')
 
 module.exports = React.createClass({
-  getInitialState: function() {
+  getInitialState: function () {
     return {
       width: 1000,
       data: {
@@ -17,8 +17,7 @@ module.exports = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    var that = this
+  componentDidMount: function () {
   },
 
   render: function () {
@@ -46,10 +45,10 @@ module.exports = React.createClass({
       <div className="tabular-chart">
         <table>
           <thead>
-            {headers}
+          {headers}
           </thead>
           <tbody>
-            {rows}
+          {rows}
           </tbody>
         </table>
       </div>

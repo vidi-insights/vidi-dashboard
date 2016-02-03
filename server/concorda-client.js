@@ -13,13 +13,13 @@ module.exports = function (server, opts, next) {
   options = _.extend({}, opts, options)
 
   server.subscription(uri)
-  seneca.add('role: ' + options.name + ', info: logout', function(msg, done){
+  seneca.add('role: ' + options.name + ', info: logout', function (msg, done) {
     done()
     server.publish(uri, {user_id: msg.user_id})
   })
 
   seneca
-    .use('mesh',{auto:true, pin:'role:' + options.name + ', info: *'})
+    .use('mesh', {auto: true, pin: 'role:' + options.name + ', info: *'})
 
   next()
 }

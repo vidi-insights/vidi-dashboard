@@ -5,7 +5,7 @@ var Boom = require('boom')
 
 module.exports = function (server, options, next) {
   server.dependency('inert')
-  
+
   server.realm.settings.files.relativeTo = Path.join(__dirname, '../dist/')
 
   server.route({
