@@ -4,6 +4,10 @@ import Request from 'superagent/lib/client'
 import { pushPath } from 'redux-simple-router'
 
 import * as authActions from '../constants/auth'
+import store from '../bootstrap/store'
+import { subscribeSocket, unsubscribeSocket } from '../lib/socket'
+
+const userLogoutUri = '/user/logout'
 
 export function validateCookie (redirectUrl) {
   return (dispatch) => {
@@ -61,6 +65,14 @@ export function login (user, pass) {
           hasError: false
         })
 
+        subscribeSocket(userLogoutUri, (msg) => {
+          if (msg.user_id && msg.user_id === window.localStorage.getItem('user_id')) {
+            unsubscribeSocket(userLogoutUri)
+            dispatch({type: authActions.LOGOUT_RESPONSE})
+            dispatch(pushPath('/login'))
+          }
+        })
+
         dispatch(pushPath('/'))
       })
     }
@@ -77,6 +89,7 @@ export function logout () {
       .end(() => {
         window.localStorage.clear()
 
+        unsubscribeSocket(userLogoutUri)
         dispatch({type: authActions.LOGOUT_RESPONSE, hasError: false})
         dispatch(pushPath('/'))
       })

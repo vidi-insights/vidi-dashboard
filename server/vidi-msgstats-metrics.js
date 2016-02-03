@@ -294,6 +294,131 @@ module.exports = function (options) {
       })
     })
 
+    seneca.add({role: 'metrics', source: 'msgstats', metric: 'flow_rate_per_service'}, function (msg, done) {
+      var payload = {
+        'flow_rate_per_service': []
+      }
+
+      var options = msg.options || {}
+      var since = options.since || '120s';
+      var groupTime = options.groupTime || '1s';
+
+      var query = `SELECT SUM(count) FROM msg_stats WHERE time > now() - ${since}  GROUP BY "tag", time(${groupTime});`
+
+      db.query(query, function (err, data) {
+        if (err || !data) {
+          return noteFailure(err, done)
+        }
+
+        var perServiceFlowRates = sanitizeFlowPerService(data[0])
+        _.each(perServiceFlowRates, function (serviceRate) {
+          payload['flow_rate_per_service'].push(serviceRate)
+        })
+
+        return done(null, {data: payload})
+      })
+    })
+
+    seneca.add({role: 'metrics', source: 'msgstats', metric: 'flow_rate_per_pin'}, function (msg, done) {
+      var payload = {
+        'flow_rate_per_pin': []
+      }
+
+      var options = msg.options || {}
+      var since = options.since || '120s';
+      var groupTime = options.groupTime || '1s';
+
+      var query = `SELECT SUM(count) FROM msg_stats WHERE time > now() - ${since}  GROUP BY "pin", time(${groupTime});`
+
+      db.query(query, function (err, data) {
+        if (err || !data) {
+          return noteFailure(err, done)
+        }
+
+        var flowPerPin = makeFlowPerPin(data[0])
+        _.each(flowPerPin, function (flow) {
+          payload['flow_rate_per_pin'].push(flow)
+        })
+
+        return done(null, {data: payload})
+      })
+    })
+
+    seneca.add({role: 'metrics', source: 'msgstats', metric: 'flow_rate_per_tag_and_pid'}, function (msg, done) {
+      var payload = {
+        'flow_rate_per_tag_and_pid': []
+      }
+
+      var options = msg.options || {}
+      var since = options.since || '120s';
+      var groupTime = options.groupTime || '1s';
+
+      var query = `SELECT SUM(count) FROM msg_stats WHERE time > now() - ${since} GROUP BY "pid", "tag", time(${groupTime});`
+
+      db.query(query, function (err, data) {
+        if (err || !data) {
+          return noteFailure(err, done)
+        }
+
+        var perTagAndPids = makePerTagAndPidFlowRate(data[6])
+        _.each(perTagAndPids, function (perTagAndPid) {
+          payload['flow_rate_per_tag_and_pid'].push(perTagAndPid)
+        })
+
+        return done(null, {data: payload})
+      })
+    })
+
+    seneca.add({role: 'metrics', source: 'msgstats', metric: 'mem_usage_per_tag_and_pid'}, function (msg, done) {
+      var payload = {
+        'mem_usage_per_tag_and_pid': []
+      }
+
+      var options = msg.options || {}
+      var since = options.since || '120s';
+      var groupTime = options.groupTime || '1s';
+
+      var query = `SELECT SUM(available) as free, SUM(used) as used FROM mem_stats WHERE time > now() - ${since}  GROUP BY "tag", "pid", time(${groupTime});`
+
+      db.query(query, function (err, data) {
+        if (err || !data) {
+          return noteFailure(err, done)
+        }
+
+        var perTagAndPidMems = makePerTagAndPidMemRate(data[8])
+        _.each(perTagAndPidMems, function (perTagAndPids) {
+          payload['mem_usage_per_tag_and_pid'].push(perTagAndPids)
+        })
+
+        return done(null, {data: payload})
+      })
+    })
+
+    seneca.add({role: 'metrics', source: 'msgstats', metric: 'ratio_per_pin'}, function (msg, done) {
+      var payload = {
+        'ratio_per_pin': []
+      }
+
+      var options = msg.options || {}
+      var since = options.since || '120s';
+      var groupTime = options.groupTime || '1s';
+
+      var query = `SELECT MEAN(count) FROM msg_ratios WHERE time > now() - ${since}  GROUP BY "pin", time(${groupTime}) fill(0);`
+
+      db.query(query, function (err, data) {
+        if (err || !data) {
+          return noteFailure(err, done)
+        }
+
+        var countPin = makeRatioPerPin(data[9])
+        _.each(countPin, function (flow) {
+          payload['ratio_per_pin'].push(flow)
+        })
+
+        return done(null, {data: payload})
+      })
+    })
+
   // Allows realtime communication hook up, we
   // are essentially declaring our metrics to
   // anyone who wants to 'subscribe' to it.
@@ -302,6 +427,41 @@ module.exports = function (options) {
     cmd: 'sub',
     source: 'msgstats',
     metric: 'rolling_flow_rate'
+  })
+
+  seneca.publish({
+    role: 'metrics',
+    cmd: 'sub',
+    source: 'msgstats',
+    metric: 'flow_rate_per_service'
+  })
+
+  seneca.publish({
+    role: 'metrics',
+    cmd: 'sub',
+    source: 'msgstats',
+    metric: 'flow_rate_per_pin'
+  })
+
+  seneca.publish({
+    role: 'metrics',
+    cmd: 'sub',
+    source: 'msgstats',
+    metric: 'flow_rate_per_tag_and_pid'
+  })
+
+  seneca.publish({
+    role: 'metrics',
+    cmd: 'sub',
+    source: 'msgstats',
+    metric: 'mem_usage_per_tag_and_pid'
+  })
+
+  seneca.publish({
+    role: 'metrics',
+    cmd: 'sub',
+    source: 'msgstats',
+    metric: 'ratio_per_pin'
   })
 
   // At minimum seneca needs the name of our

@@ -34,18 +34,19 @@ module.exports = function (server, options, next) {
   seneca.subscribe({role: 'metrics', cmd: 'sub'},
    function (msg) {
      var uri = '/metrics/' + msg.source + '/' + msg.metric
+     console.log(uri);
      server.subscription(uri)
 
      // Sometimes an interval is all you need for real-time data
      setInterval(function () {
-       seneca.act({role: msg.role, source: msg.source, metric: msg.metric},
+       seneca.act({role: msg.role, source: msg.source, metric: msg.metric, options: msg.options},
          function (err, data) {
            if (err) {
              console.log(err.stack || err)
              return
            }
 
-           if(data) {
+           if (data) {
              console.log(data)
              server.publish(uri, data)
            }

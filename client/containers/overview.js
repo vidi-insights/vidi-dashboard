@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react'
-import {connect} from 'react-redux'
-import {socketSubscribe, socketUnsubscribe} from '../actions/socket'
+import { connect } from 'react-redux'
+import { subscribe, unsubscribe } from '../actions/vidi'
 
 import LineChart from '../components/line-chart'
 import AreaChart from '../components/area-chart'
@@ -12,13 +12,22 @@ import Moment from 'moment'
 import D3 from 'd3'
 import _ from 'lodash'
 
+const metrics = [
+  'rolling_flow_rate',
+  'flow_rate_per_service',
+  'flow_rate_per_pin',
+  'flow_rate_per_tag_and_pid',
+  'mem_usage_per_tag_and_pid',
+  'ratio_per_pin'
+]
+
 export const Overview = React.createClass({
   componentDidMount () {
-    this.props.dispatch(socketSubscribe('msgstats', 'rolling_flow_rate'))
+    this.props.dispatch(subscribe('msgstats', metrics))
   },
 
   componentWillUnmount () {
-    this.props.dispatch(socketUnsubscribe('msgstats', 'rolling_flow_rate'))
+    this.props.dispatch(unsubscribe('msgstats', metrics))
   },
 
   makePinOverviewSection (data) {
@@ -266,7 +275,7 @@ export const Overview = React.createClass({
 })
 
 export default connect((state) => {
-  const metric = state.socket['/metrics/msgstats/rolling_flow_rate'] || {data: {}}
+  const metric = state.vidi['/metrics/msgstats/rolling_flow_rate'] || {data: {}}
 
   return {
     data: metric.data
