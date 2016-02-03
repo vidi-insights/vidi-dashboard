@@ -3,10 +3,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Panel from '../components/panel'
-<<<<<<< HEAD
-import LineChart from '../components/line-chart'
-=======
->>>>>>> Updated to make server configurable
 
 export const Messages = React.createClass({
   render () {
@@ -23,42 +19,7 @@ export const Messages = React.createClass({
             </select>
           </div>
         </div>
-
-<<<<<<< HEAD
-        <Panel title={'role:search, cmd:search'}>
-          <LineChart
-            data={data}
-            height={250}
-            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
-            yAxis={{label: 'Flow Rate'}}
-          />
-        </Panel>
-        <Panel title={'role:info, get:req'}>
-          <LineChart
-            data={data}
-            height={250}
-            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
-            yAxis={{label: 'Flow Rate'}}
-          />
-        </Panel>
-        <Panel title={'role:info, get:res'}>
-          <LineChart
-            data={data}
-            height={250}
-            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
-            yAxis={{label: 'Flow Rate'}}
-          />
-          <Panel title={'role:info, get:res'}>
-            <LineChart
-              data={data}
-              height={250}
-              xAxis={{innerTickSize: 6, label: 'Timestamp'}}
-              yAxis={{label: 'Flow Rate'}}
-            />
-          </Panel>
-=======
         <Panel title={'messages'}>
->>>>>>> Updated to make server configurable
         </Panel>
       </div>
     )
@@ -66,22 +27,4 @@ export const Messages = React.createClass({
 })
 
 export default connect((state) => {
-<<<<<<< HEAD
-  return {
-    data: {
-      name: 'dummy',
-      values: [
-        {x: 70, y: 1},
-        {x: 71, y: 2},
-        {x: 72, y: 4},
-        {x: 73, y: 5},
-        {x: 74, y: 1},
-        {x: 75, y: 3},
-        {x: 76, y: 2},
-        {x: 75, y: 3}
-      ]
-    }
-  }
-=======
->>>>>>> Updated to make server configurable
 })(Messages)
