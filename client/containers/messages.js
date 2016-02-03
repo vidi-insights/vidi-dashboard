@@ -3,12 +3,13 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Panel from '../components/panel'
+<<<<<<< HEAD
 import LineChart from '../components/line-chart'
+=======
+>>>>>>> Updated to make server configurable
 
 export const Messages = React.createClass({
   render () {
-    const {data} = this.props
-
     return (
       <div className="page container-fluid">
         <div className="row middle-xs">
@@ -23,6 +24,7 @@ export const Messages = React.createClass({
           </div>
         </div>
 
+<<<<<<< HEAD
         <Panel title={'role:search, cmd:search'}>
           <LineChart
             data={data}
@@ -54,6 +56,9 @@ export const Messages = React.createClass({
               yAxis={{label: 'Flow Rate'}}
             />
           </Panel>
+=======
+        <Panel title={'messages'}>
+>>>>>>> Updated to make server configurable
         </Panel>
       </div>
     )
@@ -61,6 +66,7 @@ export const Messages = React.createClass({
 })
 
 export default connect((state) => {
+<<<<<<< HEAD
   return {
     data: {
       name: 'dummy',
@@ -76,4 +82,6 @@ export default connect((state) => {
       ]
     }
   }
+=======
+>>>>>>> Updated to make server configurable
 })(Messages)

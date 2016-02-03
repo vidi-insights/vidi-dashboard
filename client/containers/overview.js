@@ -1,25 +1,8 @@
 'use strict'
 
 import React from 'react'
-import { connect } from 'react-redux'
-import { subscribe, unsubscribe } from '../actions/vidi'
-
-import LineChart from '../components/line-chart'
-import AreaChart from '../components/area-chart'
-import TabularChart from '../components/tabular-chart'
+import {connect} from 'react-redux'
 import Panel from '../components/panel'
-import Moment from 'moment'
-import D3 from 'd3'
-import _ from 'lodash'
-
-const metrics = [
-  'rolling_flow_rate',
-  'flow_rate_per_service',
-  'flow_rate_per_pin',
-  'flow_rate_per_tag_and_pid',
-  'mem_usage_per_tag_and_pid',
-  'ratio_per_pin'
-]
 
 export const Overview = React.createClass({
   componentDidMount () {
@@ -30,6 +13,7 @@ export const Overview = React.createClass({
     this.props.dispatch(unsubscribe('msgstats', metrics))
   },
 
+<<<<<<< HEAD
   makePinOverviewSection (data) {
     var flowRateCombined = data['flow_rate_combined']
     var flowRatePerPin = data['flow_rate_per_pin'] || []
@@ -253,6 +237,9 @@ export const Overview = React.createClass({
         </div>
       )
     }
+=======
+  render () {
+>>>>>>> Updated to make server configurable
 
     return (
       <div className="page container-fluid">
@@ -267,19 +254,19 @@ export const Overview = React.createClass({
             </select>
           </div>
         </div>
-        {report}
+
+        <Panel title={'Overview'} />
+        
       </div>
     )
   }
 })
 
 export default connect((state) => {
-  const metric = state.vidi['/metrics/msgstats/rolling_flow_rate'] || {data: {}}
-
   return {
-    data: metric.data
   }
 })(Overview)
+<<<<<<< HEAD
 
 function formatTimeAxis (x) {
   if (!x) return ''
@@ -309,3 +296,5 @@ function areaTootip (x, y) {
     Moment(x).format('hh:mm:ss') +
     '   Mb: ' + y
 }
+=======
+>>>>>>> Updated to make server configurable

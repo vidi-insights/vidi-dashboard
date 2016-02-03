@@ -1,66 +1,77 @@
 'use strict'
 
 var Bell = require('bell')
-var Borland = require('borland')
 var Chairo = require('chairo')
 var Cookie = require('hapi-auth-cookie')
-var Dashboard = require('./dashboard')
 var Hapi = require('hapi')
 var Inert = require('inert')
 var Nes = require('nes')
-var Vidi = require('./vidi')
-var ConcordaClient = require('./concorda-client')
+var Path = require('path')
+var Boom = require('boom')
 
-// Options for our hapi plugins.
-var opts = {
-  server: {
-    port: process.env.PORT || 3000
-  },
-  chairo: {
-    timeout: 500,
-    secure: true,
-    web: require('seneca-web')
-  }
-}
+module.exports = function (opts, done) {
+  var server = new Hapi.Server()
 
-// Log and end the process on err.
-function endIfErr (err) {
-  if (err) {
-    console.error(err)
-    process.exit(1)
-  }
-}
+  server.connection({port: opts.server.port})
+  server.realm.settings.files.relativeTo = Path.join(__dirname, '../dist/')
 
-// Create our server.
-var server = new Hapi.Server()
-server.connection({ port: opts.server.port, labels: ['web'] })
-server.connection({ port: 5000, labels: ['api'] })
+  var plugins = [
+    {register: Bell},
+    {register: Cookie},
+    {register: Chairo},
+    {register: Nes},
+    {register: Inert}
+  ]
 
-// Declare our Hapi plugin list.
-var plugins = [
-  {register: Bell, select: 'web'},
-  {register: Cookie, select: 'web'},
-  {register: Chairo, options: opts.chairo, select: 'web'},
-  {register: Nes},
-  {register: Inert},
-  {register: Dashboard, select: 'web'},
-  {register: Vidi, select: 'web'},
-  {register: Borland, select: 'api'},
-  {register: ConcordaClient}
-]
+  server.register(plugins, (err) => {
+    if (err) return done(err)
 
-// Register our plugins.
-server.register(plugins, function (err) {
-  endIfErr(err)
-
-  // Kick off the server.
-  server.start(function (err) {
-    endIfErr(err)
-
-    var ports = []
-    server.connections.forEach(function (connection) {
-      ports.push(connection.info.port)
+    server.route({
+      method: 'GET',
+      path: '/css/{path*}',
+      handler: {
+        directory: {
+          path: './css/',
+          redirectToSlash: true,
+          index: false
+        }
+      }
     })
-    console.log('server started on ports: ' + ports.join(', '))
+
+    server.route({
+      method: 'GET',
+      path: '/js/{path*}',
+      handler: {
+        directory: {
+          path: './js/',
+          redirectToSlash: true,
+          index: false
+        }
+      }
+    })
+
+    server.route({
+      method: 'GET',
+      path: '/img/{path*}',
+      handler: {
+        directory: {
+          path: './img/',
+          redirectToSlash: true,
+          index: false
+        }
+      }
+    })
+
+    server.route({
+      method: 'GET',
+      path: '/{path*}',
+      handler: {
+        file: {
+          path: './index.html'
+        }
+      }
+    })
+
+    done(null, server)
   })
-})
+}
