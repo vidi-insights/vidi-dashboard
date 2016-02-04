@@ -49,6 +49,7 @@
     "seneca": "^1.0.0",
     "seneca-auth": "mirceaalexandru/seneca-auth#hapi-express",
     "seneca-balance-client": "0.2.0",
+    "seneca-decree": "senecajs/seneca-decree",
     "seneca-mesh": "0.3.0",
     "seneca-pubsub": "^0.1.0",
     "seneca-user": "senecajs/seneca-user.git",
