@@ -1,6 +1,6 @@
 'use strict'
 
-var Decree = require('./decree')
+var Decree = require('seneca-decree')
 var mesh_monolith = require('./vidi-all-in')
 var mesh_concorda = require('./vidi-concorda-mesh')
 var dashboard = require('./dashboard')
