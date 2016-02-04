@@ -1,18 +1,16 @@
 'use strict'
 
-var Bell = require('bell')
-var Borland = require('borland')
-var Chairo = require('chairo')
-var Cookie = require('hapi-auth-cookie')
-var Dashboard = require('./dashboard')
-var Hapi = require('hapi')
-var Inert = require('inert')
-var Nes = require('nes')
-var Vidi = require('./vidi')
-var ConcordaClient = require('./concorda-client')
+var Decree = require('./decree')
+var mesh_monolith = require('./vidi-all-in')
+var mesh_concorda = require('./vidi-concorda-mesh')
+var dashboard = require('./dashboard')
 
-// Options for our hapi plugins.
 var opts = {
+  admin: {
+    name: process.env.USER_NAME || 'Admin',
+    email: process.env.USER_EMAIL || 'admin@email.com',
+    password: process.env.USER_PASS || 'admin'
+  },
   server: {
     port: process.env.PORT || 3000
   },
@@ -23,44 +21,9 @@ var opts = {
   }
 }
 
-// Log and end the process on err.
-function endIfErr (err) {
-  if (err) {
-    console.error(err)
-    process.exit(1)
-  }
-}
-
-// Create our server.
-var server = new Hapi.Server()
-server.connection({ port: opts.server.port, labels: ['web'] })
-server.connection({ port: 5000, labels: ['api'] })
-
-// Declare our Hapi plugin list.
-var plugins = [
-  {register: Bell, select: 'web'},
-  {register: Cookie, select: 'web'},
-  {register: Chairo, options: opts.chairo, select: 'web'},
-  {register: Nes},
-  {register: Inert},
-  {register: Dashboard, select: 'web'},
-  {register: Vidi, select: 'web'},
-  {register: Borland, select: 'api'},
-  {register: ConcordaClient}
+var scripts = [
+  {pin: {monolith: true}, script: mesh_monolith},
+  {pin: {concorda: true}, script: mesh_concorda}
 ]
 
-// Register our plugins.
-server.register(plugins, function (err) {
-  endIfErr(err)
-
-  // Kick off the server.
-  server.start(function (err) {
-    endIfErr(err)
-
-    var ports = []
-    server.connections.forEach(function (connection) {
-      ports.push(connection.info.port)
-    })
-    console.log('server started on ports: ' + ports.join(', '))
-  })
-})
+Decree(opts, scripts, dashboard)

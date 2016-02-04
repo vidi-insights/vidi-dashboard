@@ -13,7 +13,6 @@ import Overview from '../containers/overview'
 import Messages from '../containers/messages'
 import Services from '../containers/services'
 import Processes from '../containers/processes'
-import Clients from '../containers/clients'
 import Profile from '../containers/profile'
 
 export default function createRootComponent (store) {
@@ -39,7 +38,6 @@ export default function createRootComponent (store) {
           <Route path="services" component={Services} onEnter={requireAuth} />
           <Route path="messages" component={Messages} onEnter={requireAuth} />
           <Route path="processes" component={Processes} onEnter={requireAuth} />
-          <Route path="clients" component={Clients} onEnter={requireAuth} />
           <Route path="profile" component={Profile} onEnter={requireAuth} />
           <Route path="login" component={Login} />
           <Route path="logout" onEnter={handleLogout} />

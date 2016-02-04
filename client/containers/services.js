@@ -20,7 +20,7 @@ export const Services = React.createClass({
           </div>
         </div>
 
-        <Panel title={'info'} />
+        <Panel title={'services'} />
       </div>
     )
   }

@@ -20,7 +20,7 @@ export const Processes = React.createClass({
           </div>
         </div>
 
-        <Panel title={'305258'} />
+        <Panel title={'Processes'} />
       </div>
     )
   }
