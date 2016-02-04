@@ -22,8 +22,7 @@
     "copy": "copyfiles -f ./client/assets/img/favicon.png ./dist/img",
     "build": "npm run copy & webpack --progress --colors",
     "watch": "webpack -w",
-    "start": "node ./server/vidi-all-in.js",
-    "start:concorda-mesh": "node ./server/vidi-concorda-mesh.js"
+    "start": "node ./server/start.js"
   },
   "dependencies": {
     "async": "1.5.x",
