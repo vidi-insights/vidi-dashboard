@@ -12,7 +12,7 @@ var opts = {
   chairo: {
     timeout: 500,
     secure: true,
-    web: true
+    web: require('seneca-web')
   }
 }
 
@@ -26,9 +26,9 @@ require('./start')(opts, (err, server) => {
   seneca.act({
     role: 'user',
     cmd: 'register',
-    name: opts.name,
-    email: opts.email,
-    password: opts.password
+    name: opts.admin.name,
+    email: opts.admin.email,
+    password: opts.admin.password
   })
 
   seneca.ready(() => {

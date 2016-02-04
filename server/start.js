@@ -18,7 +18,7 @@ module.exports = function (opts, done) {
   var plugins = [
     {register: Bell},
     {register: Cookie},
-    {register: Chairo},
+    {register: Chairo, options: opts.chairo},
     {register: Nes},
     {register: Inert}
   ]
