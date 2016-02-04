@@ -1,7 +1,6 @@
 'use strict'
 
 var Auth = require('seneca-auth')
-var AuthLocal = require('seneca-local-auth')
 
 // Hapi Plugin for wiring up Vidi
 module.exports = function (server, options, next) {
@@ -12,7 +11,6 @@ module.exports = function (server, options, next) {
 
   // set up our own local auth
   seneca.use(Auth, {restrict: '/api'})
-  seneca.use(AuthLocal)
 
   // Set up a default user in concorda
   // timeout is a @hack. I need to know when mesh is available
