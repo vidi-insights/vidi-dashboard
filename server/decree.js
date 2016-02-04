@@ -4,7 +4,7 @@
 
 const Minimist = require('minimist')
 const Jsonic = require('jsonic')
-const Patrun = require('Patrun')()
+const Patrun = require('patrun')()
 const _ = require('lodash')
 
 module.exports = (opts, scripts, ready) => {
