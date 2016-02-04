@@ -15,7 +15,7 @@ export function validateCookie (redirectUrl) {
     Request
       .get('/auth/user')
       .end((err, resp) => {
-        if (err && err.status === 401 || !resp.body || !resp.body.ok || !resp.body.login) {
+        if (err && err.status === 401 || !resp.body || resp.body.statusCode === 401) {
           dispatch({
             type: authActions.CHECK_COOKIE_RESPONSE,
             isLoggedIn: false
