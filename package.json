@@ -10,7 +10,7 @@
     "Adrian Rossouw",
     "Cristian Kiss"
   ],
-  "main": "./server/vidi-all-in.js",
+  "main": "./server/start.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
     "copy": "copyfiles -f ./client/assets/img/favicon.png ./dist/img",
     "build": "npm run copy & webpack --progress --colors",
     "watch": "webpack -w",
-    "start": "node ./server/start.js"
+    "start": "node -r toolbag ./server/start.js"
   },
   "dependencies": {
     "async": "1.5.x",
@@ -52,10 +52,13 @@
     "seneca-decree": "senecajs/seneca-decree",
     "seneca-mesh": "0.3.0",
     "seneca-pubsub": "^0.1.0",
+    "seneca-stats": "mcdonnelldean/seneca-stats",
+    "seneca-toolbag-stats": "mcdonnelldean/seneca-toolbag-stats",
     "seneca-user": "senecajs/seneca-user.git",
     "seneca-web": "mirceaalexandru/seneca-web#hapi",
     "style-loader": "0.13.x",
     "superagent": "1.7.x",
+    "toolbag": "^0.7.0",
     "varo": "0.3.x"
   },
   "devDependencies": {

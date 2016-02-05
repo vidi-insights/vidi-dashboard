@@ -2,8 +2,10 @@
 
 module.exports = (opts, server, done) => {
   var seneca = server.seneca
-    .use('user')
+    .use('user') // Swap this out for local concorda
     .use('auth', {restrict: '/api'})
+    .use('stats', {collector: true})
+    .use('toolbag-stats')
 
   seneca.act({
     role: 'user',

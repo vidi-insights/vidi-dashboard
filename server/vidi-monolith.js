@@ -2,10 +2,16 @@
 
 module.exports = (opts, server, done) => {
   var seneca = server.seneca
+    .use('user') // Swap this out for local concorda
     .use('auth', {restrict: '/api'})
 
-  // Do fancy concorda and meshing stuff in here only.
-  // You have access to fully loaded server and seneca
+  seneca.act({
+    role: 'user',
+    cmd: 'register',
+    name: opts.admin.name,
+    email: opts.admin.email,
+    password: opts.admin.password
+  })
 
   seneca.ready(() => {
     seneca.log.info('hapi', server.info.port)
