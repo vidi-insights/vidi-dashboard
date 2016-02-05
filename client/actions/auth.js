@@ -8,6 +8,13 @@ import { subscribeSocket, unsubscribeSocket } from '../lib/socket'
 
 const userLogoutUri = '/user/logout'
 
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGIN_RESPONSE = 'LOGIN_RESPONSE'
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
+export const LOGOUT_RESPONSE = 'LOGOUT_RESPONSE'
+export const CHECK_COOKIE_REQUEST = 'CHECK_COOKIE_REQUEST'
+export const CHECK_COOKIE_RESPONSE = 'CHECK_COOKIE_RESPONSE'
+
 export function validateCookie (redirectUrl) {
   return (dispatch) => {
     dispatch({type: authActions.CHECK_COOKIE_REQUEST})

@@ -1,10 +1,13 @@
 'use strict'
 
-import * as vidiActions from '../constants/vidi'
+
+
+import {subscribeSocket, unsubscribeSocket} from '../lib/socket'
 import _ from 'lodash'
 
-import store from '../bootstrap/store'
-import { subscribeSocket, unsubscribeSocket } from '../lib/socket'
+export const VIDI_SUBSCRIBE = 'VIDI_SUBSCRIBE'
+export const VIDI_UPDATE = 'VIDI_UPDATE'
+export const VIDI_UNSUBSCRIBE = 'VIDI_UNSUBSCRIBE'
 
 export function subscribe (source, metric) {
   return (dispatch) => {
