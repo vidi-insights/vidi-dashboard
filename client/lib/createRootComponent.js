@@ -34,12 +34,12 @@ export default function createRootComponent (store) {
     <Provider store={store}>
       <Router history={history}>
         <Route path="/" component={Shell}>
-          <IndexRoute component={Overview} onEnter={requireAuth} />
-          <Route path="services" component={Services} onEnter={requireAuth} />
-          <Route path="messages" component={Messages} onEnter={requireAuth} />
-          <Route path="processes" component={Processes} onEnter={requireAuth} />
-          <Route path="profile" component={Profile} onEnter={requireAuth} />
-          <Route path="login" component={Login} />
+          <IndexRoute component={Overview}  />
+          <Route path="services" component={Services}  />
+          <Route path="messages" component={Messages}  />
+          <Route path="processes" component={Processes}  />
+          <Route path="profile" component={Profile}  />
+          <Route path="login" component={Login}  />
           <Route path="logout" onEnter={handleLogout} />
         </Route>
       </Router>
