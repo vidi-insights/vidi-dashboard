@@ -6,11 +6,11 @@ import Panel from '../components/panel'
 
 export const Overview = React.createClass({
   componentDidMount () {
-    this.props.dispatch(subscribe('msgstats', metrics))
+    //this.props.dispatch(subscribe('msgstats', metrics))
   },
 
   componentWillUnmount () {
-    this.props.dispatch(unsubscribe('msgstats', metrics))
+    //this.props.dispatch(unsubscribe('msgstats', metrics))
   },
 
   render () {
