@@ -7,7 +7,7 @@ module.exports = (opts, server, done) => {
     .use('stats', {collector: true})
     .use('toolbag-stats')
     .use('influx-stats-store', {influx: {host: '192.168.99.100'}})
-    .use('vidi-toolbag-influx', {influx: {host: '192.168.99.100'})
+    .use('vidi-toolbag-influx', {influx: {host: '192.168.99.100'}})
 
   seneca.act({
     role: 'user',

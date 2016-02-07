@@ -16,10 +16,10 @@ export function subscribe (source, metric) {
     _.each(metrics, (met) => {
       const uri = '/vidi' + '/' + source + '/' + met
 
-      dispatch({type: VIDI_SUBSCRIBE, uri: uri})
+      dispatch({type: VIDI_SUBSCRIBE, uri: uri, source: source, stat: met})
 
       subscribeSocket(uri, (msg) => {
-        dispatch({type: VIDI_UPDATE, data: msg, uri: uri})
+        dispatch({type: VIDI_UPDATE, data: msg, uri: uri, source: source, stat: met})
       }, () => {
 
       })
@@ -34,7 +34,12 @@ export function unsubscribe (source, metric) {
     _.each(metrics, (met) => {
       const uri = '/vidi' + '/' + source + '/' + met
       unsubscribeSocket(uri)
-      dispatch({type: VIDI_UNSUBSCRIBE, uri: uri})
+      dispatch({
+        type: VIDI_UNSUBSCRIBE,
+        uri: uri,
+        source: source,
+        stat: met
+      })
     })
   }
 }
