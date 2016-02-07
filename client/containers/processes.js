@@ -53,8 +53,9 @@ export const Processes = React.createClass({
 })
 
 export default connect((state) => {
-  var process = state.vidi['/vidi/toolbag/process'] || {data: [null]}
-  var event_loop = state.vidi['/vidi/toolbag/event_loop'] || {data: [null]}
+  var vidi = state.vidi
+  var process = vidi.toolbag_process || {data: [null]}
+  var event_loop = vidi.toolbag_event_loop || {data: [null]}
 
   return {
     process_stats: process.data,

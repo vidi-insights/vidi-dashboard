@@ -45,7 +45,7 @@ export default function vidi (state = {}, action) {
     case VIDI_UPDATE:
     case VIDI_UNSUBSCRIBE:
       return Object.assign({}, state, {
-        [action.uri]: sub(state[action.uri], action)
+        [action.source + '_' + action.stat]: sub(state[action.source + '_' + action.stat], action)
       })
 
     default:
