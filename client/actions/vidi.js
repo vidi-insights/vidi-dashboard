@@ -14,13 +14,14 @@ export function subscribe (source, metric) {
     const metrics = Array.isArray(metric) ? metric : [metric]
 
     _.each(metrics, (met) => {
-      const uri = '/metrics' + '/' + source + '/' + met
+      const uri = '/vidi' + '/' + source + '/' + met
+
+      dispatch({type: VIDI_SUBSCRIBE, uri: uri})
 
       subscribeSocket(uri, (msg) => {
-        dispatch({type: VIDI_UPDATE, data: msg.data, uri: uri})
-        store.dispatch({type: VIDI_SUBSCRIBE, uri: uri})
+        dispatch({type: VIDI_UPDATE, data: msg, uri: uri})
       }, () => {
-        dispatch({type: VIDI_SUBSCRIBE, uri: uri})
+
       })
     })
   }
@@ -31,9 +32,9 @@ export function unsubscribe (source, metric) {
     const metrics = Array.isArray(metric) ? metric : [metric]
 
     _.each(metrics, (met) => {
-      const uri = '/metrics' + '/' + source + '/' + met
+      const uri = '/vidi' + '/' + source + '/' + met
       unsubscribeSocket(uri)
-      store.dispatch({type: VIDI_UNSUBSCRIBE, uri: uri})
+      dispatch({type: VIDI_UNSUBSCRIBE, uri: uri})
     })
   }
 }
