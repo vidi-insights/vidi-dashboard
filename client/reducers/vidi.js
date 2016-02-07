@@ -1,6 +1,10 @@
 'use strict'
 
-import * as socketActions from '../constants/socket'
+import {
+  VIDI_SUBSCRIBE,
+  VIDI_UPDATE,
+  VIDI_UNSUBSCRIBE
+} from '../actions/vidi'
 
 const subState = {
   isSubscribing: true,
@@ -10,20 +14,20 @@ const subState = {
 
 function sub (state = subState, action) {
   switch (action.type) {
-    case socketActions.SOCKET_SUBSCRIBE:
+    case VIDI_SUBSCRIBE:
       return Object.assign({}, state, {
         isSubscribing: true,
         isSubscribed: false
       })
 
-    case socketActions.SOCKET_UPDATE:
+    case VIDI_UPDATE:
       return Object.assign({}, state, {
         isSubscribing: false,
         isSubscribed: true,
         data: action.data
       })
 
-    case socketActions.SOCKET_UNSUBSCRIBE:
+    case VIDI_UNSUBSCRIBE:
       return Object.assign({}, state, {
         isSubscribing: false,
         isSubscribed: false,
@@ -35,11 +39,11 @@ function sub (state = subState, action) {
   }
 }
 
-export default function socket (state = {}, action) {
+export default function vidi (state = {}, action) {
   switch (action.type) {
-    case socketActions.SOCKET_SUBSCRIBE:
-    case socketActions.SOCKET_UPDATE:
-    case socketActions.SOCKET_UNSUBSCRIBE:
+    case VIDI_SUBSCRIBE:
+    case VIDI_UPDATE:
+    case VIDI_UNSUBSCRIBE:
       return Object.assign({}, state, {
         [action.uri]: sub(state[action.uri], action)
       })

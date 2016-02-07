@@ -1,14 +1,14 @@
 'use strict'
 
-import * as sidebarActions from '../constants/sidebar'
+import {TOGGLE_SIDEBAR} from '../actions/sidebar'
 
 const sidebarState = {
-  isExpanded: true
+  isExpanded: false
 }
 
 export default function sidebar (state = sidebarState, action) {
   switch (action.type) {
-    case sidebarActions.TOGGLE_SIDEBAR:
+    case TOGGLE_SIDEBAR:
       return Object.assign({}, state, {
         isExpanded: !state.isExpanded
       })

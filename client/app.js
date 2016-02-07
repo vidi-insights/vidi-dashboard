@@ -5,21 +5,9 @@ import './assets/css/main.styl'
 
 import ReactDom from 'react-dom'
 
-import createRootReducer from './bootstrap/createRootReducer'
-import configureStore from './bootstrap/configureStore'
-import createRootComponent from './bootstrap/createRootComponent'
+import createRootComponent from './lib/createRootComponent'
+import store from './lib/store'
 
-const rootReducer = createRootReducer()
-const createStore = configureStore()
-
-const initalState = {
-  auth: {
-    hasError: false,
-    isLoggedIn: Boolean(window.localStorage.getItem('isLoggedIn')) || false
-  }
-}
-
-const store = createStore(rootReducer, initalState)
 const root = createRootComponent(store)
 const hook = document.getElementById('app')
 

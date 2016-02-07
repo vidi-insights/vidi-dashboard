@@ -4,7 +4,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import LineChart from '../components/line-chart'
 import Panel from '../components/panel'
-import Moment from 'moment'
 import D3 from 'd3'
 import Lodash from 'lodash'
 
@@ -19,8 +18,8 @@ export const Clients = React.createClass({
           <LineChart
             data={row}
             height={250}
-            xAxis={{innerTickSize: 6, label: "Timestamp"}}
-            yAxis={{label: "Utilization %"}}
+            xAxis={{innerTickSize: 6, label: 'Timestamp'}}
+            yAxis={{label: 'Utilization %'}}
           />
         </Panel>
       )
@@ -44,15 +43,10 @@ export default connect((state) => {
   return {
     data: {
       cpu: [
-        {name: "Client 1",values: [{ x: 1, y: 82 }, { x: 2, y: 70 }, { x: 3, y: 10 }, { x: 4, y: 90 }]},
-        {name: "Client 2",values: [{ x: 1, y: 62 }, { x: 2, y: 80 }, { x: 3, y: 20 }, { x: 4, y: 10 }]},
-        {name: "Client 3",values: [{ x: 1, y: 52 }, { x: 2, y: 50 }, { x: 3, y: 51 }, { x: 4, y: 90 }]}
+        {name: 'Client 1', values: [{x: 1, y: 82}, {x: 2, y: 70}, {x: 3, y: 10}, {x: 4, y: 90}]},
+        {name: 'Client 2', values: [{x: 1, y: 62}, {x: 2, y: 80}, {x: 3, y: 20}, {x: 4, y: 10}]},
+        {name: 'Client 3', values: [{x: 1, y: 52}, {x: 2, y: 50}, {x: 3, y: 51}, {x: 4, y: 90}]}
       ]
     }
   }
 })(Clients)
-
-function formatTimeAxis (x) {
-  if (x) return Moment(x).format('hh:mm:ss')
-  else return ''
-}
