@@ -73,7 +73,7 @@ function make_process_sections (data, event_loop) {
         <h2 className="col-xs-12"><b>{now.pid + '-' + now.title}</b></h2>
       </div>
       <div className="row middle-xs">
-        <h5 className="col-xs-3">Process uptime</h5><h1 className="col-xs-3">{now.proc_uptime}</h1>
+        <h5 className="col-xs-3">Process uptime</h5><h1 className="col-xs-3">{Math.floor(now.proc_uptime)}</h1>
         <h5 className="col-xs-3">System uptime</h5><h1 className="col-xs-3">{now.sys_uptime}</h1>
       </div>
       <div className="row middle-xs">
@@ -121,7 +121,7 @@ function make_event_loop_section (event_loop) {
       </div>
       <div className="row middle-xs">
         <h5 className="col-xs-1">Delay</h5>
-        <h1 className="col-xs-4">{event_loop.latest.delay}</h1>
+        <h1 className="col-xs-4">{(Math.round(event_loop.latest.delay * 100) / 100)}</h1>
         <h5 className="col-xs-1">Limit</h5>
         <h1 className="col-xs-2">{event_loop.latest.limit}</h1>
         <h5 className="col-xs-2">Over Limit</h5>
