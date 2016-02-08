@@ -26,7 +26,7 @@ export const Processes = React.createClass({
       if (process) {
         var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
         sections.push(
-          <div key={process.pid} className="container-fluid">
+          <div key={process.pid} className="">
             {make_process_sections(process, event_loop)}
           </div>
         )
@@ -34,19 +34,23 @@ export const Processes = React.createClass({
     })
 
     return (
-      <div className="page container-fluid">
-        <div className="row middle-xs">
-          <h2 className="col-xs-12 col-sm-8">Processes</h2>
-          <div className="col-xs-12 col-sm-4 txt-right">
-            <select>
-              <option>120 seconds</option>
-              <option>5 minutes</option>
-              <option>30 minutes</option>
-              <option>1 hour</option>
-            </select>
+      <div className="page">
+        <div className="container-fluid">
+          <div className="row middle-xs">
+            <h2 className="col-xs-12 col-sm-8">Processes</h2>
+            <div className="col-xs-12 col-sm-4 txt-right">
+              <select>
+                <option>120 seconds</option>
+                <option>5 minutes</option>
+                <option>30 minutes</option>
+                <option>1 hour</option>
+              </select>
+            </div>
           </div>
         </div>
-        {sections}
+        <div className="container-fluid">
+          {sections}
+        </div>
       </div>
    )
   }
