@@ -6,6 +6,10 @@
 
 .page-processes
 
+  .single-process:not(:last-child)
+    margin-bottom: $ui-spacing
+    border-bottom: $ui-border
+
   .stats-row
     padding-bottom: $ui-spacing-half
     border-bottom: $ui-border
@@ -14,6 +18,12 @@
   
   .stats-label
     color: $gray-light
+    
+  .label-exceeded
+    color: $red
+  
+  .label-met
+    color: $green
     
 @media screen and (max-width: 48em)
 

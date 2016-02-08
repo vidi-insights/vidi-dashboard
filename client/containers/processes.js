@@ -26,7 +26,7 @@ export const Processes = React.createClass({
       if (process) {
         var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
         sections.push(
-          <div key={process.pid} className="">
+          <div key={process.pid} className="single-process">
             {make_process_sections(process, event_loop)}
           </div>
         )
@@ -74,7 +74,7 @@ function make_process_sections (data, event_loop) {
   section.push(
     <div key={(now.pid + 'process')}>
       <div className="row middle-xs">
-        <h2 className="col-xs-12"><b>{now.pid + '-' + now.title}</b></h2>
+        <h2 className="col-xs-12 mb2x">{now.pid + '-' + now.title}</h2>
       </div>
       <div className="row middle-xs stats-row">
         
@@ -114,8 +114,8 @@ function make_process_sections (data, event_loop) {
       </div>
       
       <div className="row middle-xs">
-        <h5 className="col-xs-12">Memory Usage</h5>
-        <div className="col-xs-12">
+        <h2 className="col-xs-12">Memory Usage</h2>
+        <div className="col-xs-12 mtb">
           <ChartistGraph
             type={'Line'}
             data={{labels: data.series.time, series: [data.series.heap_total, data.series.heap_rss, data.series.heap_used]}}
@@ -144,18 +144,28 @@ function make_event_loop_section (event_loop) {
   return (
     <div key={(event_loop.latest.pid + 'event_loop')}>
       <div className="row middle-xs">
-        <h3 className="col-xs-12">Event Loop</h3>
+        <h2 className="col-xs-12">Event Loop</h2>
       </div>
-      <div className="row middle-xs">
-        <h5 className="col-xs-1">Delay</h5>
-        <h1 className="col-xs-4">{(Math.round(event_loop.latest.delay * 100) / 100)}</h1>
-        <h5 className="col-xs-1">Limit</h5>
-        <h1 className="col-xs-2">{event_loop.latest.limit}</h1>
-        <h5 className="col-xs-2">Over Limit</h5>
-        <h1 className="col-xs-2">{event_loop.latest.over_limit}</h1>
+      <div className="row middle-xs stats-row">
+        
+        <div className="col-xs-6 col-sm-4 col-md-4 stats-container cf">
+          <h2 className="txt-truncate m0">{(Math.round(event_loop.latest.delay * 100) / 100)}</h2>
+          <p className="stats-label m0">Delay</p>
+        </div>
+        
+        <div className="col-xs-6 col-sm-4 col-md-4 stats-container cf">
+          <h2 className="txt-truncate m0">{event_loop.latest.limit}</h2>
+          <p className="stats-label m0">Limit</p>
+        </div>
+        
+        <div className="col-xs-6 col-sm-4 col-md-4 stats-container cf">
+          <h2 className="txt-truncate m0 label-met">{event_loop.latest.over_limit}</h2>
+          <p className="stats-label m0">Over Limit</p>
+        </div>
       </div>
+      
       <div className="row middle-xs">
-        <div className="col-xs-12">
+        <div className="col-xs-12 mtb">
           <ChartistGraph
             type={'Line'}
             data={{labels: event_loop.series.time, series: [event_loop.series.delay, event_loop.series.limit]}}
