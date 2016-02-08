@@ -49,6 +49,30 @@ export const Processes = React.createClass({
           </div>
         </div>
         <div className="container-fluid">
+          <div className="single-process process-collapsed">
+            <div>
+              <div className="row middle-xs mb">
+                <h1 className="col-xs-7 mt0 mb0 txt-truncate">4832-node</h1>
+                <div className="col-xs-5 txt-right">
+                  <button className="btn btn-small">Expand</button>
+                </div>
+              </div>
+              <div className="row middle-xs stats-row no-gutter">
+                
+                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
+                  <h1 className="txt-truncate m0">453</h1>
+                  <p className="label-dimmed m0">Process uptime</p>
+                </div>
+                
+                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
+                  <h1 className="txt-truncate m0">459040</h1>
+                  <p className="label-dimmed m0">System uptime</p>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+          
           {sections}
         </div>
       </div>
@@ -74,7 +98,10 @@ function make_process_sections (data, event_loop) {
   section.push(
     <div key={(now.pid + 'process')}>
       <div className="row middle-xs">
-        <h1 className="col-xs-12 mb mt0">{now.pid + '-' + now.title}</h1>
+        <h1 className="col-xs-7 mt0 txt-truncate">{now.pid + '-' + now.title}</h1>
+        <div className="col-xs-5 txt-right">
+          <button className="btn btn-small">Collapse</button>
+        </div>
       </div>
       <div className="row middle-xs stats-row no-gutter">
         
