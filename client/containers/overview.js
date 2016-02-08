@@ -47,6 +47,16 @@ export const Overview = React.createClass({
               </select>
             </div>
           </div>
+          
+          <div className="row middle-xs search-wrapper">
+            <div className="col-xs-12 col-sm-8 col-md-8 search-input-wrapper">
+              <input type="search" className="input-large" placeholder="Find a process"/>
+            </div>
+            <div className="col-xs-12 col-sm-4 col-md-4 txt-left search-btn-wrapper">
+              <button className="btn btn-large btn-search">Search</button>
+            </div>
+          </div>
+          
         </div>
         <div className="container-fluid">
           {sections}
