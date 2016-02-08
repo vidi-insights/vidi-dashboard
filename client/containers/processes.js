@@ -34,9 +34,9 @@ export const Processes = React.createClass({
     })
 
     return (
-      <div className="page">
+      <div className="page page-processes">
         <div className="container-fluid">
-          <div className="row middle-xs">
+          <div className="row middle-xs page-heading">
             <h2 className="col-xs-12 col-sm-8">Processes</h2>
             <div className="col-xs-12 col-sm-4 txt-right">
               <select>
@@ -76,20 +76,43 @@ function make_process_sections (data, event_loop) {
       <div className="row middle-xs">
         <h2 className="col-xs-12"><b>{now.pid + '-' + now.title}</b></h2>
       </div>
-      <div className="row middle-xs">
-        <h5 className="col-xs-3">Process uptime</h5><h1 className="col-xs-3">{Math.floor(now.proc_uptime)}</h1>
-        <h5 className="col-xs-3">System uptime</h5><h1 className="col-xs-3">{now.sys_uptime}</h1>
+      <div className="row middle-xs stats-row">
+        
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-3 stats-container stats-floated cf">
+          <h1 className="txt-truncate m0">{Math.floor(now.proc_uptime)}</h1>
+          <p className="stats-label m0">Process uptime</p>
+        </div>
+        
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-3 stats-container stats-floated cf">
+          <h1 className="txt-truncate m0">{now.sys_uptime}</h1>
+          <p className="stats-label m0">System uptime</p>
+        </div>
+        
       </div>
-      <div className="row middle-xs">
-        <h5 className="col-xs-3"><b>Pid</b></h5>
-        <h5 className="col-xs-3"><b>Title</b></h5>
-        <h5 className="col-xs-3"><b>Architecture</b></h5>
-        <h5 className="col-xs-3"><b>Platform</b></h5>
-        <p  className="col-xs-3">{now.pid}</p>
-        <p  className="col-xs-3">{now.title}</p>
-        <p  className="col-xs-3">{now.arch}</p>
-        <p  className="col-xs-3">{now.platform}</p>
+      
+      <div className="row middle-xs stats-row">
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.pid}</h2>
+          <p className="stats-label m0">Pid</p>
+        </div>
+        
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.title}</h2>
+          <p className="stats-label m0">Title</p>
+        </div>
+        
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.arch}</h2>
+          <p className="stats-label m0">Architecture</p>
+        </div>
+        
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.platform}</h2>
+          <p className="stats-label m0">Platform</p>
+        </div>
+    
       </div>
+      
       <div className="row middle-xs">
         <h5 className="col-xs-12">Memory Usage</h5>
         <div className="col-xs-12">

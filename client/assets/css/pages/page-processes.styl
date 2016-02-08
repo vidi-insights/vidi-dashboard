@@ -1,0 +1,43 @@
+/*--------------------------------------------------------------------
+*
+* PAGE - PROCESSES
+*
+--------------------------------------------------------------------*/
+
+.page-processes
+
+  .stats-row
+    padding-bottom: $ui-spacing-half
+    border-bottom: $ui-border
+    padding-bottom: $ui-spacing-half
+    margin-bottom: $ui-spacing-half
+  
+  .stats-label
+    color: $gray-light
+    
+@media screen and (max-width: 48em)
+
+  .page-processes
+    
+    .stats-container:not(:last-of-type):not(:nth-child(3))
+      border-bottom: $ui-border
+      padding-bottom: $ui-spacing-half
+      margin-bottom: $ui-spacing-half
+      
+@media screen and (min-width: 49em)
+
+  .page-processes
+  
+    .stats-container:not(:first-of-type)
+      padding-left: $ui-spacing
+    
+    .stats-container:not(:last-child)
+        border-right: $ui-border
+        
+    .stats-floated
+    
+      h1, h2, h3, h4, h5, p
+        float: left
+        
+      .stats-label
+        margin: $ui-spacing-half 0 $ui-spacing-half $ui-spacing-half
