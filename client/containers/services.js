@@ -9,8 +9,8 @@ export const Services = React.createClass({
     return (
       <div className="page container-fluid">
         <div className="row middle-xs">
-          <h2 className="col-xs-12 col-sm-6">Services</h2>
-          <div className="col-xs-12 col-sm-6 txt-right">
+          <h2 className="col-xs-12 col-sm-8">Services</h2>
+          <div className="col-xs-12 col-sm-4 txt-right">
             <select>
               <option>120 seconds</option>
               <option>5 minutes</option>
