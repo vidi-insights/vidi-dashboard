@@ -84,7 +84,7 @@ function make_process_sections (data, event_loop) {
   section.push(
     <div key={(now.pid + 'process')}>
       <div className="row middle-xs">
-        <h1 className="col-xs-7 mt0 txt-truncate"><b>{now.pid}</b></h1>
+        <h1 className="col-xs-7 mt0 txt-truncate"><span className="status-process status-running"></span> <b>{now.pid}</b></h1>
       </div>
 
       <div className="row middle-xs stats-row no-gutter">
@@ -160,7 +160,7 @@ function make_event_loop_section (event_loop) {
         </div>
 
         <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
-          <h1 className="txt-truncate m0 label-met">{event_loop.latest.over_limit}</h1>
+          <h1 className="txt-truncate m0 label-running">{event_loop.latest.over_limit}</h1>
           <p className="label-dimmed m0">Over Limit</p>
         </div>
       </div>
