@@ -7,17 +7,17 @@
 .page-processes
 
   .single-process
-    padding: $ui-spacing  
+    padding: $ui-spacing
     margin-top: $ui-spacing
     border: $ui-border
     border-radius: $ui-radius
     box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
-  
+
     &:not(:last-child)
       margin-bottom: $ui-spacing
-      
+
     &.process-collapsed
-    
+
       .stats-row
         margin: 0
         padding: 0
@@ -27,36 +27,36 @@
     padding-bottom: $ui-spacing-half
     padding-bottom: $ui-spacing-half
     margin-bottom: $ui-spacing-half
-    
+
     &:nth-child(2)
       border-bottom: $ui-border
-      
+
     &.no-border
       border: 0
-    
+
 @media screen and (max-width: 48em)
 
   .page-processes
-    
+
     .stats-container:not(:last-of-type):not(:nth-child(3))
       border-bottom: $ui-border
       padding-bottom: $ui-spacing-half
       margin-bottom: $ui-spacing-half
-      
+
 @media screen and (min-width: 49em)
 
   .page-processes
-  
+
     .stats-container:not(:first-of-type)
       padding-left: $ui-spacing
-    
+
     .stats-container:not(:last-child)
         border-right: $ui-border
-        
+
     .stats-floated
-    
+
       h1, h2, h3, h4, h5, p
         float: left
-        
+
       .label-dimmed
         margin: $ui-spacing-half 0 $ui-spacing-half $ui-spacing-half

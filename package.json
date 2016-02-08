@@ -23,7 +23,8 @@
     "copy": "copyfiles -f ./client/assets/img/favicon.png ./dist/img",
     "build": "npm run copy & webpack --progress --colors",
     "watch": "webpack -w",
-    "start": "node -r toolbag ./server/start.js"
+    "start": "node -r toolbag ./server/start.js",
+    "rig": "node -r toolbag ./test/rig.js"
   },
   "dependencies": {
     "async": "1.5.x",

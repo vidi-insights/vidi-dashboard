@@ -49,30 +49,6 @@ export const Processes = React.createClass({
           </div>
         </div>
         <div className="container-fluid">
-          <div className="single-process process-collapsed">
-            <div>
-              <div className="row middle-xs mb">
-                <h1 className="col-xs-7 mt0 mb0 txt-truncate">4832-node</h1>
-                <div className="col-xs-5 txt-right">
-                  <button className="btn btn-small">Expand</button>
-                </div>
-              </div>
-              <div className="row middle-xs stats-row no-gutter">
-
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
-                  <h1 className="txt-truncate m0">453</h1>
-                  <p className="label-dimmed m0">Process uptime</p>
-                </div>
-
-                <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
-                  <h1 className="txt-truncate m0">459040</h1>
-                  <p className="label-dimmed m0">System uptime</p>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
           {sections}
         </div>
       </div>
@@ -98,15 +74,15 @@ function make_process_sections (data, event_loop) {
   section.push(
     <div key={(now.pid + 'process')}>
       <div className="row middle-xs">
-        <h1 className="col-xs-7 mt0 txt-truncate">{now.pid + '-' + now.title}</h1>
+        <h1 className="col-xs-7 mt0 txt-truncate"><b>{now.pid}</b></h1>
         <div className="col-xs-5 txt-right">
           <button className="btn btn-small">Collapse</button>
         </div>
       </div>
-      <div className="row middle-xs stats-row no-gutter">
 
+      <div className="row middle-xs stats-row no-gutter">
         <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
-          <h1 className="txt-truncate m0">{Math.floor(now.proc_uptime)}</h1>
+          <h1 className="txt-truncate m0">{now.proc_uptime}</h1>
           <p className="label-dimmed m0">Process uptime</p>
         </div>
 
@@ -136,27 +112,68 @@ function make_process_sections (data, event_loop) {
           <h2 className="txt-truncate m0">{now.platform}</h2>
           <p className="label-dimmed m0">Platform</p>
         </div>
-
       </div>
 
-      <div className="row no-gutter middle-xs">
-        <h2 className="col-xs-12">Memory Usage</h2>
-        <div className="col-xs-12 mtb">
+      <div className="row middle-xs stats-row no-gutter">
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.ver_node}</h2>
+          <p className="label-dimmed m0">Node</p>
+        </div>
+
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.ver_v8}</h2>
+          <p className="label-dimmed m0">V8</p>
+        </div>
+
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.ver_uv}</h2>
+          <p className="label-dimmed m0">LibUV</p>
+        </div>
+
+        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+          <h2 className="txt-truncate m0">{now.ver_openssl}</h2>
+          <p className="label-dimmed m0">OpenSSL</p>
+        </div>
+      </div>
+
+      <div className="row middle-xs">
+        <h2 className="col-xs-12">Heap Usage</h2>
+      </div>
+
+      <div className="row middle-xs">
+        <div className="col-xs-12 mbx">
           <ChartistGraph
             type={'Line'}
             data={{labels: data.series.time, series: [data.series.heap_total, data.series.heap_rss, data.series.heap_used]}}
             options={{
               fullWidth: true,
-              showArea: true,
+              showArea: false,
               showLine: true,
               showPoint: false,
               chartPadding: {right: 30},
-              axisX: {showGrid: false, labelOffset: {x: -15}, labelInterpolationFnc: (val) => {
+              axisX: {labelOffset: {x: -15}, labelInterpolationFnc: (val) => {
                 if (_.last(val) == '0') return val
                 else return null
               }},
             }}/>
         </div>
+      </div>
+
+      <div className="row middle-xs stats-row no-gutter">
+          <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+            <h1 className="txt-truncate m0">{now.heap_total + ' mb'}</h1>
+            <p className="label-dimmed m0">Heap Total</p>
+          </div>
+
+          <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+            <h1 className="txt-truncate m0">{now.heap_used  + ' mb'}</h1>
+            <p className="label-dimmed m0">Heap Used</p>
+          </div>
+
+          <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+            <h1 className="txt-truncate m0">{now.heap_rss  + ' mb'}</h1>
+            <p className="label-dimmed m0">Heap Rss</p>
+          </div>
       </div>
     </div>
   )
@@ -172,23 +189,6 @@ function make_event_loop_section (event_loop) {
       <div className="row middle-xs">
         <h2 className="col-xs-12">Event Loop</h2>
       </div>
-      <div className="row middle-xs stats-row no-gutter no-border">
-
-        <div className="col-xs-6 col-sm-4 col-md-4 stats-container cf">
-          <h2 className="txt-truncate m0">{(Math.round(event_loop.latest.delay * 100) / 100)}</h2>
-          <p className="label-dimmed m0">Delay</p>
-        </div>
-
-        <div className="col-xs-6 col-sm-4 col-md-4 stats-container cf">
-          <h2 className="txt-truncate m0">{event_loop.latest.limit}</h2>
-          <p className="label-dimmed m0">Limit</p>
-        </div>
-
-        <div className="col-xs-6 col-sm-4 col-md-4 stats-container cf">
-          <h2 className="txt-truncate m0 label-met">{event_loop.latest.over_limit}</h2>
-          <p className="label-dimmed m0">Over Limit</p>
-        </div>
-      </div>
 
       <div className="row middle-xs">
         <div className="col-xs-12 mtbx">
@@ -201,12 +201,28 @@ function make_event_loop_section (event_loop) {
               showLine: true,
               showPoint: false,
               chartPadding: {right: 30},
-              axisX: {showGrid: false, labelOffset: {x: -15}, labelInterpolationFnc: function (val) {
+              axisX: { labelOffset: {x: -15}, labelInterpolationFnc: function (val) {
                 if (_.last(val) == '0') return val
                 else return null
-              }},
-              axisY: {showGrid: false}
+              }}
           }}/>
+        </div>
+      </div>
+
+      <div className="row middle-xs stats-row no-gutter no-border">
+        <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+          <h1 className="txt-truncate m0">{(Math.round(event_loop.latest.delay * 100) / 100)}</h1>
+          <p className="label-dimmed m0">Delay</p>
+        </div>
+
+        <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+          <h1 className="txt-truncate m0">{event_loop.latest.limit}</h1>
+          <p className="label-dimmed m0">Limit</p>
+        </div>
+
+        <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+          <h1 className="txt-truncate m0 label-met">{event_loop.latest.over_limit}</h1>
+          <p className="label-dimmed m0">Over Limit</p>
         </div>
       </div>
     </div>
