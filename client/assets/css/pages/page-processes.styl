@@ -6,24 +6,26 @@
 
 .page-processes
 
-  .single-process:not(:last-child)
-    margin-bottom: $ui-spacing
-    border-bottom: $ui-border
+  .single-process
+    padding: $ui-spacing  
+    margin-top: $ui-spacing
+    border: $ui-border
+    border-radius: $ui-radius
+    box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
+  
+    &:not(:last-child)
+      margin-bottom: $ui-spacing
 
   .stats-row
     padding-bottom: $ui-spacing-half
-    border-bottom: $ui-border
     padding-bottom: $ui-spacing-half
     margin-bottom: $ui-spacing-half
-  
-  .stats-label
-    color: $gray-light
     
-  .label-exceeded
-    color: $red
-  
-  .label-met
-    color: $green
+    &:nth-child(2)
+      border-bottom: $ui-border
+      
+    &.no-border
+      border: 0
     
 @media screen and (max-width: 48em)
 
@@ -49,5 +51,5 @@
       h1, h2, h3, h4, h5, p
         float: left
         
-      .stats-label
+      .label-dimmed
         margin: $ui-spacing-half 0 $ui-spacing-half $ui-spacing-half
