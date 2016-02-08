@@ -5,8 +5,8 @@ import './assets/css/main.styl'
 
 import ReactDom from 'react-dom'
 
-import createRootComponent from './bootstrap/createRootComponent'
-import store from './bootstrap/store'
+import createRootComponent from './lib/createRootComponent'
+import store from './lib/store'
 
 const root = createRootComponent(store)
 const hook = document.getElementById('app')
