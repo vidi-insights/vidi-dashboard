@@ -36,7 +36,7 @@ export const Processes = React.createClass({
     return (
       <div className="page page-processes">
         <div className="container-fluid">
-          <div className="row middle-xs page-heading">
+          <div className="row middle-xs">
             <h2 className="col-xs-12 col-sm-8">Processes</h2>
             <div className="col-xs-12 col-sm-4 txt-right">
               <select>

@@ -14,7 +14,7 @@ export const Shell = React.createClass({
     return (
       <div className="shell">
         <Header showMenu={isLoggedIn}/>
-        <div className={'page-wrapper-full'}>{children}</div>
+        <div className={'page-wrapper'}>{children}</div>
         <Footer />
       </div>
     )

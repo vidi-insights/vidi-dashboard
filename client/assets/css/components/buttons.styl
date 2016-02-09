@@ -19,6 +19,24 @@
     
   &:hover
     background-color: $blue-light
+    
+// Secondary button
+    
+.btn-secondary
+  background-color: $gray-lighter
+  color: $gray
+  
+  &:hover
+    background-color: darken($gray-lighter, 20%)
+    color: inherit
+    
+// Warning button
+
+.btn-warning
+  background-color: $red
+  
+  &:hover
+    background-color: darken($red, 20%)
 
 // Button sizes
 
@@ -32,3 +50,6 @@
 
   .btn
     width: 100%
+    
+  .btn.btn-compact
+    width: auto
