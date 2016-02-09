@@ -31,13 +31,6 @@
 
   &:not(:last-child)
     margin-bottom: $ui-spacing
-
-  &.process-collapsed
-
-    .stats-row
-      margin: 0
-      padding: 0
-      border: none
     
 .process-heading,
 .process-stats-container
@@ -47,9 +40,26 @@
   border-bottom: $ui-border
   background-color: lighten($gray-lighter, 70%)
   font-weight: $font-weight-bold
+  
+  h1
+    font-weight: inherit
+  
+  &.has-btn
+  
+    h1, .btn
+      display: inline-block
 
 .process-stats-container
   border-bottom: $ui-border
+  
+.process-argument
+  padding: $ui-spacing-half $ui-spacing
+  font-size: $font-small
+  font-family: $font-monospaced
+  color: $gray-light
+  
+  &:not(:last-child)
+    border-bottom: $ui-border
   
 @media screen and (max-width: 48em)
 
@@ -61,6 +71,10 @@
 @media screen and (min-width: 49em)
 
   .process-stats-floated
+  
+    &.process-stats-compact
+      .label-dimmed
+        top: 0
 
     h1, h2, h3, h4, h5, p
       float: left
