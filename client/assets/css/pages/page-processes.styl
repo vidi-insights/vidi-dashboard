@@ -4,7 +4,9 @@
 *
 --------------------------------------------------------------------*/
 
-.status-process
+// Process status dots
+
+.process-status
   display: inline-block
   height: 10px
   width: @height
@@ -19,59 +21,55 @@
   &.status-stopped
     background-color: $red
 
-.page-processes
+// Process card
 
-  .single-process
-    padding: $ui-spacing
-    margin-top: $ui-spacing
-    border: $ui-border
-    border-radius: $ui-radius
-    box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
+.process-card
+  margin-top: $ui-spacing
+  border: $ui-border
+  border-radius: $ui-radius
+  box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
 
-    &:not(:last-child)
-      margin-bottom: $ui-spacing
+  &:not(:last-child)
+    margin-bottom: $ui-spacing
 
-    &.process-collapsed
+  &.process-collapsed
 
-      .stats-row
-        margin: 0
-        padding: 0
-        border: none
+    .stats-row
+      margin: 0
+      padding: 0
+      border: none
+    
+.process-heading,
+.process-stats-container
+  padding: $ui-spacing-half $ui-spacing
+      
+.process-heading
+  border-bottom: $ui-border
+  background-color: lighten($gray-lighter, 70%)
+  font-weight: $font-weight-bold
 
-  .stats-row
-    padding-bottom: $ui-spacing-half
-    padding-bottom: $ui-spacing-half
-    margin-bottom: $ui-spacing-half
-
-    &:nth-child(2)
-      border-bottom: $ui-border
-
-    &.no-border
-      border: 0
-
+.process-stats-container
+  border-bottom: $ui-border
+  
 @media screen and (max-width: 48em)
 
-  .page-processes
+  .process-stats-row:only-child
 
-    .stats-container:not(:last-of-type):not(:nth-child(3))
-      border-bottom: $ui-border
-      padding-bottom: $ui-spacing-half
-      margin-bottom: $ui-spacing-half
-
+    .process-stats-container:last-child
+      border: none
+  
 @media screen and (min-width: 49em)
 
-  .page-processes
+  .process-stats-floated
 
-    .stats-container:not(:first-of-type)
-      padding-left: $ui-spacing
+    h1, h2, h3, h4, h5, p
+      float: left
 
-    .stats-container:not(:last-child)
-        border-right: $ui-border
-
-    .stats-floated
-
-      h1, h2, h3, h4, h5, p
-        float: left
-
-      .label-dimmed
-        margin: $ui-spacing-half 0 $ui-spacing-half $ui-spacing-half
+    .label-dimmed
+      margin-left: $ui-spacing-half
+      position: relative
+      top: $ui-spacing-fourth
+      
+  .process-stats-row:only-child
+    .process-stats-container
+      border: none

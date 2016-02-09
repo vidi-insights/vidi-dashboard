@@ -80,57 +80,57 @@ function make_process_sections (data, event_loop) {
         </div>
       </div>
 
-      <div className="row middle-xs stats-row no-gutter">
-        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
+      <div className="row middle-xs process-stats-row no-gutter">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 process-stats-container process-stats-floated cf">
           <h1 className="txt-truncate m0">{now.proc_uptime}</h1>
           <p className="label-dimmed m0">Process uptime</p>
         </div>
 
-        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 stats-container stats-floated cf">
+        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-4 process-stats-container process-stats-floated cf">
           <h1 className="txt-truncate m0">{now.sys_uptime}</h1>
           <p className="label-dimmed m0">System uptime</p>
         </div>
       </div>
 
-      <div className="row middle-xs stats-row no-gutter">
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+      <div className="row middle-xs process-stats-row no-gutter">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.pid}</h2>
           <p className="label-dimmed m0">Pid</p>
         </div>
 
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.title}</h2>
           <p className="label-dimmed m0">Title</p>
         </div>
 
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.arch}</h2>
           <p className="label-dimmed m0">Architecture</p>
         </div>
 
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.platform}</h2>
           <p className="label-dimmed m0">Platform</p>
         </div>
       </div>
 
-      <div className="row middle-xs stats-row no-gutter">
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+      <div className="row middle-xs process-stats-row no-gutter">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.ver_node}</h2>
           <p className="label-dimmed m0">Node</p>
         </div>
 
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.ver_v8}</h2>
           <p className="label-dimmed m0">V8</p>
         </div>
 
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.ver_uv}</h2>
           <p className="label-dimmed m0">LibUV</p>
         </div>
 
-        <div className="col-xs-6 col-sm-3 col-md-3 stats-container cf">
+        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
           <h2 className="txt-truncate m0">{now.ver_openssl}</h2>
           <p className="label-dimmed m0">OpenSSL</p>
         </div>
@@ -159,18 +159,18 @@ function make_process_sections (data, event_loop) {
         </div>
       </div>
 
-      <div className="row middle-xs stats-row no-gutter">
-          <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+      <div className="row middle-xs process-stats-row no-gutter">
+          <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
             <h1 className="txt-truncate m0">{now.heap_total + ' mb'}</h1>
             <p className="label-dimmed m0">Heap Total</p>
           </div>
 
-          <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+          <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
             <h1 className="txt-truncate m0">{now.heap_used  + ' mb'}</h1>
             <p className="label-dimmed m0">Heap Used</p>
           </div>
 
-          <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+          <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
             <h1 className="txt-truncate m0">{now.heap_rss  + ' mb'}</h1>
             <p className="label-dimmed m0">Heap Rss</p>
           </div>
@@ -209,18 +209,18 @@ function make_event_loop_section (event_loop) {
         </div>
       </div>
 
-      <div className="row middle-xs stats-row no-gutter no-border">
-        <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+      <div className="row middle-xs process-stats-row no-gutter no-border">
+        <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
           <h1 className="txt-truncate m0">{(Math.round(event_loop.latest.delay * 100) / 100)}</h1>
           <p className="label-dimmed m0">Delay</p>
         </div>
 
-        <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+        <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
           <h1 className="txt-truncate m0">{event_loop.latest.limit}</h1>
           <p className="label-dimmed m0">Limit</p>
         </div>
 
-        <div className="col-xs-6 col-sm-4 col-md-4 stats-container stats-floated cf">
+        <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
           <h1 className="txt-truncate m0 label-met">{event_loop.latest.over_limit}</h1>
           <p className="label-dimmed m0">Over Limit</p>
         </div>
