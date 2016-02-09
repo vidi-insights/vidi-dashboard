@@ -34,15 +34,32 @@ aside
     position: relative
     top: 20px
     cursor: pointer
+    
+  li ul .nav-item a
+    padding-top: $ui-spacing-half
+    padding-bottom: @padding-top
+    padding-left: $ui-spacing + $ui-spacing-half
+    font-size: $font-small
   
 nav li:not(:last-child)
   border-bottom: 1px solid lighten($blue-darker, 20%)
   
-.nav-item
-  display: block
-  padding: $ui-spacing-half $ui-spacing
-  color: white
-  transition: all .3s ease-in
+.nav-header,
+.nav-item a
+  padding: $ui-spacing-half $ui-spacing  
   
-  &:hover
-    background-color: $blue-dark
+.nav-item a,
+.nav-item
+  color: white  
+  
+.nav-header
+  font-weight: $font-weight-bold
+  
+.nav-item
+  
+  a
+    display: block
+    transition: all .3s ease-in
+  
+    &:hover
+      background-color: $blue-dark

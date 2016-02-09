@@ -19,8 +19,21 @@ export default React.createClass({
         </a>
         <nav role="navigation">
           <ul className="list-unstyled">
-            <li><Link to={'/'} className="nav-item">Overview</Link></li>
-            <li><Link to={'/processes'} className="nav-item">Processes</Link></li>
+            <li className="nav-item"><Link to={'/'}>Overview</Link></li>
+            <li className="nav-item"><Link to={'/processes'}>Processes</Link></li>
+            <li className="nav-item">
+              <a href="">Live</a>
+              <ul className="list-unstyled">
+                <li className="nav-item"><a href="">--foo</a></li>
+              </ul>
+            </li>
+            <li className="nav-item">
+              <a href="">Historic</a>
+              <ul className="list-unstyled">
+                <li className="nav-item"><a href="">--foo</a></li>
+              </ul>
+            </li>
+            <li className="nav-item nav-header">Unlinked Header</li>
           </ul>
         </nav>
       </aside>
