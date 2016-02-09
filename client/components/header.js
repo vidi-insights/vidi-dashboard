@@ -13,10 +13,9 @@ export default React.createClass({
         <div className="container-fluid">
           <div className="row middle-xs">
             {(showMenu ? <Menu /> : null)}
-
-            <div className="has-icon col-xs-8 col-sm-6">
-              <Link to={'/'} className='logo logo-vidi'></Link>
-              <h2 className="m0">Vidi: Dashboard</h2>
+            
+            <div className="col-xs-12">
+              <Link to={'/'} className='logo logo-vidi'><h2 className="m0">Vidi: Dashboard</h2></Link>
             </div>
           </div>
         </div>
