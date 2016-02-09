@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------------
+*
+* NAVIGATION
+*
+--------------------------------------------------------------------*/
+
+.nav-menu-handle
+  visibility: hidden
+  position: absolute
+  left: -100%
+
+.nav-main-wrapper label
+  float: right
+  margin-top: $ui-spacing-fourth
+  display: block
+  height: 20px
+  width: 23px
+  background: url("../img/icon-menu-white.svg") no-repeat 0 0
+  background-size: contain
+  cursor: pointer
+  
+  &:hover
+    opacity: .5
+    
+.nav-main
+  display: none
+  background-color: $blue-dark
+  z-index: 20
+  
+.nav-item
+  
+  a
+    display: block
+  
+    &:hover
+      color: $blue-light
+      background-color: $blue-darker
+  
+.nav-menu-handle:checked ~ .nav-main
+  display: block
+  position: fixed
+  top: 69px
+  left: 0
+  width: 100vw
+  
+  li
+    display: block
+    width: 100%
+    border-top: 1px solid lighten($blue-darker, 20%)
+    
+    &:last-child
+      border-bottom: 1px solid lighten($blue-darker, 20%)
