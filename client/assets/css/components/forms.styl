@@ -32,9 +32,12 @@ input
 // Full width form
 .form-full-width
 
-  input, .btn
+  input, .btn:not(.btn-secondary)
     width: 100%
     margin-bottom: $ui-spacing-third
+    
+  .btn-secondary:not(:last-of-type)
+    margin-right: $ui-spacing-third
     
 // Selects
 select

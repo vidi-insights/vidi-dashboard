@@ -22,12 +22,13 @@
     
 // Secondary button
     
-.btn-secondary
-  background-color: $gray-lighter
+.btn.btn-secondary
+  border: $ui-border
+  background: linear-gradient(to bottom, rgba($gray-lighter, 0) 0%,rgba($gray-lighter,0.3) 100%)
   color: $gray
   
   &:hover
-    background-color: darken($gray-lighter, 20%)
+    background: linear-gradient(to bottom, rgba($gray-lighter, 0) 0%,rgba($gray-lighter,0.6) 100%)
     color: inherit
     
 // Warning button
@@ -50,6 +51,3 @@
 
   .btn
     width: 100%
-    
-  .btn.btn-compact
-    width: auto
