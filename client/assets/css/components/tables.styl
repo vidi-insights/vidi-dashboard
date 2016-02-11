@@ -1,0 +1,36 @@
+/*--------------------------------------------------------------------
+*
+* TABLES
+*
+--------------------------------------------------------------------*/
+
+.processes-table
+  display: block
+  width: 100%
+  overflow-x: auto
+
+table
+  width: 100%
+  max-width: 100%
+  border: $ui-border
+  border-radius: $ui-radius
+  
+  th
+    background-color: lighten($gray-lighter, 70%)
+    text-align: left
+    
+  th, td
+    border-right: $ui-border
+    border-bottom: $ui-border
+    min-width: 50px
+    white-space: nowrap
+    
+@media screen and (max-width: 48em)
+
+  th, td
+    padding: $ui-spacing-third
+    
+@media screen and (min-width: 49em)
+
+  th, td
+    padding: $ui-spacing-half

@@ -4,6 +4,30 @@
 *
 --------------------------------------------------------------------*/
 
+.status
+  display: inline-block
+  height: 15px
+  width: @height
+  margin-right: $ui-spacing-third
+  border-radius: 100%
+  
+  &.status-healthy
+    background-color: $green
+    
+  &.status-stress
+    background-color: $orange
+  
+  &.status-terminal
+    background-color: $red
+    
+  &.status-dead
+    background-color: black
+    
+.process-status-dead
+
+  td
+    color: $gray-light
+
 .label-dimmed
   color: $gray-light
   
