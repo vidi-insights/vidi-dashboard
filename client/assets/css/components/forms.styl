@@ -32,18 +32,36 @@ input
 // Full width form
 .form-full-width
 
-  input, .btn
+  input, .btn:not(.btn-secondary)
     width: 100%
     margin-bottom: $ui-spacing-third
     
+  .btn-secondary:not(:last-of-type)
+    margin-right: $ui-spacing-third
+    
 // Selects
 select
+  margin-top: $ui-spacing-fourth
   height: 48px
   min-width: 150px
   cursor: pointer
   background-color: white
+  
+// Search
+.search-input-wrapper
+  position: relative
 
-@media screen and (max-width: 30em)
+input[type="search"]
+  width: 100%
+  box-sizing: border-box
+
+.search-wrapper
+  margin: $ui-spacing 0
+  
+  *[class^="col"]
+    padding: 0
+
+@media screen and (max-width: 48em)
 
   input[type=search]
     box-sizing: border-box
@@ -57,10 +75,17 @@ select
 
   input[type=search]
     min-width: 180px
+    
+  select
+    margin-top: 10px
 
 @media screen and (min-width: 49em)
-  input[type=search]
+
+  input[type="search"]
     min-width: 350px
+    
+  .search-btn-wrapper .btn
+    margin-left: $ui-spacing-half
 
 @media screen and (min-width: 75em)
   input[type=search]

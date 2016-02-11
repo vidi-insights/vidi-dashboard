@@ -1,0 +1,56 @@
+/*--------------------------------------------------------------------
+*
+* NAVIGATION
+*
+--------------------------------------------------------------------*/
+
+.nav-menu-handle
+  visibility: hidden
+  position: absolute
+  left: -100%
+
+.nav-main-wrapper label
+  position: absolute
+  top: 0
+  left: 0
+  display: block
+  height: 69px
+  width: 69px
+  background-image: url("../img/icon-menu.svg")
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  background-size: 23px 23px
+  background-color: $gray-lighter
+  cursor: pointer
+
+  &:hover
+    opacity: .5
+
+.nav-main
+  display: none
+  background-color: $blue-dark
+  z-index: 20
+
+.nav-item
+
+  a
+    display: block
+
+    &:hover
+      color: $blue-light
+      background-color: $blue-darker
+
+.nav-menu-handle:checked ~ .nav-main
+  display: block
+  position: fixed
+  top: 69px
+  left: 0
+  width: 100vw
+
+  li
+    display: block
+    width: 100%
+    border-top: 1px solid lighten($blue-darker, 20%)
+
+    &:last-child
+      border-bottom: 1px solid lighten($blue-darker, 20%)

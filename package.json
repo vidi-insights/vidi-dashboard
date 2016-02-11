@@ -8,9 +8,10 @@
     "Wyatt Preul",
     "Mircea Alexandru",
     "Adrian Rossouw",
-    "Cristian Kiss"
+    "Cristian Kiss",
+    "Karolina Szczur (http://thefox.is)"
   ],
-  "main": "./server/vidi-all-in.js",
+  "main": "./server/start.js",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,13 +23,15 @@
     "copy": "copyfiles -f ./client/assets/img/favicon.png ./dist/img",
     "build": "npm run copy & webpack --progress --colors",
     "watch": "webpack -w",
-    "start": "node ./server/start.js"
+    "start": "node -r toolbag ./server/start.js",
+    "rig": "node -r toolbag ./test/rig.js"
   },
   "dependencies": {
     "async": "1.5.x",
     "bell": "6.1.0",
     "boom": "3.x.x",
-    "chairo": "1.x.x",
+    "chairo": "2.0.0",
+    "chartist": "^0.9.5",
     "css-loader": "0.23.x",
     "file-loader": "0.8.x",
     "hapi": "12.x.x",
@@ -39,6 +42,7 @@
     "moment": "2.11.x",
     "nes": "2.x.x",
     "react": "0.14.x",
+    "react-chartist": "^0.10.1",
     "react-dom": "0.14.x",
     "react-redux": "4.0.x",
     "react-router": "1.x.x",
@@ -46,16 +50,20 @@
     "redux-logger": "2.x.x",
     "redux-simple-router": "1.x.x",
     "redux-thunk": "1.0.x",
-    "seneca": "^1.0.0",
+    "seneca": "^1.1.0",
     "seneca-auth": "mirceaalexandru/seneca-auth#hapi-express",
     "seneca-balance-client": "0.2.0",
+    "seneca-decree": "senecajs/seneca-decree",
     "seneca-mesh": "0.3.0",
     "seneca-pubsub": "^0.1.0",
     "seneca-user": "senecajs/seneca-user.git",
-    "seneca-web": "mirceaalexandru/seneca-web#hapi",
     "style-loader": "0.13.x",
     "superagent": "1.7.x",
-    "varo": "0.3.x"
+    "toolbag": "^0.7.0",
+    "vidi-metrics": "vidi-insights/vidi-metrics",
+    "vidi-influx-store": "vidi-insights/vidi-influx-store",
+    "vidi-toolbag-influx": "vidi-insights/vidi-toolbag-influx",
+    "vidi-toolbag-metrics": "vidi-insights/vidi-toolbag-metrics"
   },
   "devDependencies": {
     "babel-core": "6.4.x",

@@ -13,28 +13,19 @@
 .page-wrapper,
 .page-wrapper-expanded
   flex: 1
-  margin-left: 90px
-
-.page,
-.page-wrapper,
-.page-wrapper-expanded
-  flex: 1
-
-// Sidebar reappearance and page shifting
-.page, .page-wrapper, .page-wrapper-expanded
-  h2
-    margin-top: $ui-spacing-half
-
-.page-wrapper-expanded,
-.page-wrapper-expanded + footer
-  margin-left: 280px
 
 // Center children vertically
 .vertical-center
   display: flex
   align-items: center
   justify-content: center
+  
+// Row with no negative margins
 
+.row.no-gutter
+  margin-left: 0
+  margin-right: 0 
+  
 // Floats
 .fl-left
   float: left

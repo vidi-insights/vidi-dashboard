@@ -2,15 +2,10 @@
 
 module.exports = (opts, server, done) => {
   var seneca = server.seneca
+    .use('auth', {restrict: '/api'})
 
   seneca
     .use('mesh', {auto: true})
-
-  seneca
-    .use('auth', {restrict: '/api'})
-
-  // Do fancy concorda and meshing stuff in here only.
-  // You have access to fully loaded server and seneca
 
   server.route({
     method: 'GET',

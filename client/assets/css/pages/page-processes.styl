@@ -1,0 +1,89 @@
+/*--------------------------------------------------------------------
+*
+* PAGE - PROCESSES
+*
+--------------------------------------------------------------------*/
+
+// Process status dots
+
+.process-status
+  display: inline-block
+  height: 10px
+  width: @height
+  position: relative
+  top: -(@height/2)
+  margin-right: $ui-spacing-third
+  border-radius: 100%
+  
+  &.status-running
+    background-color: $green
+    
+  &.status-stopped
+    background-color: $red
+
+// Process card
+
+.process-card
+  margin-top: $ui-spacing
+  border: $ui-border
+  border-radius: $ui-radius
+  box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
+
+  &:not(:last-child)
+    margin-bottom: $ui-spacing
+    
+.process-heading,
+.process-stats-container
+  padding: $ui-spacing-half $ui-spacing
+      
+.process-heading
+  border-bottom: $ui-border
+  background-color: lighten($gray-lighter, 70%)
+  font-weight: $font-weight-bold
+  
+  h1
+    font-weight: inherit
+  
+  &.has-btn
+  
+    h1, .btn
+      display: inline-block
+
+.process-stats-container
+  border-bottom: $ui-border
+  
+.process-argument
+  padding: $ui-spacing-half $ui-spacing
+  font-size: $font-small
+  font-family: $font-monospaced
+  color: $gray-light
+  
+  &:not(:last-of-type)
+    border-bottom: $ui-border
+  
+@media screen and (max-width: 48em)
+
+  .process-stats-row:only-child
+
+    .process-stats-container:last-child
+      border: none
+  
+@media screen and (min-width: 49em)
+
+  .process-stats-floated
+  
+    &.process-stats-compact
+      .label-dimmed
+        top: 0
+
+    h1, h2, h3, h4, h5, p
+      float: left
+
+    .label-dimmed
+      margin-left: $ui-spacing-half
+      position: relative
+      top: $ui-spacing-fourth
+      
+  .process-stats-row:only-child
+    .process-stats-container
+      border: none
