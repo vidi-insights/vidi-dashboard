@@ -4,10 +4,10 @@ module.exports = (opts, server, done) => {
   var seneca = server.seneca
     .use('user') // Note: swap this out for local concorda
     .use('auth', {restrict: '/api'})
-    .use('vidi-metrics', {collector: true})
+    .use('vidi-metrics', {collector: {enabled: true}})
     .use('vidi-toolbag-metrics')
-    .use('vidi-influx-store', {influx: {host: '192.168.99.100'}})
-    .use('vidi-toolbag-influx', {influx: {host: '192.168.99.100'}})
+    .use('vidi-influx-sink', {influx: {host: '192.168.99.100'}})
+    .use('vidi-toolbag-influx', {influx: {host: '192.168.99.100', database: 'vidi_metrics', username: 'metrics', password: 'metrics'}})
 
   seneca.act({
     role: 'user',

@@ -64,7 +64,7 @@
     "vidi-metrics": "vidi-insights/vidi-metrics",
     "vidi-influx-store": "vidi-insights/vidi-influx-store",
     "vidi-toolbag-influx": "vidi-insights/vidi-toolbag-influx",
-    "vidi-toolbag-metrics": "vidi-insights/vidi-toolbag-metrics"
+    "vidi-toolbag-metrics": "vidi-insights/vidi-toolbag-metrics#vnext"
   },
   "devDependencies": {
     "babel-core": "6.4.x",
