@@ -47,7 +47,7 @@ export const Overview = React.createClass({
               </select>
             </div>
           </div>
-          
+
           <div className="row middle-xs search-wrapper">
             <div className="col-xs-12 col-sm-8 col-md-8 search-input-wrapper">
               <input type="search" className="input-large" placeholder="Find a process"/>
@@ -56,53 +56,43 @@ export const Overview = React.createClass({
               <button className="btn btn-large btn-search">Search</button>
             </div>
           </div>
-          
+
         </div>
         <div className="container-fluid">
-          <div className="processes-table">
-            <table>
-              <thead>
-                <tr>
-                  <th>Pid</th>
-                  <th>Tag</th>
-                  <th>Host</th>
-                  <th>Heap Usage</th>
-                  <th>Event Loop</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span className="status status-healthy" title="Status: healthy"></span> 65296</td>
-                  <td>taggoeshere</td>
-                  <td>192.0.0.2</td>
-                  <td><strong>73mb</strong> out of <strong>106mb</strong> (103mb RSS)</td>
-                  <td><strong>4.23s delay</strong> (30s limit)</td>
-                </tr>
-                <tr>
-                  <td><span className="status status-stress" title="Status: healthy"></span> 65296</td>
-                  <td>taggoeshere</td>
-                  <td>192.0.0.2</td>
-                  <td><strong>73mb</strong> out of <strong>106mb</strong> (103mb RSS)</td>
-                  <td><strong>4.23s delay</strong> (30s limit)</td>
-                </tr>
-                <tr>
-                  <td><span className="status status-terminal" title="Status: healthy"></span> 65296</td>
-                  <td>taggoeshere</td>
-                  <td>192.0.0.2</td>
-                  <td><strong>73mb</strong> out of <strong>106mb</strong> (103mb RSS)</td>
-                  <td><strong>4.23s delay</strong> (30s limit)</td>
-                </tr>
-                <tr className="process-status-dead">
-                  <td><span className="status status-dead" title="Status: healthy"></span> 65296</td>
-                  <td>taggoeshere</td>
-                  <td>192.0.0.2</td>
-                  <td><strong>73mb</strong> out of <strong>106mb</strong> (103mb RSS)</td>
-                  <td><strong>4.23s delay</strong> (30s limit)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          
+          <table className="processes-table">
+            <thead>
+              <tr>
+                <th>Pid</th>
+                <th>Tag</th>
+                <th>Host</th>
+                <th>Heap Usage</th>
+                <th>Event Loop</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span className="status status-healthy"></span> 65296</td>
+                <td>taggoeshere</td>
+                <td>192.0.0.2</td>
+                <td><strong>73mb</strong> out of <strong>106mb</strong> (103mb RSS)</td>
+                <td><strong>4.23s delay</strong> (30s limit)</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
           {sections}
         </div>
       </div>
@@ -167,7 +157,7 @@ function make_process_sections (data, event_loop) {
 
       <div className="row middle-xs process-stats-row no-gutter">
           <h3 className="col-xs-12 mb0 mt0 process-heading">Heap Usage</h3>
-        
+
           <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
             <h2 className="txt-truncate m0">{now.heap_total + ' mb'}</h2>
             <p className="label-dimmed m0">Total</p>
@@ -195,9 +185,9 @@ function make_event_loop_section (event_loop) {
   return (
     <div key={(event_loop.latest.pid + 'event_loop')}>
       <div className="row middle-xs process-stats-row no-gutter">
-        
+
         <h3 className="col-xs-12 mt0 mb0 process-heading">Event Loop</h3>
-        
+
         <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
           <h2 className="txt-truncate m0">{(Math.round(event_loop.latest.delay * 100) / 100)}</h2>
           <p className="label-dimmed m0">Delay</p>
