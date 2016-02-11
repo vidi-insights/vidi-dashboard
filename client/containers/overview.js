@@ -59,6 +59,41 @@ export const Overview = React.createClass({
           
         </div>
         <div className="container-fluid">
+          <table className="processes-table">
+            <thead>
+              <tr>
+                <th>Pid</th>
+                <th>Tag</th>
+                <th>Host</th>
+                <th>Heap Usage</th>
+                <th>Event Loop</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span className="status status-healthy"></span> 65296</td>
+                <td>taggoeshere</td>
+                <td>192.0.0.2</td>
+                <td><strong>73mb</strong> out of <strong>106mb</strong> (103mb RSS)</td>
+                <td><strong>4.23s delay</strong> (30s limit)</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          
           {sections}
         </div>
       </div>
