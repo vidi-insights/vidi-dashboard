@@ -23,16 +23,14 @@ module.exports = (opts, server, done) => {
   setInterval(function () {
     seneca.act({role: 'vidi', group: 'toolbag', stat: 'process'}, function (err, data) {
       if (err) console.log(err.stack || err)
-
-      if (data) {
+      if (data && data.length > 0) {
         console.log(data)
         server.publish('/vidi/toolbag/process', data)
       }
     })
     seneca.act({role: 'vidi', group: 'toolbag', stat: 'event_loop'}, function (err, data) {
       if (err) console.log(err.stack || err)
-
-      if (data) {
+      if (data && data.length > 0) {
         console.log(data)
         server.publish('/vidi/toolbag/event_loop', data)
       }
