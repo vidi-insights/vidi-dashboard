@@ -127,7 +127,7 @@ function make_process_sections (data, event_loop) {
   section.push(
     <div key={(now.pid + 'process')}>
       <div className="process-heading">
-        <h1 className="mt0 mb0 txt-truncate"><span className="process-status status-running"></span> <b>{now.pid}</b></h1>
+        <h1 className="mt0 mb0 txt-truncate"><span className="status status-small status-healthy"></span> <b>{now.pid}</b></h1>
       </div>
 
       <div className="row middle-xs process-stats-row no-gutter">

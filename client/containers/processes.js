@@ -74,7 +74,7 @@ function make_process_sections (data, event_loop) {
   section.push(
     <div key={(now.pid + 'process')}>
       <div className="process-heading has-btn cf">
-        <h1 className="mt0 mb0 txt-truncate fl-left"><span className="process-status status-running"></span> {now.pid}</h1>
+        <h1 className="mt0 mb0 txt-truncate fl-left"><span className="status status-small status-healthy"></span> {now.pid}</h1>
         <button className="btn btn-small fl-right">Collapse</button>
       </div>
 
