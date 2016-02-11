@@ -59,6 +59,33 @@ export const Overview = React.createClass({
 
         </div>
         <div className="container-fluid">
+          
+          <div className="process-group panel">
+            <h3 className="panel-heading m0">Processes tagged with <strong>tag name</strong></h3>
+            <div className="panel-body">
+              <ul className="list-unstyled list-inline cf">
+                <li><strong>Total:</strong> 25</li>
+                <li><span className="status status-small status-healthy"></span><strong>Healthy:</strong> 20</li>
+                <li><span className="status status-small status-stress"></span><strong>Stressed:</strong> 0</li>
+                <li><span className="status status-small status-terminal"></span><strong>Terminal:</strong> 1</li>
+                <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 5</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="process-group panel">
+            <h3 className="panel-heading m0">Processes tagged with <strong>tag name</strong></h3>
+            <div className="panel-body">
+              <ul className="list-unstyled list-inline cf">
+                <li><strong>Total:</strong> 25</li>
+                <li><span className="status status-small status-healthy"></span><strong>Healthy:</strong> 20</li>
+                <li><span className="status status-small status-stress"></span><strong>Stressed:</strong> 0</li>
+                <li><span className="status status-small status-terminal"></span><strong>Terminal:</strong> 1</li>
+                <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 5</li>
+              </ul>
+            </div>
+          </div>
+          
           <div className="processes-table">
             <table>
               <thead>
