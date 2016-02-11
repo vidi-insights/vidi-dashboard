@@ -60,6 +60,7 @@
     "style-loader": "0.13.x",
     "superagent": "1.7.x",
     "toolbag": "^0.7.0",
+    "seneca-web": "senecajs/seneca-web",
     "vidi-metrics": "vidi-insights/vidi-metrics",
     "vidi-influx-store": "vidi-insights/vidi-influx-store",
     "vidi-toolbag-influx": "vidi-insights/vidi-toolbag-influx",

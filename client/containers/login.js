@@ -39,13 +39,12 @@ export const Login = React.createClass({
               <input ref="email" type="email" placeholder="Email" className="input-large" required/>
               <input ref="pass" type="password" placeholder="Password" className="input-large" required/>
               <button type="submit" className="btn btn-large submit">Submit</button>
-              <a href="/auth/login_google">Google Login</a>
 
               <div className="panel-footer">
                 <p>Or log in using one of the following services:</p>
-                <button className="btn btn-secondary btn-github has-icon"><span className="icon icon-github"></span> Github</button>
-                <button className="btn btn-secondary btn-twitter has-icon"><span className="icon icon-twitter"></span> Twitter</button>
-                <button className="btn btn-secondary btn-google has-icon"><span className="icon icon-google"></span> Google</button>
+                <a className="btn btn-secondary btn-github has-icon" href="/"><span className="icon icon-google"></span> Github</a>
+                <a className="btn btn-secondary btn-twitter has-icon" href="/"><span className="icon icon-google"></span> Twitter</a>
+                <a className="btn btn-secondary btn-google has-icon" href="/auth/login_google"><span className="icon icon-google"></span> Google</a>
               </div>
             </form>
           </div>
