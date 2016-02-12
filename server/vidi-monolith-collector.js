@@ -7,7 +7,7 @@ module.exports = (opts, server, done) => {
     .use('vidi-metrics', {collector: {enabled: true}})
     .use('vidi-toolbag-metrics')
     .use('vidi-influx-sink', {influx: {host: '192.168.99.100'}})
-    .use('vidi-toolbag-influx', {influx: {host: '192.168.99.100', database: 'vidi_metrics', username: 'metrics', password: 'metrics'}})
+    .use('vidi-toolbag-influx-queries', {influx: {host: '192.168.99.100'}})
 
   seneca.act({
     role: 'user',
@@ -21,14 +21,14 @@ module.exports = (opts, server, done) => {
   server.subscription('/vidi/toolbag/event_loop')
 
   setInterval(function () {
-    seneca.act({role: 'vidi', group: 'toolbag', stat: 'process'}, function (err, data) {
+    seneca.act({role: 'vidi', source: 'toolbag', metric: 'process'}, function (err, data) {
       if (err) console.log(err.stack || err)
       if (data && data.length > 0) {
         console.log(data)
         server.publish('/vidi/toolbag/process', data)
       }
     })
-    seneca.act({role: 'vidi', group: 'toolbag', stat: 'event_loop'}, function (err, data) {
+    seneca.act({role: 'vidi', source: 'toolbag', metric: 'event_loop'}, function (err, data) {
       if (err) console.log(err.stack || err)
       if (data && data.length > 0) {
         console.log(data)

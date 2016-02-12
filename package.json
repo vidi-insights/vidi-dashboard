@@ -61,10 +61,10 @@
     "superagent": "1.7.x",
     "toolbag": "^0.7.0",
     "seneca-web": "senecajs/seneca-web",
-    "vidi-metrics": "vidi-insights/vidi-metrics",
-    "vidi-influx-store": "vidi-insights/vidi-influx-store",
-    "vidi-toolbag-influx": "vidi-insights/vidi-toolbag-influx",
-    "vidi-toolbag-metrics": "vidi-insights/vidi-toolbag-metrics#vnext"
+    "vidi-metrics": "0.1.0",
+    "vidi-influx-sink": "0.1.0",
+    "vidi-toolbag-influx-queries": "vidi-insights/vidi-toolbag-influx-queries#vnext",
+    "vidi-toolbag-metrics": "0.1.0"
   },
   "devDependencies": {
     "babel-core": "6.4.x",
