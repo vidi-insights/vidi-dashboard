@@ -4,16 +4,6 @@
 *
 --------------------------------------------------------------------*/
 
-// Sticky footer
-.shell
-  display: flex
-  min-height: 100vh
-  flex-direction: column
-
-.page-wrapper,
-.page-wrapper-expanded
-  flex: 1
-
 // Center children vertically
 .vertical-center
   display: flex
@@ -32,3 +22,15 @@
 
 .fl-right
   float: right
+
+@media screen and (min-width: 48em)
+
+  // Sticky footer
+  .shell
+    display: flex
+    min-height: 100vh
+    flex-direction: column
+
+  .page-wrapper,
+  .page-wrapper-expanded
+    flex: 1

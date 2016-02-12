@@ -1,31 +1,27 @@
 /*--------------------------------------------------------------------
 *
-* PAGE - PROCESSES
+* PROCESS
 *
 --------------------------------------------------------------------*/
 
 // Process status dots
 
-.process-status
-  display: inline-block
-  height: 10px
-  width: @height
+.process-card *[class*="icon-status"]:not(.icon-small)
   position: relative
-  top: -(@height/2)
-  margin-right: $ui-spacing-third
-  border-radius: 100%
+  top: -5px
   
-  &.status-running
-    background-color: $green
-    
-  &.status-stopped
-    background-color: $red
+// Process group
+
+.process-group .panel-heading,
+.process-heading
+  background-color: lighten($gray-lighter, 70%)
 
 // Process card
 
 .process-card
-  margin-top: $ui-spacing
+  margin-top: $ui-spacing-half
   border: $ui-border
+  border-bottom: none
   border-radius: $ui-radius
   box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
 
@@ -34,11 +30,10 @@
     
 .process-heading,
 .process-stats-container
-  padding: $ui-spacing-half $ui-spacing
+  padding: $ui-spacing-half
       
 .process-heading
   border-bottom: $ui-border
-  background-color: lighten($gray-lighter, 70%)
   font-weight: $font-weight-bold
   
   h1
@@ -49,7 +44,7 @@
     h1, .btn
       display: inline-block
 
-.process-stats-container
+.process-stats-row
   border-bottom: $ui-border
   
 .process-argument
@@ -60,6 +55,25 @@
   
   &:not(:last-of-type)
     border-bottom: $ui-border
+    
+// Dead process
+
+.process-dead
+  color: $gray-light
+  opacity: 0.8
+  
+  .status
+    opacity: 0.5
+    
+// Stressed process
+
+.process-property-stress
+  color: $orange
+  
+// Terminal process
+
+.process-property-terminal
+  color: $red
   
 @media screen and (max-width: 48em)
 

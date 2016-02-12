@@ -21,45 +21,41 @@ export const Overview = React.createClass({
   render () {
     var sections = []
     var data = _.orderBy(this.props.process_stats, ['pid'], ['desc'])
+    var count = data.length
 
     _.each(data, (process) => {
       if (process) {
         var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
-        sections.push(
-          <div key={process.pid} className="process-card">
-            {make_process_sections(process, event_loop)}
-          </div>
-        )
+        sections.push(make_process_sections(process, event_loop))
       }
     })
 
     return (
       <div className="page page-processes">
         <div className="container-fluid">
-          <div className="row middle-xs page-heading">
-            <h2 className="col-xs-12 col-sm-8">Overview</h2>
-            <div className="col-xs-12 col-sm-4 txt-right">
-              <select>
-                <option>120 seconds</option>
-                <option>5 minutes</option>
-                <option>30 minutes</option>
-                <option>1 hour</option>
-              </select>
-            </div>
-          </div>
-          
-          <div className="row middle-xs search-wrapper">
-            <div className="col-xs-12 col-sm-8 col-md-8 search-input-wrapper">
-              <input type="search" className="input-large" placeholder="Find a process"/>
-            </div>
-            <div className="col-xs-12 col-sm-4 col-md-4 txt-left search-btn-wrapper">
-              <button className="btn btn-large btn-search">Search</button>
-            </div>
-          </div>
-          
+          {make_header()}
+          {make_search()}
         </div>
+
         <div className="container-fluid">
-          {sections}
+          <div className="process-group panel">
+            <div className="panel-heading cf">
+              <h3 className="m0 fl-left">Processes tagged with <strong>tag name</strong></h3>
+              <a href="" className="fl-right icon icon-collapse"></a>
+            </div>
+
+            <div className="panel-body">
+              <ul className="list-unstyled list-inline cf">
+                <li><strong>Total:</strong> {count}</li>
+                <li><span className="status status-small status-healthy"></span><strong>Healthy:</strong> {count}</li>
+                <li><span className="status status-small status-stress"></span><strong>Stressed:</strong> 0</li>
+                <li><span className="status status-small status-terminal"></span><strong>Terminal:</strong> 0</li>
+                <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 0</li>
+              </ul>
+
+              {sections}
+            </div>
+          </div>
         </div>
       </div>
    )
@@ -77,96 +73,74 @@ export default connect((state) => {
   }
 })(Overview)
 
+function make_header () {
+  return (
+    <div className="row middle-xs page-heading">
+      <h2 className="col-xs-12 col-sm-8">Overview</h2>
+      <div className="col-xs-12 col-sm-4 txt-right">
+        <select>
+          <option>120 seconds</option>
+          <option>5 minutes</option>
+          <option>30 minutes</option>
+          <option>1 hour</option>
+        </select>
+      </div>
+    </div>
+  )
+}
+
+function make_search () {
+  return (
+    <div className="row middle-xs search-wrapper">
+      <div className="col-xs-12 col-sm-8 col-md-8 search-input-wrapper">
+        <input type="search" className="input-large" placeholder="Find a process"/>
+      </div>
+      <div className="col-xs-12 col-sm-4 col-md-4 txt-left search-btn-wrapper">
+        <button className="btn btn-large btn-search">Search</button>
+      </div>
+    </div>
+  )
+}
+
 function make_process_sections (data, event_loop) {
   var section = []
   var now = data.latest
 
-  section.push(
-    <div key={(now.pid + 'process')}>
-      <div className="process-heading">
-        <h1 className="mt0 mb0 txt-truncate"><span className="process-status status-running"></span> <b>{now.pid}</b></h1>
-      </div>
+  var delay  = (Math.round(event_loop.latest.delay * 100) / 100)
 
-      <div className="row middle-xs process-stats-row no-gutter">
-        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated cf">
-          <h2 className="txt-truncate m0">{now.proc_uptime}</h2>
-          <p className="label-dimmed m0">Process uptime</p>
-        </div>
-
-        <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated cf">
-          <h2 className="txt-truncate m0">{now.sys_uptime}</h2>
-          <p className="label-dimmed m0">System uptime</p>
-        </div>
-      </div>
-
-      <div className="row middle-xs process-stats-row no-gutter">
-        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
-          <h2 className="txt-truncate m0">{now.ver_node}</h2>
-          <p className="label-dimmed m0">Node</p>
-        </div>
-
-        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
-          <h2 className="txt-truncate m0">{now.ver_v8}</h2>
-          <p className="label-dimmed m0">V8</p>
-        </div>
-
-        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
-          <h2 className="txt-truncate m0">{now.ver_uv}</h2>
-          <p className="label-dimmed m0">LibUV</p>
-        </div>
-
-        <div className="col-xs-6 col-sm-3 col-md-3 process-stats-container cf">
-          <h2 className="txt-truncate m0">{now.ver_openssl}</h2>
-          <p className="label-dimmed m0">OpenSSL</p>
-        </div>
-      </div>
-
-      <div className="row middle-xs process-stats-row no-gutter">
-          <h3 className="col-xs-12 mb0 mt0 process-heading">Heap Usage</h3>
-        
-          <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
-            <h2 className="txt-truncate m0">{now.heap_total + ' mb'}</h2>
-            <p className="label-dimmed m0">Total</p>
-          </div>
-
-          <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
-            <h2 className="txt-truncate m0">{now.heap_used  + ' mb'}</h2>
-            <p className="label-dimmed m0">Used</p>
-          </div>
-
-          <div className="col-xs-12 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
-            <h2 className="txt-truncate m0">{now.heap_rss  + ' mb'}</h2>
-            <p className="label-dimmed m0">Rss</p>
-          </div>
-      </div>
-    </div>
-  )
-
-  if (event_loop) section.push(make_event_loop_section(event_loop))
-
-  return section
-}
-
-function make_event_loop_section (event_loop) {
   return (
-    <div key={(event_loop.latest.pid + 'event_loop')}>
-      <div className="row middle-xs process-stats-row no-gutter">
-        
-        <h3 className="col-xs-12 mt0 mb0 process-heading">Event Loop</h3>
-        
-        <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
-          <h2 className="txt-truncate m0">{(Math.round(event_loop.latest.delay * 100) / 100)}</h2>
-          <p className="label-dimmed m0">Delay</p>
+    <div key={now.pid} className="process-card">
+      <div className="process-heading has-icon">
+        <span className="status status-healthy status-small" title="Status: healthy"></span> {now.pid}
+      </div>
+
+      <div className="process-stats-row cf row no-gutter">
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 process-stats-container process-stats-floated">
+          <ul className="list-unstyled list-inline cf">
+            <li><h4 className="m0">Process uptime:</h4></li>
+            <li>{now.proc_uptime}</li>
+          </ul>
         </div>
 
-        <div className="col-xs-6 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
-          <h2 className="txt-truncate m0">{event_loop.latest.limit}</h2>
-          <p className="label-dimmed m0">Limit</p>
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 process-stats-container process-stats-floated">
+          <ul className="list-unstyled list-inline cf">
+            <li><h4 className="m0">System uptime:</h4></li>
+            <li>{now.sys_uptime}</li>
+          </ul>
         </div>
 
-        <div className="col-xs-12 col-sm-4 col-md-4 process-stats-container process-stats-floated cf">
-          <h2 className="txt-truncate m0 label-running">{event_loop.latest.over_limit}</h2>
-          <p className="label-dimmed m0">Over Limit</p>
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 process-stats-container process-stats-floated">
+          <ul className="list-unstyled list-inline cf">
+            <li><h4 className="m0">Heap usage:</h4></li>
+            <li>{`${now.heap_used} out of ${now.heap_total} (${now.heap_rss} RSS)`}</li>
+          </ul>
+        </div>
+
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 process-stats-container process-stats-floated">
+          <ul className="list-unstyled list-inline cf">
+            <li><h4 className="m0">Event loop:</h4></li>
+            <li>{`${delay}s delay (${event_loop.latest.limit}s limit)`}</li>
+          </ul>
         </div>
       </div>
     </div>

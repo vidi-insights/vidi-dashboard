@@ -28,7 +28,7 @@ export const Login = React.createClass({
       <main className="page page-login" role="main">
         <div className="container-fluid">
           <div className="row middle-xs center-xs vertical-center">
-            <form className="login-form col-xs-12 col-md-6 col-lg-4 txt-left form-full-width form-panel"
+            <form className="login-form col-xs-12 col-md-6 col-lg-5 txt-left form-full-width form-panel"
                   onSubmit={this.handleSubmit}>
 
               <h2 className="mt0 has-icon">
