@@ -1,14 +1,19 @@
-# vidi-dashboard
-Vidi: Dashboard is a composition of various Seneca modules and Hapi plugins to create an easy to use
-Dashboard. The app is extensible, it allows you to plug in your own data and reports with ease.
+![Banner][]
 
-- __Lead Maintainer:__ [Dean McDonnell][lead]
-- __Sponsor:__ [nearForm][]
+
+# vidi-dashboard
+
+- __Lead Maintainer:__ [Dean McDonnell][Lead]
+- __Sponsor:__ [nearForm][Sponsor]
+
+Vidi: Dashboard is a web app used to chart metrics from Vidi: Metrics.
+
+- __Work in progress:__ This module is currently a work in progress.
 
 ## Running
 To run the self monitoring demo,
 
-1. Clone [this repo](https://github.com/nearform/vidi-dashboard.git)
+1. Clone [this repo](https://github.com/vidi-insights/vidi-dashboard.git)
 2. Run `docker-compose -f test/influx.yml up`
 3. Run `npm install`
 4. Run `npm run build`
@@ -22,18 +27,20 @@ in a different terminal.
 This project is in it's infancy, documentation will come after stability.
 
 ## Contributing
-The Vidi:Dashboard project encourages open participation. If you feel you can help in any way, be it with
-documentation, examples, extra testing, or new features please get in touch.
+The [Vidi: Insights org][Org] encourages __open__ and __safe__ participation.
 
-- [Code of Conduct][]
+- [Code of Conduct][CoC]
 
+If you feel you can help in any way, be it with documentation, examples, extra testing, or new
+features please get in touch.
 
 ## License
-Copyright (c) 2015, Dean McDonnell and other contributors.
+Copyright (c) 2016, Dean McDonnell and other contributors.
 Licensed under [MIT][].
 
-[here]: https://github.com/nearform/vidi-concorda-nodezoo-system
+[Banner]: https://raw.githubusercontent.com/vidi-insights/org/master/assets/vidi-banner.png
+[Lead]: https://github.com/mcdonnelldean
+[Sponsor]: http://www.nearform.com/
+[Org]: https://github.com/vidi-insights
+[CoC]: https://github.com/vidi-insights/org/blob/master/code-of-conduct.md
 [MIT]: ./LICENSE
-[Code of Conduct]: ./CoC.md
-[lead]: https://github.com/mcdonnelldean
-[nearForm]: http://www.nearform.com/
