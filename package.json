@@ -24,7 +24,7 @@
     "build": "npm run copy & webpack --progress --colors",
     "watch": "webpack -w",
     "start": "node -r toolbag ./server/start.js",
-    "healthy": "node -r toolbag ./test/healty.js",
+    "healthy": "node -r toolbag ./test/healthy.js",
     "leaker": "node -r toolbag ./test/leaker.js",
     "sleeper": "node -r toolbag ./test/sleeper.js"
   },

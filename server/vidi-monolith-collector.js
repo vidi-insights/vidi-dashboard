@@ -24,14 +24,12 @@ module.exports = (opts, server, done) => {
     seneca.act({role: 'vidi', source: 'toolbag', metric: 'process'}, function (err, data) {
       if (err) console.log(err.stack || err)
       if (data && data.length > 0) {
-        console.log(data)
         server.publish('/vidi/toolbag/process', data)
       }
     })
     seneca.act({role: 'vidi', source: 'toolbag', metric: 'event_loop'}, function (err, data) {
       if (err) console.log(err.stack || err)
       if (data && data.length > 0) {
-        console.log(data)
         server.publish('/vidi/toolbag/event_loop', data)
       }
     })
