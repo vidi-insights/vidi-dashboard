@@ -59,7 +59,7 @@
     "seneca-user": "senecajs/seneca-user.git",
     "style-loader": "0.13.x",
     "superagent": "1.7.x",
-    "toolbag": "^0.7.0",
+    "toolbag": "0.7.0",
     "seneca-web": "senecajs/seneca-web",
     "vidi-metrics": "0.1.0",
     "vidi-influx-sink": "0.1.0",
