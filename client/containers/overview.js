@@ -61,7 +61,10 @@ export const Overview = React.createClass({
         <div className="container-fluid">
           
           <div className="process-group panel">
-            <h3 className="panel-heading m0">Processes tagged with <strong>tag name</strong></h3>
+            <div className="panel-heading cf">
+              <h3 className="m0 fl-left">Processes tagged with <strong>tag name</strong></h3>
+              <a href="" className="fl-right icon icon-collapse"></a>
+            </div>
             <div className="panel-body">
               <ul className="list-unstyled list-inline cf">
                 <li><strong>Total:</strong> 25</li>
@@ -74,7 +77,10 @@ export const Overview = React.createClass({
           </div>
 
           <div className="process-group panel">
-            <h3 className="panel-heading m0">Processes tagged with <strong>tag name</strong></h3>
+            <div className="panel-heading cf">
+              <h3 className="m0 fl-left">Processes tagged with <strong>tag name</strong></h3>
+              <a href="" className="fl-right icon icon-expand"></a>
+            </div>
             <div className="panel-body">
               <ul className="list-unstyled list-inline cf">
                 <li><strong>Total:</strong> 25</li>

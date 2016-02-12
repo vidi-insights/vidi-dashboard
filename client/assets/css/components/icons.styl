@@ -10,6 +10,12 @@
   width: 21px
   background-repeat: no-repeat
   background-size: contain
+  
+a.icon
+  transition: all 0.5s ease-in
+  
+  &:hover
+    opacity: 0.5
 
 .icon-menu
   background-image: url("../img/icon-menu.svg")
@@ -45,6 +51,17 @@
   top: 4px
   margin-right: $ui-spacing-half
   background-image: url("../img/icon-refresh-blue.svg")
+  
+.icon-collapse,
+.icon-expand
+  position: relative
+  top: 7px
+  
+.icon-collapse
+  background-image: url("../img/icon-collapse.svg")
+  
+.icon-expand
+  background-image: url("../img/icon-expand.svg")
   
 .has-icon-signout
   
