@@ -24,7 +24,9 @@
     "build": "npm run copy & webpack --progress --colors",
     "watch": "webpack -w",
     "start": "node -r toolbag ./server/start.js",
-    "rig": "node -r toolbag ./test/rig.js"
+    "healthy": "node -r toolbag ./test/healty.js",
+    "leaker": "node -r toolbag ./test/leaker.js",
+    "sleeper": "node -r toolbag ./test/sleeper.js"
   },
   "dependencies": {
     "async": "1.5.x",
