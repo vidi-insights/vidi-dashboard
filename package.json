@@ -64,9 +64,9 @@
     "toolbag": "0.7.0",
     "seneca-web": "senecajs/seneca-web",
     "vidi-metrics": "0.1.0",
-    "vidi-influx-sink": "0.1.0",
-    "vidi-toolbag-influx-queries": "0.1.0",
-    "vidi-toolbag-metrics": "0.1.0"
+    "vidi-influx-sink": "0.1.1",
+    "vidi-toolbag-influx-queries": "0.2.0",
+    "vidi-toolbag-metrics": "0.2.0"
   },
   "devDependencies": {
     "babel-core": "6.4.x",

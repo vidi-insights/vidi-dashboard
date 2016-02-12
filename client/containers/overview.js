@@ -20,27 +20,27 @@ export const Overview = React.createClass({
 
   render () {
     var sections = []
-    var data = _.orderBy(this.props.process_stats, ['pid'], ['desc'])
-    var count = data.length
 
-    _.each(data, (process) => {
-      if (process) {
-        var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
-        sections.push(make_process_sections(process, event_loop))
-      }
-    })
+    var groups = _.groupBy(this.props.process_stats)
+    _.each(groups, (group) => {
+      if (group) {
+        var proc_sections = []
+        var data = _.orderBy(group, ['pid'], ['desc'])
+        var count = data.length
+        var tag = ''
 
-    return (
-      <div className="page page-processes">
-        <div className="container-fluid">
-          {make_header()}
-          {make_search()}
-        </div>
+        _.each(data, (process) => {
+          if (process) {
+            tag = process.tag
+            var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
+            proc_sections.push(make_process_sections(process, event_loop))
+          }
+        })
 
-        <div className="container-fluid">
-          <div className="process-group panel">
+        sections.push(
+          <div key={tag} className="process-group panel">
             <div className="panel-heading cf">
-              <h3 className="m0 fl-left">Processes tagged with <strong>tag name</strong></h3>
+              <h3 className="m0 fl-left">Processes tagged with <strong>{tag}</strong></h3>
               <a href="" className="fl-right icon icon-collapse"></a>
             </div>
 
@@ -53,9 +53,24 @@ export const Overview = React.createClass({
                 <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 0</li>
               </ul>
 
-              {sections}
+              {proc_sections}
             </div>
           </div>
+        )
+      }
+    })
+
+
+
+    return (
+      <div className="page page-processes">
+        <div className="container-fluid">
+          {make_header()}
+          {make_search()}
+        </div>
+
+        <div className="container-fluid">
+          {sections}
         </div>
       </div>
    )
