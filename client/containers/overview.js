@@ -110,6 +110,78 @@ export const Overview = React.createClass({
                 </div>
               </div>
               
+              <div className="process-card process-stress">
+                <div className="process-heading has-icon">
+                  <span className="status status-stress status-small" title="Status: healthy"></span> 65296
+                </div>
+                <div className="process-stats-row cf row no-gutter">
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">Process uptime:</h4></li>
+                      <li>02:46:08</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">System uptime:</h4></li>
+                      <li>02:46:08</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="process-stats-row cf row no-gutter">
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">Heap usage:</h4></li>
+                      <li>73mb out of 106mb (103mb RSS)</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated process-property-stress">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">Event loop:</h4></li>
+                      <li>25s delay (30s limit)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="process-card process-terminal">
+                <div className="process-heading has-icon">
+                  <span className="status status-terminal status-small" title="Status: healthy"></span> 65296
+                </div>
+                <div className="process-stats-row cf row no-gutter">
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">Process uptime:</h4></li>
+                      <li>02:46:08</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">System uptime:</h4></li>
+                      <li>02:46:08</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="process-stats-row cf row no-gutter">
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">Heap usage:</h4></li>
+                      <li>73mb out of 106mb (103mb RSS)</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6 process-stats-container process-stats-floated process-property-terminal">
+                    <ul className="list-unstyled list-inline cf">
+                      <li><h4 className="m0">Event loop:</h4></li>
+                      <li>30s delay (30s limit)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
               <div className="process-card process-dead">
                 <div className="process-heading has-icon">
                   <span className="status status-dead status-small" title="Status: dead"></span> 65296

@@ -9,6 +9,12 @@
 .process-card *[class*="icon-status"]:not(.icon-small)
   position: relative
   top: -5px
+  
+// Process group
+
+.process-group .panel-heading,
+.process-heading
+  background-color: lighten($gray-lighter, 70%)
 
 // Process card
 
@@ -28,7 +34,6 @@
       
 .process-heading
   border-bottom: $ui-border
-  background-color: lighten($gray-lighter, 70%)
   font-weight: $font-weight-bold
   
   h1
@@ -59,6 +64,16 @@
   
   .status
     opacity: 0.5
+    
+// Stressed process
+
+.process-property-stress
+  color: $orange
+  
+// Terminal process
+
+.process-property-terminal
+  color: $red
   
 @media screen and (max-width: 48em)
 
