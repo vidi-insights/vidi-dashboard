@@ -59,12 +59,12 @@
     "seneca-user": "senecajs/seneca-user.git",
     "style-loader": "0.13.x",
     "superagent": "1.7.x",
-    "toolbag": "^0.7.0",
+    "toolbag": "0.7.0",
     "seneca-web": "senecajs/seneca-web",
-    "vidi-metrics": "vidi-insights/vidi-metrics",
-    "vidi-influx-store": "vidi-insights/vidi-influx-store",
-    "vidi-toolbag-influx": "vidi-insights/vidi-toolbag-influx",
-    "vidi-toolbag-metrics": "vidi-insights/vidi-toolbag-metrics"
+    "vidi-metrics": "0.1.0",
+    "vidi-influx-sink": "0.1.0",
+    "vidi-toolbag-influx-queries": "0.1.0",
+    "vidi-toolbag-metrics": "0.1.0"
   },
   "devDependencies": {
     "babel-core": "6.4.x",
