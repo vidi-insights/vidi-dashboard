@@ -218,24 +218,6 @@ function make_event_loop_section (event_loop) {
           <p className="label-dimmed m0">Over Limit</p>
         </div>
       </div>
-
-      <div className="row middle-xs process-stats-row no-gutter">
-        <h3 className="col-xs-12 mb0 mt0 process-heading">Execution</h3>
-        <div className="col-xs-12 col-sm-6 col-md-6 txt-truncate cf no-padding">
-          <h4 className="mb0 txt-truncate m0 process-stats-container process-stats-floated process-stats-compact">Script</h4>
-          <ul className="list-unstyled">
-            <li className="process-argument">full/path/to/node</li>
-            <li className="process-argument">full/path/to/script</li>
-          </ul>
-        </div>
-        <div className="col-xs-12 col-sm-6 col-md-6 txt-truncate cf no-padding">
-          <h4 className="mb0 txt-truncate m0 process-stats-container process-stats-floated process-stats-compact">Arguments</h4>
-          <ul className="list-unstyled process-arguments">
-            <li className="process-argument">-r</li>
-            <li className="process-argument">toolbag</li>
-          </ul>
-        </div>
-      </div>
     </div>
   )
 }
