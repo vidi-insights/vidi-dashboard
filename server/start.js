@@ -21,7 +21,10 @@ var opts = {
     secure: true,
     web: require('seneca-web')
   },
-  influx_sink: {
+  vidi_metrics: {
+    collector: {enabled: true}
+  },
+  vidi_influx_sink: {
     batch: {
       max: 5,
       timeout: 500,

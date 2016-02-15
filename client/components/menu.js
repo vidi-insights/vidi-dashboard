@@ -13,13 +13,9 @@ export default React.createClass({
         <nav role="navigation" className="nav-main">
           <ul className="list-unstyled list-inline">
             <li className="nav-item">
-              <Link to={'/'}>Overview</Link>
+              <Link to={'/'}>Processes</Link>
             </li>
-
-            <li className="nav-item">
-              <Link to={'/processes'}>Processes</Link>
-            </li>
-
+            
             <li className="nav-item">
               <Link to={'/profile'} className="has-icon has-icon-profile">
                 <span className="icon icon-profile"></span>

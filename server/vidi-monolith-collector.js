@@ -2,11 +2,11 @@
 
 module.exports = (opts, server, done) => {
   var seneca = server.seneca
-    .use('user') // Note: swap this out for local concorda
+    .use('user')
     .use('auth', {restrict: '/api'})
-    .use('vidi-metrics', {collector: {enabled: true}})
+    .use('vidi-metrics', opts.vidi_metrics)
     .use('vidi-toolbag-metrics')
-    .use('vidi-influx-sink', opts.influx_sink)
+    .use('vidi-influx-sink', opts.vidi_influx_sink)
     .use('vidi-toolbag-influx-queries', {influx: {host: '192.168.99.100'}})
 
   seneca.act({

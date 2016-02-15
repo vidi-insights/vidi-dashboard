@@ -32,7 +32,7 @@ export function unsubscribe (source, metric) {
     const metrics = Array.isArray(metric) ? metric : [metric]
 
     _.each(metrics, (met) => {
-      const uri = '/vidi' + '/' + source + '/' + met
+      const uri = '/api/vidi' + '/' + source + '/' + met
       unsubscribeSocket(uri)
       dispatch({
         type: VIDI_UNSUBSCRIBE,
