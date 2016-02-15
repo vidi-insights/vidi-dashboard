@@ -13,34 +13,16 @@ export const LOGOUT_RESPONSE = 'LOGOUT_RESPONSE'
 export const CHECK_COOKIE_REQUEST = 'CHECK_COOKIE_REQUEST'
 export const CHECK_COOKIE_RESPONSE = 'CHECK_COOKIE_RESPONSE'
 
-export function validateCookie (redirectUrl) {
-  return (dispatch) => {
-    dispatch({type: CHECK_COOKIE_REQUEST})
+export function validateCookie (done) {
+  Request
+    .get('/auth/user')
+    .end((err, resp) => {
+      if (err && err.status === 401 || !resp.body || resp.body.statusCode === 401) {
+        return done(false)
+      }
 
-    Request
-      .get('/auth/user')
-      .end((err, resp) => {
-        if (err && err.status === 401 || !resp.body || resp.body.statusCode === 401) {
-          dispatch({
-            type: CHECK_COOKIE_RESPONSE,
-            isLoggedIn: false
-          })
-
-          return dispatch(pushPath('/login'))
-        }
-
-        dispatch({
-          type: CHECK_COOKIE_RESPONSE,
-          isLoggedIn: true
-        })
-
-        if (redirectUrl) {
-          return dispatch(pushPath(redirectUrl))
-        }
-
-        dispatch(pushPath('/'))
-      })
-  }
+      return done(true)
+    })
 }
 
 export function login (user, pass) {
@@ -75,7 +57,7 @@ export function login (user, pass) {
             dispatch({type: LOGOUT_RESPONSE})
             dispatch(pushPath('/login'))
           }
-        })
+        }, (err) => {console.log(err)})
 
         dispatch(pushPath('/'))
       })

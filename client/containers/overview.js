@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 import Panel from '../components/panel'
 import ChartistGraph from 'react-chartist'
 import {subscribe, unsubscribe} from '../actions/vidi'
@@ -20,27 +21,27 @@ export const Overview = React.createClass({
 
   render () {
     var sections = []
-    var data = _.orderBy(this.props.process_stats, ['pid'], ['desc'])
-    var count = data.length
 
-    _.each(data, (process) => {
-      if (process) {
-        var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
-        sections.push(make_process_sections(process, event_loop))
-      }
-    })
+    var groups = _.groupBy(this.props.process_stats, 'tag')
+    _.each(groups, (group) => {
+      if (group) {
+        var proc_sections = []
+        var data = _.orderBy(group, ['pid'], ['desc'])
+        var count = data.length
+        var tag = ''
 
-    return (
-      <div className="page page-processes">
-        <div className="container-fluid">
-          {make_header()}
-          {make_search()}
-        </div>
+        _.each(data, (process) => {
+          if (process) {
+            tag = process.tag
+            var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
+            proc_sections.push(make_process_sections(process, event_loop))
+          }
+        })
 
-        <div className="container-fluid">
-          <div className="process-group panel">
+        sections.push(
+          <div key={tag} className="process-group panel">
             <div className="panel-heading cf">
-              <h3 className="m0 fl-left">Processes tagged with <strong>tag name</strong></h3>
+              <h3 className="m0 fl-left">Processes tagged with <strong>{tag}</strong></h3>
               <a href="" className="fl-right icon icon-collapse"></a>
             </div>
 
@@ -53,9 +54,23 @@ export const Overview = React.createClass({
                 <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 0</li>
               </ul>
 
-              {sections}
+              {proc_sections}
             </div>
           </div>
+        )
+      }
+    })
+
+
+
+    return (
+      <div className="page page-processes">
+        <div className="container-fluid">
+          {make_header()}
+        </div>
+
+        <div className="container-fluid">
+          {sections}
         </div>
       </div>
    )
@@ -107,11 +122,13 @@ function make_process_sections (data, event_loop) {
   var now = data.latest
 
   var delay  = (Math.round(event_loop.latest.delay * 100) / 100)
+  var link = `/process/${now.pid}`
 
   return (
     <div key={now.pid} className="process-card">
       <div className="process-heading has-icon">
-        <span className="status status-healthy status-small" title="Status: healthy"></span> {now.pid}
+        <span className="status status-healthy status-small" title="Status: healthy"></span>
+        <Link to={link}>{now.pid}</Link>
       </div>
 
       <div className="process-stats-row cf row no-gutter">
