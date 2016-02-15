@@ -12,7 +12,7 @@ import Login from '../containers/login'
 import Overview from '../containers/overview'
 import Messages from '../containers/messages'
 import Services from '../containers/services'
-import Processes from '../containers/processes'
+import ProcessById from '../containers/process_by_id'
 import Profile from '../containers/profile'
 
 export default function createRootComponent (store) {
@@ -23,8 +23,9 @@ export default function createRootComponent (store) {
       if(!allowed) {
         replace({nextPathname: nextState.location.pathname }, '/login', nextState.location.query)
       }
-
-      store.dispatch({type: LOGIN_RESPONSE, isLoggedIn: true, hasError: false})
+      else {
+        store.dispatch({type: LOGIN_RESPONSE, isLoggedIn: true, hasError: false})
+      }
 
       done()
     })
@@ -42,8 +43,7 @@ export default function createRootComponent (store) {
         <Route path="/" component={Shell}>
           <IndexRoute component={Overview} onEnter={requireAuth}/>
           <Route path="services" component={Services}  onEnter={requireAuth}/>
-          <Route path="messages" component={Messages}  onEnter={requireAuth}/>
-          <Route path="process/:id" component={Processes}  onEnter={requireAuth}/>
+          <Route path="process/:id" component={ProcessById}  onEnter={requireAuth}/>
           <Route path="profile" component={Profile}  onEnter={requireAuth}/>
           <Route path="login" component={Login} />
           <Route path="logout" onEnter={handleLogout} />

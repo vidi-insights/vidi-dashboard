@@ -77,7 +77,7 @@ export function logout () {
 
         unsubscribeSocket(userLogoutUri)
         dispatch({type: LOGOUT_RESPONSE, hasError: false})
-        dispatch(pushPath('/'))
+        dispatch(pushPath('/login'))
       })
   }
 }

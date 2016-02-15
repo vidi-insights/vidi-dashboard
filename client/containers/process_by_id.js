@@ -2,12 +2,13 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 import Panel from '../components/panel'
 import ChartistGraph from 'react-chartist'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
 
-export const Processes = React.createClass({
+export const ProcessById = React.createClass({
   componentDidMount () {
     this.props.dispatch(subscribe('toolbag', 'process'))
     this.props.dispatch(subscribe('toolbag', 'event_loop'))
@@ -19,14 +20,16 @@ export const Processes = React.createClass({
   },
 
   render () {
-    var sections = []
-
+    var body = null
     var data = _.find(this.props.process, ['pid', this.props.params.id])
+
     if (data) {
       var event_loop = _.find(this.props.event_loop, ['pid', data.pid])
-      sections.push(
-        <div key={process.pid} className="process-card">
-          {make_process_sections(data, event_loop)}
+
+      body =(
+        <div className="process-card">
+          {make_process_sections(data)}
+          {make_event_loop_section(event_loop)}
         </div>
       )
     }
@@ -35,7 +38,7 @@ export const Processes = React.createClass({
       <div className="page page-processes">
         <div className="container-fluid">
           <div className="row middle-xs">
-            <h2 className="col-xs-12 col-sm-8">Processes</h2>
+            <h2 className="col-xs-12 col-sm-8"><Link to={'/'}>Back</Link></h2>
             <div className="col-xs-12 col-sm-4 txt-right">
               <select>
                 <option>120 seconds</option>
@@ -47,7 +50,7 @@ export const Processes = React.createClass({
           </div>
         </div>
         <div className="container-fluid">
-          {sections}
+          {body}
         </div>
       </div>
    )
@@ -63,17 +66,15 @@ export default connect((state) => {
     process: process.data,
     event_loop: event_loop.data
   }
-})(Processes)
+})(ProcessById)
 
-function make_process_sections (data, event_loop) {
-  var section = []
+function make_process_sections (data) {
   var now = data.latest
 
-  section.push(
+  return (
     <div key={(now.pid + 'process')}>
       <div className="process-heading has-btn cf">
         <h1 className="mt0 mb0 txt-truncate fl-left"><span className="status status-small status-healthy"></span> {now.pid}</h1>
-        <button className="btn btn-small fl-right">Collapse</button>
       </div>
 
       <div className="row middle-xs process-stats-row no-gutter">
@@ -173,8 +174,6 @@ function make_process_sections (data, event_loop) {
       </div>
     </div>
   )
-
-  if (event_loop) section.push(make_event_loop_section(event_loop))
 
   return section
 }

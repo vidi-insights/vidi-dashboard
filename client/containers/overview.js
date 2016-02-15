@@ -91,7 +91,7 @@ export default connect((state) => {
 function make_header () {
   return (
     <div className="row middle-xs page-heading">
-      <h2 className="col-xs-12 col-sm-8">Overview</h2>
+      <h2 className="col-xs-12 col-sm-8">Processes</h2>
       <div className="col-xs-12 col-sm-4 txt-right">
         <select>
           <option>120 seconds</option>
