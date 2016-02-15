@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router'
 import Panel from '../components/panel'
 import ChartistGraph from 'react-chartist'
 import {subscribe, unsubscribe} from '../actions/vidi'
@@ -21,7 +22,7 @@ export const Overview = React.createClass({
   render () {
     var sections = []
 
-    var groups = _.groupBy(this.props.process_stats)
+    var groups = _.groupBy(this.props.process_stats, 'tag')
     _.each(groups, (group) => {
       if (group) {
         var proc_sections = []
@@ -66,7 +67,6 @@ export const Overview = React.createClass({
       <div className="page page-processes">
         <div className="container-fluid">
           {make_header()}
-          {make_search()}
         </div>
 
         <div className="container-fluid">
@@ -122,11 +122,13 @@ function make_process_sections (data, event_loop) {
   var now = data.latest
 
   var delay  = (Math.round(event_loop.latest.delay * 100) / 100)
+  var link = `/process/${now.pid}`
 
   return (
     <div key={now.pid} className="process-card">
       <div className="process-heading has-icon">
-        <span className="status status-healthy status-small" title="Status: healthy"></span> {now.pid}
+        <span className="status status-healthy status-small" title="Status: healthy"></span>
+        <Link to={link}>{now.pid}</Link>
       </div>
 
       <div className="process-stats-row cf row no-gutter">

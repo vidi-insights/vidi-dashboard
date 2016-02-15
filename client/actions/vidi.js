@@ -14,7 +14,7 @@ export function subscribe (source, metric) {
     const metrics = Array.isArray(metric) ? metric : [metric]
 
     _.each(metrics, (met) => {
-      const uri = '/vidi' + '/' + source + '/' + met
+      const uri = '/api/vidi' + '/' + source + '/' + met
 
       dispatch({type: VIDI_SUBSCRIBE, uri: uri, source: source, stat: met})
 
@@ -38,7 +38,7 @@ export function unsubscribe (source, metric) {
         type: VIDI_UNSUBSCRIBE,
         uri: uri,
         source: source,
-        stat: met
+        name: met
       })
     })
   }

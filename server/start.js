@@ -17,9 +17,18 @@ var opts = {
     port: process.env.PORT || 3000
   },
   chairo: {
-    timeout: 500,
+    timeout: 1000,
     secure: true,
     web: require('seneca-web')
+  },
+  influx_sink: {
+    batch: {
+      max: 5,
+      timeout: 500,
+    },
+    influx: {
+      host: '192.168.99.100'
+    }
   }
 }
 

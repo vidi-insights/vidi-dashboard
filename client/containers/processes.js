@@ -20,18 +20,16 @@ export const Processes = React.createClass({
 
   render () {
     var sections = []
-    var data = _.orderBy(this.props.process_stats, ['pid'], ['desc'])
 
-    _.each(data, (process) => {
-      if (process) {
-        var event_loop = _.find(this.props.event_loop_stats, ['pid', process.pid])
-        sections.push(
-          <div key={process.pid} className="process-card">
-            {make_process_sections(process, event_loop)}
-          </div>
-        )
-      }
-    })
+    var data = _.find(this.props.process, ['pid', this.props.params.id])
+    if (data) {
+      var event_loop = _.find(this.props.event_loop, ['pid', data.pid])
+      sections.push(
+        <div key={process.pid} className="process-card">
+          {make_process_sections(data, event_loop)}
+        </div>
+      )
+    }
 
     return (
       <div className="page page-processes">
@@ -62,8 +60,8 @@ export default connect((state) => {
   var event_loop = vidi.toolbag_event_loop || {data: [null]}
 
   return {
-    process_stats: process.data,
-    event_loop_stats: event_loop.data
+    process: process.data,
+    event_loop: event_loop.data
   }
 })(Processes)
 
@@ -221,7 +219,7 @@ function make_event_loop_section (event_loop) {
           <p className="label-dimmed m0">Over Limit</p>
         </div>
       </div>
-    
+
       <div className="row middle-xs process-stats-row no-gutter">
         <h3 className="col-xs-12 mb0 mt0 process-heading">Execution</h3>
         <div className="col-xs-12 col-sm-6 col-md-6 txt-truncate cf no-padding">
