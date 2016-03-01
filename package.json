@@ -18,7 +18,7 @@
     "url": "git://github.com/nearform/vidi-dashboard.git"
   },
   "scripts": {
-    "test": "lab server/test/*.test.js -r console -v -L -m 3000",
+    "test": "lab test/server/*.test.js -r console -v -L -m 3000",
     "lint": "lab test -dL",
     "copy": "copyfiles -f ./client/assets/img/favicon.png ./dist/img",
     "build": "npm run copy & webpack --progress --colors",
