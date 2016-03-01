@@ -35,8 +35,8 @@ var opts = {
 }
 
 var scripts = [
-  {pin: {monolith: true, collector: true}, script: vidi_monolith_collector},
   {pin: {monolith: true}, script: vidi_monolith},
+  {pin: {monolith: true, collector: true}, script: vidi_monolith_collector},
   {pin: {concorda: true}, script: vidi_concorda_mesh},
   {script: vidi_monolith_collector}
 ]
