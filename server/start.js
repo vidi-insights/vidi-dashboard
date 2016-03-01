@@ -18,8 +18,7 @@ var opts = {
   },
   chairo: {
     timeout: 1000,
-    secure: true,
-    web: require('seneca-web')
+    secure: true
   },
   vidi_metrics: {
     collector: {enabled: true}
