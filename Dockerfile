@@ -13,8 +13,6 @@ COPY . /src
 
 RUN npm run build
 
-EXPOSE 8000
-EXPOSE 44000
-EXPOSE 43000
+EXPOSE 3000
 
 CMD ["node", "-r toolbag", "server/start.js", "--seneca.options.tag=vidi-dashboard", "--seneca-log=type:act"]
