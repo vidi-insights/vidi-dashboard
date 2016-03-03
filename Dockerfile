@@ -1,5 +1,20 @@
+# nodezoo-web
 FROM node:4
-ADD . /
+
+
+RUN mkdir /src
+ADD package.json /src/
+
+WORKDIR /src
+
 RUN npm install
-RUN npm build
-CMD ["node", "server/start.js"]
+
+COPY . /src
+
+RUN npm run build
+
+EXPOSE 8000
+EXPOSE 44000
+EXPOSE 43000
+
+CMD ["node", "-r toolbag", "server/start.js", "--seneca.options.tag=vidi-dashboard", "--seneca-log=type:act"]
