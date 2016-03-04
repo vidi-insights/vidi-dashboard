@@ -34,6 +34,7 @@
     "boom": "3.x.x",
     "chairo": "^2.0.1",
     "chartist": "^0.9.5",
+    "concorda-client": "0.0.2",
     "css-loader": "0.23.x",
     "file-loader": "0.8.x",
     "hapi": "12.0.0",
