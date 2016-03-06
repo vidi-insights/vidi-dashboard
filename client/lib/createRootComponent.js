@@ -2,11 +2,16 @@
 
 import React from 'react'
 import {Provider} from 'react-redux'
-import {createHistory} from 'history'
-import {syncReduxAndRouter} from 'redux-simple-router'
-import {Router, Route, IndexRoute} from 'react-router'
+import thunkMiddleware from 'redux-thunk'
+import loggerMiddleware from 'redux-logger'
+import {combineReducers, createStore, applyMiddleware} from 'redux'
+import {browserHistory, Router, Route, IndexRoute} from 'react-router'
+import {routerReducer, routerMiddleware, syncHistoryWithStore} from 'react-router-redux'
 
-import {LOGIN_RESPONSE, logout, validateCookie} from '../actions/auth'
+import authReducer from '../reducers/auth'
+import vidiReducer from '../reducers/vidi'
+
+import {logout, validateCookie} from '../actions/auth'
 import Shell from '../containers/shell'
 import Login from '../containers/login'
 import Overview from '../containers/overview'
@@ -15,16 +20,36 @@ import Services from '../containers/services'
 import ProcessById from '../containers/process_by_id'
 import Profile from '../containers/profile'
 
-export default function createRootComponent (store) {
-  const history = createHistory()
+const rootReducer = combineReducers({
+  routing: routerReducer,
+  auth: authReducer,
+  vidi: vidiReducer
+})
 
+const buildStore = applyMiddleware(
+  thunkMiddleware,
+  routerMiddleware(browserHistory),
+  loggerMiddleware()
+)(createStore)
+
+const initalState = {
+  auth: {
+    hasError: false,
+    isLoggedIn: false
+  }
+}
+
+const store = buildStore(rootReducer, initalState)
+const history = syncHistoryWithStore(browserHistory, store)
+
+export default function createRootComponent () {
   function requireAuth (nextState, replace, done) {
     validateCookie((allowed) => {
       if(!allowed) {
-        replace({nextPathname: nextState.location.pathname }, '/login', nextState.location.query)
+        replace({nextPathname: nextState.location.pathname, pathname: '/login', query: nextState.location.query})
       }
       else {
-        store.dispatch({type: LOGIN_RESPONSE, isLoggedIn: true, hasError: false})
+        store.dispatch({type: 'AUTH_VALIDATED', isLoggedIn: true, hasError: false})
       }
 
       done()
@@ -34,8 +59,6 @@ export default function createRootComponent (store) {
   function handleLogout () {
     store.dispatch(logout())
   }
-
-  syncReduxAndRouter(history, store)
 
   return (
     <Provider store={store}>

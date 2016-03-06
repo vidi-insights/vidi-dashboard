@@ -1,7 +1,7 @@
 'use strict'
 
 import Request from 'superagent/lib/client'
-import {pushPath} from 'redux-simple-router'
+import {push} from 'react-router-redux'
 import {subscribeSocket, unsubscribeSocket} from '../lib/socket'
 
 const userLogoutUri = '/user/logout'
@@ -55,11 +55,11 @@ export function login (user, pass) {
           if (msg.user_id && msg.user_id === window.localStorage.getItem('user_id')) {
             unsubscribeSocket(userLogoutUri)
             dispatch({type: LOGOUT_RESPONSE})
-            dispatch(pushPath('/login'))
+            dispatch(push('/login'))
           }
         }, (err) => {console.log(err)})
 
-        dispatch(pushPath('/'))
+        dispatch(push('/'))
       })
   }
 }
@@ -77,7 +77,7 @@ export function logout () {
 
         unsubscribeSocket(userLogoutUri)
         dispatch({type: LOGOUT_RESPONSE, hasError: false})
-        dispatch(pushPath('/login'))
+        dispatch(push('/login'))
       })
   }
 }

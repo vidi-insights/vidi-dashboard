@@ -4,7 +4,6 @@ var Decree = require('seneca-decree')
 
 var dashboard = require('./dashboard')
 var vidi_monolith = require('./vidi-monolith')
-var vidi_monolith_collector = require('./vidi-monolith-collector')
 var vidi_concorda_mesh = require('./vidi-concorda-mesh')
 
 var opts = {
@@ -36,9 +35,8 @@ var opts = {
 
 var scripts = [
   {pin: {monolith: true}, script: vidi_monolith},
-  {pin: {monolith: true, collector: true}, script: vidi_monolith_collector},
   {pin: {concorda: true}, script: vidi_concorda_mesh},
-  {script: vidi_monolith_collector}
+  {script: vidi_monolith}
 ]
 
 Decree(opts, scripts, dashboard)

@@ -18,42 +18,49 @@ const authState = {
 export default function auth (state = authState, action) {
   switch (action.type) {
     case LOGIN_REQUEST:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: false,
         hasError: false,
         niceError: null
-      })
+      }
 
+    case 'AUTH_VALIDATED':
     case LOGIN_RESPONSE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: action.isLoggedIn,
         hasError: action.hasError,
         niceError: action.niceError
-      })
+      }
 
     case LOGOUT_REQUEST:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: action.isLoggedIn,
         hasError: false,
         niceError: null
-      })
+      }
 
     case LOGOUT_RESPONSE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: action.isLoggedIn,
         hasError: action.hasError,
         niceError: action.niceError
-      })
+      }
 
     case CHECK_COOKIE_REQUEST:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: false
-      })
+      }
 
     case CHECK_COOKIE_RESPONSE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         isLoggedIn: action.isLoggedIn
-      })
+      }
 
     default:
       return state
