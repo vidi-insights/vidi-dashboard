@@ -4,7 +4,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import Panel from '../components/panel'
+import PageHeader from '../components/pageHeader.js'
 import ChartistGraph from 'react-chartist'
+import HealthPanel from '../components/healthList'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
 
@@ -46,14 +48,7 @@ export const Overview = React.createClass({
             </div>
 
             <div className="panel-body">
-              <ul className="list-unstyled list-inline cf">
-                <li><strong>Total:</strong> {count}</li>
-                <li><span className="status status-small status-healthy"></span><strong>Healthy:</strong> {count}</li>
-                <li><span className="status status-small status-stress"></span><strong>Stressed:</strong> 0</li>
-                <li><span className="status status-small status-terminal"></span><strong>Terminal:</strong> 0</li>
-                <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 0</li>
-              </ul>
-
+              <HealthPanel count={count}/>
               {proc_sections}
             </div>
           </div>
@@ -66,7 +61,7 @@ export const Overview = React.createClass({
     return (
       <div className="page page-processes">
         <div className="container-fluid">
-          {make_header()}
+          <PageHeader title={'Overview'} />
         </div>
 
         <div className="container-fluid">
@@ -87,22 +82,6 @@ export default connect((state) => {
     event_loop_stats: event_loop.data
   }
 })(Overview)
-
-function make_header () {
-  return (
-    <div className="row middle-xs page-heading">
-      <h2 className="col-xs-12 col-sm-8">Processes</h2>
-      <div className="col-xs-12 col-sm-4 txt-right">
-        <select>
-          <option>120 seconds</option>
-          <option>5 minutes</option>
-          <option>30 minutes</option>
-          <option>1 hour</option>
-        </select>
-      </div>
-    </div>
-  )
-}
 
 function make_search () {
   return (

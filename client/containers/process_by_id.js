@@ -4,6 +4,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import Panel from '../components/panel'
+import PageHeader from '../components/pageHeader'
 import ChartistGraph from 'react-chartist'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
@@ -37,17 +38,7 @@ export const ProcessById = React.createClass({
     return (
       <div className="page page-processes">
         <div className="container-fluid">
-          <div className="row middle-xs">
-            <h2 className="col-xs-12 col-sm-8"><Link to={'/'}>Back</Link></h2>
-            <div className="col-xs-12 col-sm-4 txt-right">
-              <select>
-                <option>120 seconds</option>
-                <option>5 minutes</option>
-                <option>30 minutes</option>
-                <option>1 hour</option>
-              </select>
-            </div>
-          </div>
+          <PageHeader title={'Back'} titleLink={'/'} />
         </div>
         <div className="container-fluid">
           {body}

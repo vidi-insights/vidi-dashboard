@@ -25,10 +25,7 @@ var opts = {
   vidi_influx_sink: {
     batch: {
       max: 5,
-      timeout: 500,
-    },
-    influx: {
-      host: '192.168.99.100'
+      timeout: 1000,
     }
   }
 }

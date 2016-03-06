@@ -7,6 +7,7 @@ module.exports = (opts, server, done) => {
     .use('./views/processes')
     .use('./views/sensors')
     .use('./views/messages')
+    .use('vidi-toolbag-influx-queries')
 
   seneca.act({
     role: 'user',
@@ -25,6 +26,28 @@ module.exports = (opts, server, done) => {
       server.subscription('/api/vidi/view/processes')
       server.subscription('/api/vidi/view/messages')
       server.subscription('/api/vidi/view/sensors')
+
+      server.subscription('/api/vidi/toolbag/process')
+      server.subscription('/api/vidi/toolbag/event_loop')
+
+      setInterval(() => {
+        seneca.act({role: 'vidi', source: 'toolbag', metric: 'process'}, function (err, data) {
+          if (err) console.log(err.stack || err)
+
+          if (data && data.length > 0) {
+            server.publish('/api/vidi/toolbag/process', data)
+          }
+        })
+      }, 1000)
+
+      setInterval(() => {
+        seneca.act({role: 'vidi', source: 'toolbag', metric: 'event_loop'}, function (err, data) {
+          if (err) console.log(err.stack || err)
+          if (data && data.length > 0) {
+            server.publish('/api/vidi/toolbag/event_loop', data)
+          }
+        })
+      }, 1000)
 
       setInterval(() => {
         seneca.act({role: 'vidi', read: 'view.processes'}, (err, data) => {
