@@ -1,3 +1,0 @@
-
-require('seneca')()
-  .listen()

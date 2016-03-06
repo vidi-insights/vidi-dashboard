@@ -4,7 +4,6 @@ module.exports = (opts, server, done) => {
   var seneca = server.seneca
     .use('user')
     .use('auth', {restrict: '/api'})
-    .use('vidi-toolbag-influx-queries')
 
   seneca.act({
     role: 'user',
