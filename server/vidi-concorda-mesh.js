@@ -3,9 +3,49 @@
 module.exports = (opts, server, done) => {
   var seneca = server.seneca
     .use('concorda-client')
+    .use('auth', {restrict: '/api'})
+    .use('../views/processes')
+    .use('../views/sensors')
+    .use('../views/messages')
 
   seneca.ready(() => {
     seneca.log.info('hapi', server.info.port)
-    server.start(done)
+
+    server.start((err) => {
+      if (err) return done(err)
+
+      server.subscription('/api/vidi/view/processes')
+      server.subscription('/api/vidi/view/messages')
+      server.subscription('/api/vidi/view/sensors')
+
+      setInterval(() => {
+        seneca.act({role: 'vidi', read: 'view.processes'}, (err, data) => {
+          if (err) console.log(err.stack || err)
+
+          if (data && data.length > 0)
+            server.publish('/api/vidi/view/processes', data)
+        })
+      }, 1000)
+
+      setInterval(() => {
+        seneca.act({role: 'vidi', read: 'view.messages'}, (err, data) => {
+          if (err) console.log(err.stack || err)
+
+          if (data && data.length > 0)
+            server.publish('/api/vidi/view/messages', data)
+        })
+      }, 1000)
+
+      setInterval(() => {
+        seneca.act({role: 'vidi', read: 'view.sensors'}, (err, data) => {
+          if (err) console.log(err.stack || err)
+
+          if (data && data.length > 0)
+            server.publish('/api/vidi/view/sensors', data)
+        })
+      }, 1000)
+
+      done()
+    })
   })
 }
