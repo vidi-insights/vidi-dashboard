@@ -15,19 +15,21 @@ export default React.createClass({
             <li className="nav-item">
               <Link to={'/'}>Processes</Link>
             </li>
-            
+
             <li className="nav-item">
-              <Link to={'/profile'} className="has-icon has-icon-profile">
-                <span className="icon icon-profile"></span>
-                <span>Profile</span>
-              </Link>
+              <Link to={'/messages'}>Messages</Link>
             </li>
 
             <li className="nav-item">
-              <Link to={'/logout'} className="has-icon has-icon-signout">
-                <span className="icon icon-signout"></span>
-                <span>Sign out</span>
-              </Link>
+              <Link to={'/sensors'}>Sensors</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={'/profile'}>Profile</Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to={'/logout'}>Sign out</Link>
             </li>
           </ul>
         </nav>

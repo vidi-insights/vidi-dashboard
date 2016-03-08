@@ -6,25 +6,22 @@ import {Link} from 'react-router'
 import Panel from '../components/panel'
 import PageHeader from '../components/pageHeader.js'
 import ChartistGraph from 'react-chartist'
-import HealthPanel from '../components/healthList'
 import InfoCell from '../components/infoCell'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
 
 export const Overview = React.createClass({
   componentDidMount () {
-    this.props.dispatch(subscribe('messages'))
+    this.props.dispatch(subscribe('sensors'))
   },
 
   componentWillUnmount () {
-    this.props.dispatch(unsubscribe('messages'))
+    this.props.dispatch(unsubscribe('sensors'))
   },
 
   render () {
     var sections = []
-
-    var groups = _.groupBy(this.props.messages, 'pattern')
-
+    var groups = _.groupBy(this.props.sensors, 'sensor_type')
     var sortedKeys = _.keys(groups).sort()
 
     _.each(sortedKeys, (theKey) => {
@@ -32,28 +29,26 @@ export const Overview = React.createClass({
 
       if (group) {
         var proc_sections = []
-        var data = _.orderBy(group, ['pid'], ['desc'])
+        var data = _.orderBy(group, ['sensor_id'], ['desc'])
         var count = data.length
         var tag = ''
         var key
 
         _.each(data, (message) => {
           if (message) {
-            key = message.pattern.replace(/:/, '_').replace(/,/, '_ ')
-            tag = message.pattern
+            tag = message.sensor_type
             proc_sections.push(makeMessageSections(message))
           }
         })
 
         sections.push(
-          <div key={key} className="process-group panel">
+          <div key={tag} className="process-group panel">
             <div className="panel-heading cf">
               <h3 className="m0 fl-left"><strong>{tag}</strong></h3>
               <a href="" className="fl-right icon icon-collapse"></a>
             </div>
 
             <div className="panel-body">
-              <HealthPanel count={count}/>
               {proc_sections}
             </div>
           </div>
@@ -66,7 +61,7 @@ export const Overview = React.createClass({
     return (
       <div className="page page-processes">
         <div className="container-fluid">
-          <PageHeader title={'Messages'} />
+          <PageHeader title={'Sensors'} />
         </div>
 
         <div className="container-fluid">
@@ -79,10 +74,10 @@ export const Overview = React.createClass({
 
 export default connect((state) => {
   var vidi = state.vidi
-  var messages = vidi.messages || {data: [null]}
+  var sensors = vidi.sensors || {data: [null]}
 
   return {
-    messages: messages.data
+    sensors: sensors.data
   }
 })(Overview)
 
@@ -90,20 +85,24 @@ function makeMessageSections (messages) {
   var section = []
   var now = messages.latest
 
-  var link = `/process/${now.pid}`
-
   return (
-    <div key={now.pid} className="process-card">
+    <div key={now.sensor_id} className="process-card">
       <div className="process-heading has-icon">
         <span className="status status-healthy status-small" title="Status: healthy"></span>
-        <Link to={link}>{`${now.pid} - ${now.tag}`}</Link>
+        {`${now.topic}/${now.sensor_id}`}
       </div>
 
-      <div className="row middle-xs">
-        <div className="col-xs-12 mtb">
+      <div className="row middle-xs process-stats-row no-gutter">
+        <InfoCell title={'UOM'} value={now.uom} />
+        <InfoCell title={'Broker'} value={now.broker_id} />
+        <InfoCell title={'Topic'} value={now.topic} />
+      </div>
+
+      <div className="row middle-xs no-gutter">
+        <div className="col-xs-12 mt">
           <ChartistGraph
             type={'Line'}
-            data={{labels: messages.series.time, series: [messages.series.rate]}}
+            data={{labels: messages.series.time, series: [messages.series.value]}}
             options={{
               fullWidth: true,
               showArea: false,

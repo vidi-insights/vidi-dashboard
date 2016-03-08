@@ -1,9 +1,0 @@
-influx:
-  image: tutum/influxdb:0.9
-  ports:
-    - 8086:8086
-    - 8083:8083
-  environment:
-    - PRE_CREATE_DB="vidi_metrics"
-    - ADMIN_USER="metrics"
-    - INFLUXDB_INIT_PWD="metrics"

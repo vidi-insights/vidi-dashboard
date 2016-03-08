@@ -4,24 +4,25 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
 import Panel from '../components/panel'
+import PageHeader from '../components/pageHeader'
 import ChartistGraph from 'react-chartist'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
 
 export const ProcessById = React.createClass({
   componentDidMount () {
-    this.props.dispatch(subscribe('toolbag', 'process'))
-    this.props.dispatch(subscribe('toolbag', 'event_loop'))
+    this.props.dispatch(subscribe('processes'))
+    this.props.dispatch(subscribe('event_loop'))
   },
 
   componentWillUnmount () {
-    this.props.dispatch(unsubscribe('toolbag', 'process'))
-    this.props.dispatch(unsubscribe('toolbag', 'event_loop'))
+    this.props.dispatch(unsubscribe('processes'))
+    this.props.dispatch(unsubscribe('event_loop'))
   },
 
   render () {
     var body = null
-    var data = _.find(this.props.process, ['pid', this.props.params.id])
+    var data = _.find(this.props.processes, ['pid', this.props.params.id])
 
     if (data) {
       var event_loop = _.find(this.props.event_loop, ['pid', data.pid])
@@ -37,17 +38,7 @@ export const ProcessById = React.createClass({
     return (
       <div className="page page-processes">
         <div className="container-fluid">
-          <div className="row middle-xs">
-            <h2 className="col-xs-12 col-sm-8"><Link to={'/'}>Back</Link></h2>
-            <div className="col-xs-12 col-sm-4 txt-right">
-              <select>
-                <option>120 seconds</option>
-                <option>5 minutes</option>
-                <option>30 minutes</option>
-                <option>1 hour</option>
-              </select>
-            </div>
-          </div>
+          <PageHeader title={'Back'} titleLink={'/'} />
         </div>
         <div className="container-fluid">
           {body}
@@ -59,11 +50,11 @@ export const ProcessById = React.createClass({
 
 export default connect((state) => {
   var vidi = state.vidi
-  var process = vidi.toolbag_process || {data: [null]}
-  var event_loop = vidi.toolbag_event_loop || {data: [null]}
+  var processes = vidi.processes || {data: [null]}
+  var event_loop = vidi.event_loop || {data: [null]}
 
   return {
-    process: process.data,
+    processes: processes.data,
     event_loop: event_loop.data
   }
 })(ProcessById)
