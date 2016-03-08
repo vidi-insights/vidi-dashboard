@@ -25,7 +25,7 @@ var opts = {
   vidi_influx_sink: {
     batch: {
       max: 5,
-      timeout: 1000,
+      timeout: 1000
     }
   }
 }
