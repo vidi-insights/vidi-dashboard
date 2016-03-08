@@ -12,13 +12,13 @@ import _ from 'lodash'
 
 export const Overview = React.createClass({
   componentDidMount () {
-    this.props.dispatch(subscribe('toolbag', 'process'))
-    this.props.dispatch(subscribe('toolbag', 'event_loop'))
+    this.props.dispatch(subscribe('processes'))
+    this.props.dispatch(subscribe('event_loop'))
   },
 
   componentWillUnmount () {
-    this.props.dispatch(unsubscribe('toolbag', 'process'))
-    this.props.dispatch(unsubscribe('toolbag', 'event_loop'))
+    this.props.dispatch(unsubscribe('processes'))
+    this.props.dispatch(unsubscribe('event_loop'))
   },
 
   render () {
@@ -74,11 +74,11 @@ export const Overview = React.createClass({
 
 export default connect((state) => {
   var vidi = state.vidi
-  var process = vidi.toolbag_process || {data: [null]}
-  var event_loop = vidi.toolbag_event_loop || {data: [null]}
+  var processes = vidi.processes || {data: [null]}
+  var event_loop = vidi.event_loop || {data: [null]}
 
   return {
-    process_stats: process.data,
+    process_stats: processes.data,
     event_loop_stats: event_loop.data
   }
 })(Overview)

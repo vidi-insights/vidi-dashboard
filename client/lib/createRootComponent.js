@@ -16,7 +16,7 @@ import Shell from '../containers/shell'
 import Login from '../containers/login'
 import Overview from '../containers/overview'
 import Messages from '../containers/messages'
-import Services from '../containers/services'
+import Sensors from '../containers/sensors'
 import ProcessById from '../containers/process_by_id'
 import Profile from '../containers/profile'
 
@@ -65,7 +65,8 @@ export default function createRootComponent () {
       <Router history={history}>
         <Route path="/" component={Shell}>
           <IndexRoute component={Overview} onEnter={requireAuth}/>
-          <Route path="services" component={Services}  onEnter={requireAuth}/>
+          <Route path="sensors" component={Sensors}  onEnter={requireAuth}/>
+          <Route path="messages" component={Messages}  onEnter={requireAuth}/>
           <Route path="process/:id" component={ProcessById}  onEnter={requireAuth}/>
           <Route path="profile" component={Profile}  onEnter={requireAuth}/>
           <Route path="login" component={Login} />
