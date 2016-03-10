@@ -2,8 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import Panel from '../components/panel'
-import LineChart from '../components/line-chart'
+import {Panel, LineChart} from '../components/index'
 import Moment from 'moment'
 
 export const Messages = React.createClass({

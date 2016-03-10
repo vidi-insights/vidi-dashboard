@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import Panel from '../components/panel'
+import {Panel} from '../components/index'
 
 export const Processes = React.createClass({
   render () {

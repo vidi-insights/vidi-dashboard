@@ -2,8 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import LineChart from '../components/line-chart'
-import Panel from '../components/panel'
+import {LineChart, Panel} from '../components/index'
 import Moment from 'moment'
 import D3 from 'd3'
 import Lodash from 'lodash'

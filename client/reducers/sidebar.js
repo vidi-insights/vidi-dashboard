@@ -1,6 +1,6 @@
 'use strict'
 
-import * as sidebarActions from '../constants/sidebar'
+import  * from {Sidebar} as sidebarActions from '../constants/index'
 
 const sidebarState = {
   isExpanded: true
