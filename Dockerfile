@@ -1,4 +1,4 @@
-# nodezoo-web
+# vidi-dashboard
 FROM node:4
 
 
