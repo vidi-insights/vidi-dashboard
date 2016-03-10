@@ -3,10 +3,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
-import Panel from '../components/panel'
+import {Panel, PageHeader, HealthList} from '../components/index'
 import PageHeader from '../components/pageHeader.js'
 import ChartistGraph from 'react-chartist'
-import HealthPanel from '../components/healthList'
+import HealthList from '../components/healthList'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
 
@@ -48,7 +48,7 @@ export const Overview = React.createClass({
             </div>
 
             <div className="panel-body">
-              <HealthPanel count={count}/>
+              <HealthList count={count}/>
               {proc_sections}
             </div>
           </div>

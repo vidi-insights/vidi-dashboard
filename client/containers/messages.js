@@ -3,11 +3,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router'
-import Panel from '../components/panel'
-import PageHeader from '../components/pageHeader.js'
+import {Panel, PageHeader, HealthPanel, InfoCell} from '../components/index'
 import ChartistGraph from 'react-chartist'
-import HealthPanel from '../components/healthList'
-import InfoCell from '../components/infoCell'
 import {subscribe, unsubscribe} from '../actions/vidi'
 import _ from 'lodash'
 

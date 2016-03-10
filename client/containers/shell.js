@@ -3,8 +3,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import Header from '../components/header'
-import Footer from '../components/footer'
+import {Header, Footer}  from '../components/index'
 
 export const Shell = React.createClass({
   render () {
