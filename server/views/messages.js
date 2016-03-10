@@ -30,6 +30,7 @@ module.exports = function (options) {
 }
 
 function createView (msg, done) {
+     var seneca = this
      var payload = payload || []
 
      if (!opts.enabled) {
