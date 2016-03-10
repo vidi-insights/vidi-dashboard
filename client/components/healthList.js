@@ -2,12 +2,12 @@
 
 import React from 'react'
 import {Link} from 'react-router'
-import Menu from './menu'
+import {Menu} from './index'
 
 export default React.createClass({
   render () {
     const {count} = this.props
-    
+
     return (
       <ul className="list-unstyled list-inline cf">
         <li><strong>Total:</strong> {count}</li>

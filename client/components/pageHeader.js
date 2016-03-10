@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {Link} from 'react-router'
-import Menu from './menu'
+import {Menu} from './index'
 
 export default React.createClass({
   render () {
