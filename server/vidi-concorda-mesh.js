@@ -2,8 +2,7 @@
 
 module.exports = (opts, server, done) => {
   var seneca = server.seneca
-    .use('concorda-client')
-    .use('auth', {restrict: '/api'})
+    .use('concorda-client', {restrict: '/api'})
     .use('./views/sensors')
     .use('./views/messages')
     .use('./views/toolbag')
