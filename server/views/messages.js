@@ -38,7 +38,7 @@ function createView (msg, done) {
      }
 
      var db = influx(opts.influx)
-     var qry = 'SELECT * FROM "seneca.message.flow_rate" WHERE time > now() - 120s'
+     var qry = 'SELECT sum(rate) as rate FROM "seneca.message.flow_rate" WHERE time > now() - 120s Group By time(1s), "pattern", "tag", "id" fill(0)'
      db.query(qry, (err, data) => {
        if (err) {
          seneca.log.error(err)
