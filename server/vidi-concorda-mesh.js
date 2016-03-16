@@ -7,7 +7,7 @@ module.exports = (opts, server, done) => {
           active: process.env.USE_MESH || true
         },
         transport: {
-          active: process.env.USE_TRANSPORT || true,
+          active: process.env.USE_TRANSPORT || false,
           type: process.env.TRANSPORT_TYPE || 'tcp'
         },
         auth: {
