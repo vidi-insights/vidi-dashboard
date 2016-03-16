@@ -29,7 +29,7 @@
     "boom": "3.1.2",
     "chairo": "2.0.1",
     "chartist": "0.9.7",
-    "concorda-client": "0.0.4",
+    "concorda-client": "0.0.x",
     "hapi": "12.1.0",
     "hapi-auth-cookie": "6.1.1",
     "inert": "3.2.0",
