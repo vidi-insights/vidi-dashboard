@@ -9,7 +9,7 @@
 .process-card *[class*="icon-status"]:not(.icon-small)
   position: relative
   top: -5px
-  
+
 // Process group
 
 .process-group .panel-heading,
@@ -22,70 +22,68 @@
   margin-top: $ui-spacing-half
   border: $ui-border
   border-bottom: none
-  border-radius: $ui-radius
-  box-shadow: 0 1px 0 lighten($gray-lighter, 0.5)
 
   &:not(:last-child)
     margin-bottom: $ui-spacing
-    
+
 .process-heading,
 .process-stats-container
   padding: $ui-spacing-half
-      
+
 .process-heading
   border-bottom: $ui-border
   font-weight: $font-weight-bold
-  
+
   h1
     font-weight: inherit
-  
+
   &.has-btn
-  
+
     h1, .btn
       display: inline-block
 
 .process-stats-row
   border-bottom: $ui-border
-  
+
 .process-argument
   padding: $ui-spacing-half $ui-spacing
   font-size: $font-small
   font-family: $font-monospaced
   color: $gray-light
-  
+
   &:not(:last-of-type)
     border-bottom: $ui-border
-    
+
 // Dead process
 
 .process-dead
   color: $gray-light
   opacity: 0.8
-  
+
   .status
     opacity: 0.5
-    
+
 // Stressed process
 
 .process-property-stress
   color: $orange
-  
+
 // Terminal process
 
 .process-property-terminal
   color: $red
-  
+
 @media screen and (max-width: 48em)
 
   .process-stats-row:only-child
 
     .process-stats-container:last-child
       border: none
-  
+
 @media screen and (min-width: 49em)
 
   .process-stats-floated
-  
+
     &.process-stats-compact
       .label-dimmed
         top: 0
@@ -97,7 +95,7 @@
       margin-left: $ui-spacing-half
       position: relative
       top: $ui-spacing-fourth
-      
+
   .process-stats-row:only-child
     .process-stats-container
       border: none

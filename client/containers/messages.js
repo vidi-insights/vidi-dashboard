@@ -6,7 +6,9 @@ import {Link} from 'react-router'
 import {Panel, PageHeader, HealthList, InfoCell} from '../components/index'
 import ChartistGraph from 'react-chartist'
 import {subscribe, unsubscribe} from '../actions/vidi'
+import {ForceChart} from '../components/forceChart'
 import _ from 'lodash'
+
 
 export const Overview = React.createClass({
   componentDidMount () {
@@ -44,13 +46,21 @@ export const Overview = React.createClass({
 
         sections.push(
           <div key={key} className="process-group panel">
-            <div className="panel-heading cf">
-              <h3 className="m0 fl-left"><strong>{tag}</strong></h3>
-              <a href="" className="fl-right icon icon-collapse"></a>
+          <div className="panel-heading row no-gutter cf">
+            <div className="col-xs-12 col-sm-2 col-md-2">
+              <h4 className="m0 fl-left"><strong>{tag}</strong></h4>
             </div>
 
-            <div className="panel-body">
+            <div className="col-xs-12 col-sm-9 col-md-9">
               <HealthList count={count}/>
+            </div>
+
+            <div className="col-xs-1 col-sm-1 col-md-1">
+              <a href="" className="fl-right icon icon-collapse"></a>
+            </div>
+          </div>
+
+            <div className="panel-body">
               {proc_sections}
             </div>
           </div>
@@ -67,6 +77,16 @@ export const Overview = React.createClass({
         </div>
 
         <div className="container-fluid">
+          <div className="process-card">
+            <div className="process-heading has-icon">
+              Live Graph
+            </div>
+
+            <div className="process-stats-row row no-gutter">
+              <ForceChart height={200} width={400} data={['']} />
+            </div>
+          </div>
+
           {sections}
         </div>
       </div>
@@ -96,8 +116,8 @@ function makeMessageSections (messages) {
         <Link to={link}>{`${now.pid} - ${now.tag}`}</Link>
       </div>
 
-      <div className="row middle-xs">
-        <div className="col-xs-12 mtb">
+      <div className="process-stats-row row no-gutter">
+        <div className="col-xs-12 mt mb0">
           <ChartistGraph
             type={'Line'}
             data={{labels: messages.series.time, series: [messages.series.rate]}}

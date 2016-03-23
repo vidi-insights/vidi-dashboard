@@ -40,13 +40,21 @@ export const Overview = React.createClass({
 
         sections.push(
           <div key={tag} className="process-group panel">
-            <div className="panel-heading cf">
-              <h3 className="m0 fl-left">Processes tagged with <strong>{tag}</strong></h3>
-              <a href="" className="fl-right icon icon-collapse"></a>
+            <div className="panel-heading row no-gutter cf">
+              <div className="col-xs-12 col-sm-2 col-md-2">
+                <h4 className="m0 fl-left"><strong>{tag}</strong></h4>
+              </div>
+              <div className="col-xs-12 col-sm-9 col-md-9">
+                <HealthList count={count}/>
+              </div>
+
+              <div className="col-xs-1 col-sm-1 col-md-1">
+                <a href="" className="fl-right icon icon-collapse"></a>
+              </div>
+
             </div>
 
             <div className="panel-body">
-              <HealthList count={count}/>
               {proc_sections}
             </div>
           </div>
@@ -103,20 +111,24 @@ function make_process_sections (data, event_loop) {
 
   return (
     <div key={now.pid} className="process-card">
-      <div className="process-heading has-icon">
-        <span className="status status-healthy status-small" title="Status: healthy"></span>
-        <Link to={link}>{now.pid}</Link>
-      </div>
-
       <div className="process-stats-row cf row no-gutter">
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 process-stats-container process-stats-floated">
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-1 process-stats-container process-stats-floated">
+          <ul className="list-unstyled list-inline cf">
+            <li>
+              <span className="status status-healthy status-small" title="Status: healthy"></span>
+              <Link to={link}>{now.pid}</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2 process-stats-container process-stats-floated">
           <ul className="list-unstyled list-inline cf">
             <li><h4 className="m0">Process uptime:</h4></li>
             <li>{now.proc_uptime}</li>
           </ul>
         </div>
 
-        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-3 process-stats-container process-stats-floated">
+        <div className="col-xs-12 col-sm-6 col-md-3 col-lg-2 process-stats-container process-stats-floated">
           <ul className="list-unstyled list-inline cf">
             <li><h4 className="m0">System uptime:</h4></li>
             <li>{now.sys_uptime}</li>

@@ -127,8 +127,8 @@ function make_process_sections (data) {
         <h3 className="col-xs-12 mb0 mt0 process-heading">Heap Usage</h3>
       </div>
 
-      <div className="row middle-xs">
-        <div className="col-xs-12 mtb">
+      <div className="row middle-xs no-gutter">
+        <div className="col-xs-12 mt">
           <ChartistGraph
             type={'Line'}
             data={{labels: data.series.time, series: [data.series.heap_total, data.series.heap_rss, data.series.heap_used]}}
@@ -171,10 +171,10 @@ function make_process_sections (data) {
 function make_event_loop_section (event_loop) {
   return (
     <div key={(event_loop.latest.pid + 'event_loop')}>
-      <div className="row middle-xs process-stats-row no-gutter">
+      <div className="row middle-xs no-gutter">
         <h3 className="col-xs-12 mb0 mt0 process-heading">Event Loop</h3>
 
-        <div className="col-xs-12 mtb">
+        <div className="col-xs-12 mt">
           <ChartistGraph
             type={'Line'}
             data={{labels: event_loop.series.time, series: [event_loop.series.delay, event_loop.series.limit]}}

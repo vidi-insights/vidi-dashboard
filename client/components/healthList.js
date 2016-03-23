@@ -10,11 +10,10 @@ export default React.createClass({
 
     return (
       <ul className="list-unstyled list-inline cf">
-        <li><strong>Total:</strong> {count}</li>
-        <li><span className="status status-small status-healthy"></span><strong>Healthy:</strong> {count}</li>
-        <li><span className="status status-small status-stress"></span><strong>Stressed:</strong> 0</li>
-        <li><span className="status status-small status-terminal"></span><strong>Terminal:</strong> 0</li>
-        <li><span className="status status-small status-dead"></span><strong>Dead:</strong> 0</li>
+        <li><span className="status status-small status-healthy"></span>{count}</li>
+        <li><span className="status status-small status-stress"></span>0</li>
+        <li><span className="status status-small status-terminal"></span>0</li>
+        <li><span className="status status-small status-dead"></span>0</li>
       </ul>
     )
   }
