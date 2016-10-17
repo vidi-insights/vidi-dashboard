@@ -8,8 +8,6 @@ import {combineReducers, createStore, applyMiddleware} from 'redux'
 import {browserHistory, Router, Route, IndexRoute} from 'react-router'
 import {routerReducer, routerMiddleware, syncHistoryWithStore} from 'react-router-redux'
 
-import sensorReducer from '../reducers/sensor'
-
 import {logout, validateCookie} from '../actions/auth'
 import Shell from '../containers/shell'
 import Login from '../containers/login'
@@ -20,8 +18,7 @@ import ProcessById from '../containers/process_by_id'
 import Profile from '../containers/profile'
 
 const rootReducer = combineReducers({
-  routing: routerReducer,
-  vidi: vidiReducer
+  routing: routerReducer
 })
 
 const buildStore = applyMiddleware(

@@ -7,7 +7,7 @@ var Path = require('path')
 var Boom = require('boom')
 
 var server = new Hapi.Server()
-server.connection({port: opts.server.port})
+server.connection({port: '3000'})
 server.realm.settings.files.relativeTo = Path.join(__dirname, '../dist/')
 
 var plugins = [
@@ -18,13 +18,14 @@ var plugins = [
 server.register(plugins, (err) => {
   exitIfErr(err)
 
-  server.route(uiRoutes)
+  server.route(uiRoutes())
 
   server.start((err) => {
     exitIfErr(err)
 
     server.subscription('/sensors')
     setInterval(() => {server.publish('/sensors', {})}, 1000)
+    console.log('server started')
   })
 })
 
