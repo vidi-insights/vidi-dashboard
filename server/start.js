@@ -1,39 +1,84 @@
 'use strict'
 
-var Decree = require('seneca-decree')
+var Hapi = require('hapi')
+var Inert = require('inert')
+var Nes = require('nes')
+var Path = require('path')
+var Boom = require('boom')
 
-var dashboard = require('./dashboard')
-var vidi_monolith = require('./vidi-monolith')
-var vidi_concorda_mesh = require('./vidi-concorda-mesh')
+var server = new Hapi.Server()
+server.connection({port: '3000'})
+server.realm.settings.files.relativeTo = Path.join(__dirname, '../dist/')
 
-var opts = {
-  admin: {
-    name: process.env.USER_NAME || 'Admin',
-    email: process.env.USER_EMAIL || 'admin@email.com',
-    password: process.env.USER_PASS || 'admin'
-  },
-  server: {
-    port: process.env.PORT || 3000
-  },
-  chairo: {
-    timeout: 1000,
-    secure: true
-  },
-  vidi_metrics: {
-    collector: {enabled: true}
-  },
-  vidi_influx_sink: {
-    batch: {
-      max: 5,
-      timeout: 1000
-    }
+var plugins = [
+  {register: Nes},
+  {register: Inert}
+]
+
+server.register(plugins, (err) => {
+  exitIfErr(err)
+
+  server.route(uiRoutes())
+
+  server.start((err) => {
+    exitIfErr(err)
+
+    server.subscription('/sensors')
+    setInterval(() => {server.publish('/sensors', {})}, 1000)
+    console.log('server started')
+  })
+})
+
+function exitIfErr (err) {
+  if (err) {
+    console.log(err)
+    process.exit(1)
   }
 }
 
-var scripts = [
-  {pin: {monolith: true}, script: vidi_monolith},
-  {pin: {concorda: true}, script: vidi_concorda_mesh},
-  {script: vidi_monolith}
-]
-
-Decree(opts, scripts, dashboard)
+function uiRoutes () {
+  return [
+    {
+      method: 'GET',
+      path: '/css/{path*}',
+      handler: {
+        directory: {
+          path: './css/',
+          redirectToSlash: true,
+          index: false
+        }
+      }
+    },
+    {
+      method: 'GET',
+      path: '/js/{path*}',
+      handler: {
+        directory: {
+          path: './js/',
+          redirectToSlash: true,
+          index: false
+        }
+      }
+    },
+    {
+      method: 'GET',
+      path: '/img/{path*}',
+      handler: {
+        directory: {
+          path: './img/',
+          redirectToSlash: true,
+          index: false
+        }
+      }
+    },
+    {
+      method: 'GET',
+      path: '/{path*}',
+      handler: {
+        file: {
+          path: './index.html'
+        }
+      }
+    }
+  ]
+}
